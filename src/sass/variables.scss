@@ -1,0 +1,38 @@
+@font-face{
+  font-family: Amaranth-Regular;
+  src: url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+}
+@font-face{
+  font-family: Amaranth-Bold;
+  src: url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap');
+}
+
+$primary-color: #0077B6;
+$secondary-color: #06A77D;
+$background-color: #EAEFF2;
+$black-color: #2C2B3C;
+$white-color: #FAFBFC;
+$color-link: #06A77D;
+$break-xs: 500px;
+$break-sm: 767px;
+$break-md: 1024px;
+
+@mixin media($media) {
+  @if $media == xs {
+    @media (max-width: $break-xs) {
+      @content;
+    }
+  } @else if $media == sm {
+    @media (max-width: $break-sm) {
+      @content;
+    }
+  } @else if $media == md {
+    @media (max-width: $break-md) {
+      @content;
+    }
+  }
+}
+
+html{
+  font-size: 62.5%;
+}
