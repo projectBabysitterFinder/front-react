@@ -1,18 +1,38 @@
-@font-face{
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@font-face {
   font-family: Amaranth-Regular;
   src: url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
 }
-@font-face{
+@font-face {
   font-family: Amaranth-Bold;
   src: url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap');
 }
+@font-face {
+  font-family: Roboto-Regular;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+}
+@font-face {
+  font-family: Roboto-Medium;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+}
+@font-face {
+  font-family: Roboto-Bold;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+}
 
-$primary-color: #0077B6;
-$secondary-color: #06A77D;
-$background-color: #EAEFF2;
-$black-color: #2C2B3C;
-$white-color: #FAFBFC;
-$color-link: #06A77D;
+$primary-color: #0077b6;
+$secondary-color: #06a77d;
+$secondary-color-two: #aefce7;
+$secondary-color-three: #fec400;
+$background-color: #eaeff2;
+$black-color: #2c2b3c;
+$white-color: #fafbfc;
+$color-link: #06a77d;
+$hover-color: #ade2ff;
+
+$font-family-title: 'Amaranth-Bold', sans-serif;
+$font-family-subtitle: 'Amaranth-Regular', sans-serif;
+$font-family-paragraph: 'Roboto-Regular', sans-serif;
 $break-xs: 500px;
 $break-sm: 767px;
 $break-md: 1024px;
@@ -33,6 +53,26 @@ $break-md: 1024px;
   }
 }
 
-html{
+html {
   font-size: 62.5%;
+}
+body {
+  font-family: $font-family-paragraph;
+}
+h1 {
+  font-family: $font-family-title;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-subtitle;
+}
+p,
+a {
+  margin: 0;
+}
+a {
+  text-decoration: none;
 }
