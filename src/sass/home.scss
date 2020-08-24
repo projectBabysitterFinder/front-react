@@ -1,58 +1,59 @@
 @import './variables.scss';
-$mission-color: #ADE2FF;
-$vision-color: #AEFCE7;
-$principles-color: #EDFEEA;
+$mission-color: #ade2ff;
+$vision-color: #aefce7;
+$principles-color: #edfeea;
 
-.sectionMain{
+.sectionMain {
   width: auto;
   height: 80vh;
   padding: 0 5%;
   background-image: url('../assets/images/home/images-banner.jpg');
   @include flex;
   flex-direction: column;
-  & h1,h3{
+  & h1,
+  h3 {
     color: $white-color;
     text-align: center;
   }
-  & button{
+  & button {
     @include base_button;
     font-size: 3em;
     font-weight: bold;
-    padding: .5em 1em;
-    @include media(xs){
+    padding: 0.5em 1em;
+    @include media(xs) {
       font-size: 2rem;
     }
   }
 }
-.sectionAboutUs{
+.sectionAboutUs {
   display: grid;
   grid-template-columns: auto;
-  @include media-min(md){
+  @include media-min(md) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-.mission{
+.mission {
   background-color: $mission-color;
   padding: 1.5em 1em;
 }
-.vision{
+.vision {
   background-color: $vision-color;
   padding: 1.5em 1em;
 }
-.principles{
+.principles {
   background-color: $principles-color;
   padding: 1.5em 1em;
 }
 .mission,
 .vision,
-.principles{
+.principles {
   @include flex;
-  &__images{
+  &__images {
     width: 30%;
     text-align: center;
-    & img{
+    & img {
       width: 90%;
-      @include media-min(xs){
+      @include media-min(xs) {
         width: 60%;
       }
       /* @include media-min(md){
@@ -60,21 +61,21 @@ $principles-color: #EDFEEA;
       } */
     }
   }
-  &__description{
+  &__description {
     width: 70%;
     padding: 0 0 0 2em;
     font-size: 1.5em;
-    ul{
+    ul {
       padding: 0 0 0 20px;
     }
   }
 }
 .sectionInformation {
   padding: 8% 5%;
-  @include media-min(sm){
+  @include media-min(sm) {
     padding: 5%;
   }
-  @include media-min(md){
+  @include media-min(md) {
     padding: 2% 10%;
   }
 }
@@ -83,20 +84,20 @@ $principles-color: #EDFEEA;
   h3 {
     text-align: center;
   }
-  p{
+  p {
     font-size: 1.5em;
     text-align: center;
   }
 }
-.blockListOptions{
-  h3{
+.blockListOptions {
+  h3 {
     text-align: center;
   }
 }
 .gridOptions {
   display: grid;
   grid-template-columns: 1fr;
-  @include media-min(sm){
+  @include media-min(sm) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -106,7 +107,7 @@ $principles-color: #EDFEEA;
   img {
     width: 100px;
   }
-  ul{
+  ul {
     list-style: none;
     padding: 0;
     font-size: 1.5em;

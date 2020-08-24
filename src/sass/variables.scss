@@ -29,7 +29,7 @@ $black-color: #2c2b3c;
 $white-color: #fafbfc;
 $color-link: #06a77d;
 $hover-menu: #ade2ff;
-$hover-button: #08D09A;
+$hover-button: #08d09a;
 
 $font-family-title: 'Amaranth-Bold', sans-serif;
 $font-family-subtitle: 'Amaranth-Regular', sans-serif;
@@ -73,17 +73,17 @@ $break-md: 1024px;
   justify-content: center;
   align-items: center;
 }
-@mixin base_button{
+@mixin base_button {
   background-color: $secondary-color;
   color: $white-color;
   border-radius: 25px;
   border-style: none;
   border-color: $secondary-color;
-  &:hover{
+  &:hover {
     background-color: $hover-button;
     cursor: pointer;
   }
-  &:focus{
+  &:focus {
     outline: 0;
   }
 }
@@ -98,29 +98,42 @@ body {
 h1 {
   font-family: $font-family-title;
   font-size: 6rem;
-  @include media(xs){
+  @include media(xs) {
     font-size: 4rem;
   }
 }
-h2{
+h2 {
   font-size: 4rem;
-  @include media(xs){
+  @include media(xs) {
     font-size: 3rem;
   }
 }
-h3,h4,h5,h6{
+h3,
+h4,
+h5,
+h6 {
   font-size: 3rem;
-  @include media(xs){
+  @include media(xs) {
     font-size: 2.5rem;
   }
 }
-h2,h3,h4,h5,h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $font-family-subtitle;
 }
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0 0 2rem;
 }
-p,a {
+p,
+a {
   margin: 0;
 }
 a {
