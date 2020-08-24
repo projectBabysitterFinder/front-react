@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
 import Layout from './components/Layout';
 /* import './sass/app.scss'; */
 
@@ -9,7 +10,9 @@ function App() {
       <Router>
         <Layout>
           <Switch>
-            <h1>Hola primera seccion</h1>
+            <Route exact path='/'>
+              <Home />
+            </Route>
           </Switch>
         </Layout>
       </Router>

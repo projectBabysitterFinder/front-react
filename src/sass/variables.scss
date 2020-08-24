@@ -28,7 +28,8 @@ $background-color: #eaeff2;
 $black-color: #2c2b3c;
 $white-color: #fafbfc;
 $color-link: #06a77d;
-$hover-color: #ade2ff;
+$hover-menu: #ade2ff;
+$hover-button: #08D09A;
 
 $font-family-title: 'Amaranth-Bold', sans-serif;
 $font-family-subtitle: 'Amaranth-Regular', sans-serif;
@@ -52,25 +53,74 @@ $break-md: 1024px;
     }
   }
 }
+@mixin media-min($media) {
+  @if $media == xs {
+    @media (min-width: $break-xs) {
+      @content;
+    }
+  } @else if $media == sm {
+    @media (min-width: $break-sm) {
+      @content;
+    }
+  } @else if $media == md {
+    @media (min-width: $break-md) {
+      @content;
+    }
+  }
+}
+@mixin flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin base_button{
+  background-color: $secondary-color;
+  color: $white-color;
+  border-radius: 25px;
+  border-style: none;
+  border-color: $secondary-color;
+  &:hover{
+    background-color: $hover-button;
+    cursor: pointer;
+  }
+  &:focus{
+    outline: 0;
+  }
+}
 
 html {
   font-size: 62.5%;
 }
 body {
   font-family: $font-family-paragraph;
+  background-color: $background-color;
 }
 h1 {
   font-family: $font-family-title;
+  font-size: 6rem;
+  @include media(xs){
+    font-size: 4rem;
+  }
 }
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2{
+  font-size: 4rem;
+  @include media(xs){
+    font-size: 3rem;
+  }
+}
+h3,h4,h5,h6{
+  font-size: 3rem;
+  @include media(xs){
+    font-size: 2.5rem;
+  }
+}
+h2,h3,h4,h5,h6 {
   font-family: $font-family-subtitle;
 }
-p,
-a {
+h1,h2,h3,h4,h5,h6{
+  margin: 0 0 2rem;
+}
+p,a {
   margin: 0;
 }
 a {
