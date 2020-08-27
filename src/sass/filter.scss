@@ -1,0 +1,11 @@
+@import './variables.scss';
+
+.filter {
+  max-width: 1440px;
+  margin: auto;
+  background-color: $background-color;
+  &__items {
+    display: flex;
+    justify-content: space-around;
+  }
+}
