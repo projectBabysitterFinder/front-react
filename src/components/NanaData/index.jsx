@@ -9,14 +9,14 @@ const NanaData = (props) => {
   const {
     name,
     description,
-    score,
+    // score,
     time,
     studies,
     experiences,
     skills,
-    country,
-    state,
-    capital,
+    // country,
+    // state,
+    // capital,
     specialty,
     averageScore,
   } = props;

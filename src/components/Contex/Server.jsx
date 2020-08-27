@@ -13,6 +13,7 @@ export function ServerProvider(props) {
   const [onlyCountry, setOnlyCountry] = useState([]);
   const [Idd, setIdd] = useState([]);
   const [open, setOpen] = useState(false);
+  const [ date, setDate ] = useState(new Date());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,8 +99,18 @@ export function ServerProvider(props) {
     setOpen(false);
   }, []);
 
+  const onChange = useCallback(date => {
+    setDate( date )
+  },[])
+
+  const buttonDay = useCallback(() => {
+    console.log(date.toLocaleDateString());
+    setOpen(false);
+  }, [date]);
+
   const value = useMemo(() => {
     return {
+      date,
       data,
       country,
       state,
@@ -115,8 +126,11 @@ export function ServerProvider(props) {
       modalOpen,
       open,
       modalClose,
+      buttonDay,
+      onChange,
     };
   }, [
+    date,
     data,
     country,
     state,
@@ -132,6 +146,8 @@ export function ServerProvider(props) {
     modalOpen,
     open,
     modalClose,
+    buttonDay,
+    onChange,
   ]);
 
   return <Server.Provider value={value} {...props} />;

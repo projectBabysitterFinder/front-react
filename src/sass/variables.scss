@@ -57,6 +57,25 @@ $break-md: 1024px;
   }
 }
 
+@mixin font($size, $font, $align) {
+  font-family: $font;
+  font-size: $size;
+  color: $black-color;
+  text-align: $align;
+}
+
+%buttonNext {
+  color: #fafbfc;
+  background-color: #06a77d;
+  font-size: medium;
+  cursor: pointer;
+  border-radius: 20px 20px 20px 20px;
+  -moz-border-radius: 20px 20px 20px 20px;
+  -webkit-border-radius: 20px 20px 20px 20px;
+  font-family: Amaranth-Regular;
+  font-weight: bold;
+}
+
 %img {
   width: 125px;
   height: 125px;
