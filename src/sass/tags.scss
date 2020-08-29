@@ -3,7 +3,7 @@
 .Tags {
   background-color: $background-tags;
   width: max-content;
-  border-radius: 50px;
+  border-radius: 8px;
   @include media('m') {
     width: auto;
   }
@@ -12,7 +12,7 @@
     color: $black-color;
     font-size: medium;
     padding: 10px;
-    margin-top: 6px;
+    margin-top: 0px;
     margin-bottom: 0;
     text-align: center;
   }

@@ -10,27 +10,27 @@ const Star = (props) => {
         <>
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
         </>
@@ -38,27 +38,27 @@ const Star = (props) => {
         <>
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
         </>
@@ -66,27 +66,27 @@ const Star = (props) => {
         <>
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
         </>
@@ -94,27 +94,27 @@ const Star = (props) => {
         <>
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrellaBN.png')}
+            src={require('../../assets/images/Star/estrellaBN.png')}
             alt={name}
           />
         </>
@@ -122,27 +122,27 @@ const Star = (props) => {
         <>
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
           <img
             className='unit'
-            src={require('../../assets/images/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')}
             alt={name}
           />
         </>

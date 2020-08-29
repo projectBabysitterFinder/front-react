@@ -27,7 +27,7 @@ const NanaData = (props) => {
     <div className='nana'>
       <article className='nana__photo'>
         <img
-          src={require('../../assets/images/maria-sandobal.png')}
+          src={require('../../assets/images/Nanas/maria-sandobal.png')}
           alt={name}
         />
         <div className='button'>
@@ -97,7 +97,7 @@ const NanaData = (props) => {
           <article className='review__article'>
             <img
               className='article--img'
-              src={require('../../assets/images/maria-sandobal.png')}
+              src={require('../../assets/images/Nanas/maria-sandobal.png')}
               alt={name}
             />
             <div className='score__review'>

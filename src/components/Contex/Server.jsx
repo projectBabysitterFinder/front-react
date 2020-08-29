@@ -2,6 +2,9 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
 var dataState = [];
 var dataCapital = [];
+var counter = [1];
+var counterRemove = 0;
+var counterAdd = 0;
 
 const Server = React.createContext();
 
@@ -13,7 +16,13 @@ export function ServerProvider(props) {
   const [onlyCountry, setOnlyCountry] = useState([]);
   const [Idd, setIdd] = useState([]);
   const [open, setOpen] = useState(false);
-  const [ date, setDate ] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+  const [openAdd, setOpenAdd] = useState(false);
+  const [flagV, setFlagV] = useState('');
+  const [child, setChild] = useState([]);
+  const [age, setAge] = useState([]);
+  const [addChild, setAddChild] = useState([1]);
+  const [form, setForm] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -99,17 +108,73 @@ export function ServerProvider(props) {
     setOpen(false);
   }, []);
 
-  const onChange = useCallback(date => {
-    setDate( date )
-  },[])
+  const modalOpenAdd = useCallback(() => {
+    setOpenAdd(true);
+  }, []);
+
+  const modalCloseAdd = useCallback(() => {
+    setOpenAdd(false);
+    setFlagV('');
+    setAddChild([1]);
+    counterAdd = 0;
+    counterRemove = 0;
+    counter = [1];
+    setChild([]);
+    setAge([]);
+  }, []);
+
+  const onChange = useCallback((date) => {
+    setDate(date);
+  }, []);
 
   const buttonDay = useCallback(() => {
-    console.log(date.toLocaleDateString());
     setOpen(false);
-  }, [date]);
+    setOpenAdd(true);
+  }, []);
+
+  const valueFlag = useCallback(() => {
+    var selectFlag = document.getElementById('flag');
+    setFlagV(selectFlag.value);
+  }, []);
+
+  // const valueChild = useCallback((indexAdd) => {
+  //   var selectChild = document.getElementById('child');
+  //   setChild(selectChild.value);
+  // },[]);
+
+  // const valueAge = useCallback(() => {
+  //   var selectAge = document.getElementById('age');
+  //   setAge(parseInt(selectAge.value));
+  // },[]);
+
+  const addChildren = useCallback(() => {
+    counterAdd = counterAdd + 1;
+    counter.push(1);
+    setAddChild(counter);
+  }, []);
+
+  const removeChildren = useCallback(() => {
+    counterRemove = counterRemove + 1;
+    if (counterAdd < counterRemove) {
+      counterAdd = 0;
+      counterRemove = 0;
+    } else {
+      counter.pop();
+      setAddChild(counter);
+    }
+  }, []);
 
   const value = useMemo(() => {
     return {
+      setAge,
+      setChild,
+      form,
+      setForm,
+      addChild,
+      age,
+      child,
+      flagV,
+      openAdd,
       date,
       data,
       country,
@@ -128,8 +193,22 @@ export function ServerProvider(props) {
       modalClose,
       buttonDay,
       onChange,
+      modalOpenAdd,
+      modalCloseAdd,
+      valueFlag,
+      addChildren,
+      removeChildren,
     };
   }, [
+    setAge,
+    setChild,
+    form,
+    setForm,
+    addChild,
+    age,
+    child,
+    flagV,
+    openAdd,
     date,
     data,
     country,
@@ -148,6 +227,11 @@ export function ServerProvider(props) {
     modalClose,
     buttonDay,
     onChange,
+    modalOpenAdd,
+    modalCloseAdd,
+    valueFlag,
+    addChildren,
+    removeChildren,
   ]);
 
   return <Server.Provider value={value} {...props} />;

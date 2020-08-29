@@ -1,15 +1,17 @@
 import React from 'react';
 import NanaData from '../../components/NanaData';
 import { useServer } from '../../components/Contex/Server';
-import CardDate from '../../components/CardDate';
+import ModalDate from '../../components/ModalDate';
+import ModalAddInfo from '../../components/ModalAddInfo';
 import '../../sass/nanaProfile.scss';
 
 const NanaProfile = () => {
-  var { Idd, open } = useServer();
+  var { Idd, open, openAdd } = useServer();
 
   return (
     <div className='nanaData'>
-      <CardDate open={open} />
+      <ModalDate open={open} />
+      <ModalAddInfo openAdd={openAdd} />
       {Idd.map((nana) => (
         <React.Fragment key={nana.id}>
           <NanaData

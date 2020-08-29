@@ -1,21 +1,21 @@
-@font-face {
-  font-family: Amaranth-Regular;
-  src: url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
-}
-@font-face {
-  font-family: Amaranth-Bold;
-  src: url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap');
-}
+// @font-face {
+//   font-family: Amaranth-Regular;
+//   src: url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+// }
+// @font-face {
+//   font-family: Amaranth-Bold;
+//   src: url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap');
+// }
 
-@font-face {
-  font-family: Roboto-Light;
-  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-}
+// @font-face {
+//   font-family: Roboto-Light;
+//   src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+// }
 
-@font-face {
-  font-family: Roboto-Bold;
-  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-}
+// @font-face {
+//   font-family: Roboto-Bold;
+//   src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+// }
 
 $primary-color: #0077b6;
 $secondary-color: #06a77d;
@@ -103,4 +103,8 @@ $break-md: 1024px;
 
 html {
   font-size: 62.5%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
 }

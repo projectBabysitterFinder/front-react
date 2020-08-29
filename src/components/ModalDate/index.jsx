@@ -1,10 +1,9 @@
 import React from 'react';
 import { useServer } from '../Contex/Server';
 import Picker from '../Picker';
-import '../../sass/cardDate.scss';
+import '../../sass/modalDate.scss';
 
-const CardDate = (props) => {
-
+const ModalDate = (props) => {
   const { open } = props;
   const { modalClose, buttonDay } = useServer();
 
@@ -13,8 +12,8 @@ const CardDate = (props) => {
   }
 
   return (
-    <main className='modal'>
-      <div className='modal-card'>
+    <main className='modalD'>
+      <div className='modalD-card'>
         <div className='container__modal'>
           <button onClick={modalClose} className='button__close'>
             <div className='button-close--container'> X </div>
@@ -22,14 +21,16 @@ const CardDate = (props) => {
         </div>
         <h1>Selecciona la fecha</h1>
         <section className='picker'>
-          <Picker/>
+          <Picker />
         </section>
         <section className='modal__day'>
-          <button onClick={buttonDay} className='modal__day--button'>Continuar</button>
+          <button onClick={buttonDay} className='modal__day--button'>
+            Continuar
+          </button>
         </section>
-      </div> 
+      </div>
     </main>
-  )
-}
+  );
+};
 
-export default CardDate;
+export default ModalDate;

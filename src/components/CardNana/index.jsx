@@ -12,7 +12,7 @@ const cardNana = (props) => {
       <section className='container__card'>
         <article className='imgButton'>
           <img
-            src={require('../../assets/images/maria-sandobal.png')}
+            src={require('../../assets/images/Nanas/maria-sandobal.png')}
             alt={name}
           />
           <Button id={id} name={'Más Información'} />
