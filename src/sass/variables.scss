@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+/* @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @font-face {
   font-family: Amaranth-Regular;
   src: url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
@@ -20,6 +20,10 @@
   src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 }
 
+$font-family-title: 'Amaranth-Bold', sans-serif;
+$font-family-subtitle: 'Amaranth-Regular', sans-serif;
+$font-family-paragraph: 'Roboto-Regular', sans-serif; */
+
 $primary-color: #0077b6;
 $secondary-color: #06a77d;
 $secondary-color-two: #aefce7;
@@ -31,10 +35,6 @@ $color-link: #06a77d;
 $hover-menu: #ade2ff;
 $hover-button: #08d09a;
 $background-tags: #aefce7;
-
-$font-family-title: 'Amaranth-Bold', sans-serif;
-$font-family-subtitle: 'Amaranth-Regular', sans-serif;
-$font-family-paragraph: 'Roboto-Regular', sans-serif;
 
 $break-m: 425px;
 $break-xs: 500px;
@@ -97,7 +97,7 @@ $break-md: 1024px;
 }
 
 
-html {
+/* html {
   font-size: 62.5%;
 }
 body {
@@ -148,7 +148,7 @@ a {
 a {
   text-decoration: none;
 }
-
+*/
 @mixin font($size, $font, $align) {
   font-family: $font;
   font-size: $size;
