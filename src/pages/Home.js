@@ -5,6 +5,7 @@ import calendar from '../assets/images/home/calendar.png';
 import fashion from '../assets/images/home/fashion.png';
 import tedybear from '../assets/images/home/teddy-bear.png';
 import tired from '../assets/images/home/tired.png';
+import { Link } from 'react-router-dom'
 import '../sass/home.scss';
 
 const Home = () => (
@@ -12,7 +13,7 @@ const Home = () => (
     <section className='sectionMain'>
       <h1>Ya no más preocupaciones al salir de casa</h1>
       <h3>Deja a tus hijos en las mejores manos mientras no estás en casa</h3>
-      <button>Busca a tu niñera</button>
+      <Link to='/nana'><button>Busca a tu niñera</button></Link>
     </section>
     <section className='sectionAboutUs'>
       <div className='mission'>
