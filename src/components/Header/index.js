@@ -9,7 +9,7 @@ const Index = () => {
 
   return (
     <header className='header'>
-      <img className='header__logo' src={logo} alt='Babysitter Finder' />
+      <Link to='/'><img className='header__logo' src={logo} alt='Babysitter Finder' /></Link>
       <span
         className='header--hamburger material-icons'
         onClick={() => setOpenMenu(!openMenu)}
