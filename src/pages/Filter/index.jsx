@@ -27,6 +27,7 @@ const Filter = () => {
                 description={nana.description}
                 score={nana.score}
                 specialty={nana.specialty}
+                time={nana.time}
               />
             </React.Fragment>
           ))
@@ -41,6 +42,7 @@ const Filter = () => {
                   description={nana.description}
                   score={nana.score}
                   specialty={nana.specialty}
+                  time={nana.time}
                 />
               </React.Fragment>
             ))
@@ -55,6 +57,7 @@ const Filter = () => {
                   description={nana.description}
                   score={nana.score}
                   specialty={nana.specialty}
+                  time={nana.time}
                 />
               </React.Fragment>
             ))
@@ -73,6 +76,7 @@ const Filter = () => {
                   description={nana.description}
                   score={nana.score}
                   specialty={nana.specialty}
+                  time={nana.time}
                 />
               </React.Fragment>
             ))}

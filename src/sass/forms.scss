@@ -38,6 +38,14 @@
   &--one {
     @extend %buttonNext;
   }
+  button:focus {
+    background-color: $background-tags;
+    color: $black-color;
+  }
+  button:hover {
+    background-color: $background-tags;
+    color: $black-color;
+  }
 }
 
 .input {
@@ -68,5 +76,13 @@
   margin-top: 6%;
   button {
     @extend %buttonNext;
+  }
+  button:focus {
+    background-color: $background-tags;
+    color: $black-color;
+  }
+  button:hover {
+    background-color: $background-tags;
+    color: $black-color;
   }
 }

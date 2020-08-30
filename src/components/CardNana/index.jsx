@@ -5,7 +5,7 @@ import Tags from '../Tags';
 import Star from '../Star/index';
 
 const cardNana = (props) => {
-  const { id, name, description, score, specialty } = props;
+  const { id, name, description, score, specialty, time } = props;
 
   return (
     <div className='container'>
@@ -22,7 +22,9 @@ const cardNana = (props) => {
             <h2>{name}</h2>
             <div>{<Star score={score}></Star>}</div>
           </div>
-          <div className='specialty'>
+          <div className='data__nana'>
+            <h2>Disponibilidad:</h2>
+            <Tags name={time} />
             <h2>Especialidad:</h2>
             <Tags name={specialty} />
           </div>

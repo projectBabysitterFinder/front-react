@@ -13,4 +13,12 @@
     font-family: Amaranth-Regular;
     font-weight: bold;
   }
+  button:focus {
+    background-color: $background-tags;
+    color: $black-color;
+  }
+  button:hover {
+    background-color: $background-tags;
+    color: $black-color;
+  }
 }

@@ -16,6 +16,7 @@ const ModalCheck = (props) => {
     form,
     date,
     totalValue,
+    day,
   } = useServer();
 
   if (openCheck === false) {
@@ -36,6 +37,8 @@ const ModalCheck = (props) => {
           <p>{form[0]}</p>
           <h2>Fecha:</h2>
           <p>{date.toLocaleDateString()}</p>
+          <h2>Jornada:</h2>
+          {day === '' ? <p>Tiempo Completo</p> : <p>{day}</p>}
           <h2>E-mail</h2>
           <p>{form[1]}</p>
           <span>

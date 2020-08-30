@@ -3,6 +3,9 @@
 .mx {
   position: absolute;
   padding: 6px;
+  @include media('sm') {
+    position: inherit;
+  }
   &--img {
     width: 73px;
     height: 32px;

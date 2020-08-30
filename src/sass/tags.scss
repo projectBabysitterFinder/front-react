@@ -1,6 +1,8 @@
 @import './variables.scss';
 
 .Tags {
+  display: flex;
+  justify-content: center;
   background-color: $background-tags;
   width: max-content;
   border-radius: 8px;

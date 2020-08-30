@@ -31,6 +31,14 @@
             margin-left: 0;
           }
         }
+        button:focus {
+          background-color: $background-tags;
+          color: $black-color;
+        }
+        button:hover {
+          background-color: $background-tags;
+          color: $black-color;
+        }
       }
     }
     .article {
@@ -59,15 +67,17 @@
         color: $black-color;
         text-align: justify;
       }
-      .specialty {
-        display: flex;
-        h2 {
-          margin-right: 10%;
-          color: $black-color;
-        }
-        @include media('m') {
-          justify-content: center;
-        }
+    }
+    .data__nana {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 1fr 5fr;
+      h2 {
+        margin-right: 10%;
+        color: $black-color;
+      }
+      @include media('m') {
+        justify-content: center;
       }
     }
     @include media('m') {

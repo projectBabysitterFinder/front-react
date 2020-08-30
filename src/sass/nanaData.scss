@@ -28,7 +28,8 @@
       text-align: center;
       margin-top: 20%;
       @include media('m') {
-        margin-bottom: 3%;
+        margin-top: 12px;
+        margin-bottom: 12px;
         display: flex;
         justify-content: space-evenly;
       }
@@ -44,6 +45,18 @@
         -webkit-border-radius: 20px 20px 20px 20px;
         font-family: Amaranth-Regular;
         font-weight: bold;
+        @include media('m') {
+          margin-top: 12px;
+          margin-bottom: 12px;
+        }
+      }
+      button:focus {
+        background-color: $background-tags;
+        color: $black-color;
+      }
+      button:hover {
+        background-color: $background-tags;
+        color: $black-color;
       }
     }
   }
@@ -73,6 +86,8 @@
           display: flex;
           @include media('sm') {
             justify-content: center;
+            margin-top: 4%;
+            margin-bottom: 7%;
           }
         }
       }
@@ -81,9 +96,18 @@
         grid-gap: 20px;
         grid-template-columns: 1fr 5fr;
         align-items: center;
+        &--time {
+          display: flex;
+          padding-left: 0px;
+          @include media('m') {
+            display: flex;
+            justify-content: center;
+          }
+        }
         @include media('m') {
           display: block;
           text-align: center;
+          // justify-content: center;
         }
         p {
           font-family: Amaranth-Bold;
@@ -110,10 +134,12 @@
             font-family: Amaranth-Bold;
             font-size: medium;
             color: $black-color;
-            @include media('m') {
+            @include media('sm') {
               display: flex;
               justify-content: center;
+              margin-top: 3%;
               margin-bottom: 3%;
+              margin-right: 0px;
             }
           }
         }
@@ -195,6 +221,13 @@
       li {
         margin-right: 2%;
         list-style: none;
+        @include media('sm') {
+          display: flex;
+          justify-content: center;
+          margin-top: 3%;
+          margin-bottom: 3%;
+          margin-right: 0px;
+        }
       }
       @include media('sm') {
         display: block;

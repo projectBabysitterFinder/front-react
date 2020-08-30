@@ -24,6 +24,10 @@ export function ServerProvider(props) {
   const [agee, setAge] = useState([]);
   const [addChild, setAddChild] = useState([1]);
   const [form, setForm] = useState([]);
+  const [openHalfTime, setOpenHalfTime] = useState(false);
+  const [openForHours, setOpenForHours] = useState(false);
+  const [openNight, setOpenNight] = useState(false);
+  const [day, setDay] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,17 +105,32 @@ export function ServerProvider(props) {
     [data]
   );
 
-  const modalOpen = useCallback(() => {
-    setOpen(true);
-  }, []);
+  const modalOpen = useCallback(
+    (e) => {
+      const valueOnly = data.filter((only) => only.id === parseInt(e));
+      if (valueOnly[0].time === 'Tiempo Completo') {
+        setOpen(true);
+      } else if (valueOnly[0].time === 'Medio Tiempo') {
+        setOpenHalfTime(true);
+      } else if (valueOnly[0].time === 'Por Horas') {
+        setOpenForHours(true);
+      } else if (valueOnly[0].time === 'Nocturno') {
+        setOpenNight(true);
+      }
+    },
+    [data]
+  );
 
   const modalClose = useCallback(() => {
     setOpen(false);
+    setOpenHalfTime(false);
+    setOpenForHours(false);
+    setOpenNight(false);
   }, []);
 
-  const modalOpenAdd = useCallback(() => {
-    setOpenAdd(true);
-  }, []);
+  // const modalOpenAdd = useCallback(() => {
+  //   setOpenAdd(true);
+  // }, []);
 
   const modalCloseAdd = useCallback(() => {
     setOpenAdd(false);
@@ -124,6 +143,24 @@ export function ServerProvider(props) {
     setAge([]);
     setForm([]);
     setDate(new Date());
+    setOpenForHours(false);
+    setOpenNight(false);
+  }, []);
+
+  const modalCloseHalf = useCallback(() => {
+    setOpenAdd(false);
+    setFlagV('');
+    setAddChild([1]);
+    counterAdd = 0;
+    counterRemove = 0;
+    counter = [1];
+    setChild([]);
+    setAge([]);
+    setForm([]);
+    setDate(new Date());
+    setOpenHalfTime(false);
+    setOpenForHours(false);
+    setOpenNight(false);
   }, []);
 
   const modalOpenCheck = useCallback(() => {
@@ -150,6 +187,7 @@ export function ServerProvider(props) {
   const buttonDay = useCallback(() => {
     setOpen(false);
     setOpenAdd(true);
+    setOpenHalfTime(false);
   }, []);
 
   const buttonCheck = useCallback(() => {
@@ -194,8 +232,22 @@ export function ServerProvider(props) {
     setDate(new Date());
   }, []);
 
+  const knowMorning = useCallback(() => {
+    var selectMoring = document.getElementById('morning');
+    setDay(selectMoring.value);
+  }, []);
+
+  const knowLate = useCallback(() => {
+    var selectLate = document.getElementById('late');
+    setDay(selectLate.value);
+  }, []);
+
   const value = useMemo(() => {
     return {
+      day,
+      openHalfTime,
+      openForHours,
+      openNight,
       openCheck,
       setAge,
       setChild,
@@ -224,7 +276,7 @@ export function ServerProvider(props) {
       modalClose,
       buttonDay,
       onChange,
-      modalOpenAdd,
+      // modalOpenAdd,
       modalCloseAdd,
       valueFlag,
       addChildren,
@@ -233,8 +285,15 @@ export function ServerProvider(props) {
       modalCloseCheck,
       buttonCheck,
       totalValue,
+      modalCloseHalf,
+      knowMorning,
+      knowLate,
     };
   }, [
+    day,
+    openHalfTime,
+    openForHours,
+    openNight,
     openCheck,
     setAge,
     setChild,
@@ -263,7 +322,7 @@ export function ServerProvider(props) {
     modalClose,
     buttonDay,
     onChange,
-    modalOpenAdd,
+    // modalOpenAdd,
     modalCloseAdd,
     valueFlag,
     addChildren,
@@ -272,6 +331,9 @@ export function ServerProvider(props) {
     modalCloseCheck,
     buttonCheck,
     totalValue,
+    modalCloseHalf,
+    knowMorning,
+    knowLate,
   ]);
 
   return <Server.Provider value={value} {...props} />;

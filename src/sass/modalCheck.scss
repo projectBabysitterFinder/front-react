@@ -62,6 +62,9 @@
       grid-gap: 20px;
       grid-template-columns: 1fr 5fr;
       margin: 6%;
+      @include media('sm') {
+        display: block;
+      }
       h2 {
         margin: 10px;
         font-family: Amaranth-Bold;
@@ -88,6 +91,14 @@
       justify-content: center;
       &--next {
         @extend %buttonNext;
+      }
+      &--next:focus {
+        background-color: $background-tags;
+        color: $black-color;
+      }
+      &--next:hover {
+        background-color: $background-tags;
+        color: $black-color;
       }
     }
   }

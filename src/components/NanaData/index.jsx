@@ -7,6 +7,7 @@ import '../../sass/nanaData.scss';
 
 const NanaData = (props) => {
   const {
+    id,
     name,
     description,
     // score,
@@ -14,14 +15,19 @@ const NanaData = (props) => {
     studies,
     experiences,
     skills,
-    // country,
-    // state,
-    // capital,
+    country,
+    state,
+    capital,
     specialty,
     averageScore,
   } = props;
 
-  var { modalOpen } = useServer();
+  var { data, modalOpen } = useServer();
+
+  const toOpen = () => {
+    var openContratar = document.getElementById(id).value;
+    modalOpen(parseInt(openContratar));
+  };
 
   return (
     <div className='nana'>
@@ -31,7 +37,9 @@ const NanaData = (props) => {
           alt={name}
         />
         <div className='button'>
-          <button onClick={modalOpen}>Contratar</button>
+          <button id={id} value={id} onClick={toOpen}>
+            Contratar
+          </button>
           <Link to='/nana'>
             <button>Regresar</button>
           </Link>
@@ -49,7 +57,9 @@ const NanaData = (props) => {
             <h2>Nombre:</h2>
             <p>{name}</p>
             <h2>Tiempo:</h2>
-            <p>{time}</p>
+            <dir className='text__information--time'>
+              <Tags name={time} />
+            </dir>
             <h2>Cursos:</h2>
             <ul>
               {studies.map((study, index) => (
@@ -64,6 +74,18 @@ const NanaData = (props) => {
             </span>
             <h2>Descripción:</h2>
             <p>{description}</p>
+            <h2>Ciudad</h2>
+            <span>
+              <Tags name={country} />
+            </span>
+            <h2>Estado</h2>
+            <span>
+              <Tags name={state} />
+            </span>
+            <h2>Capital</h2>
+            <span>
+              <Tags name={capital} />
+            </span>
           </div>
         </article>
         <section className='nana__experience'>

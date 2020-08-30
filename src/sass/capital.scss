@@ -14,6 +14,15 @@
       font-family: Amaranth-Regular;
       font-weight: bold;
       padding: 3px;
+      cursor: pointer;
+    }
+    .id:focus {
+      background-color: $background-tags;
+      color: $black-color;
+    }
+    .id:hover {
+      background-color: $background-tags;
+      color: $black-color;
     }
   }
 }

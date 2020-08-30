@@ -1,28 +1,30 @@
 @import './variables.scss';
 
-.modalD {
+.modalHalf {
   position: fixed;
   z-index: 1;
   display: flex;
   padding-top: 3%;
   justify-content: center;
   width: 100%;
-  height: 100vw;
+  height: 100%;
   background-color: rgba(5, 0, 77, 0.438);
+  position: absolute;
   &-card {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.212);
     width: 525px;
-    height: 505px;
+    height: fit-content;
     border-radius: 10px;
     background-color: $background-color;
-    .container__modal {
+    padding-bottom: 3%;
+    .container__half {
       width: 100%;
       padding: 10px;
       box-sizing: border-box;
       display: flex;
       justify-content: ceen;
       justify-content: flex-end;
-      .button__close {
+      .half__close {
         border: none;
         border-radius: 50px;
         background-color: transparent;
@@ -34,7 +36,7 @@
         justify-content: center;
         transition: all 0.2s;
         opacity: 0.7;
-        &--container {
+        &--half {
           border-radius: 50px;
           padding: 4px 6px;
           width: 20px;
@@ -52,21 +54,9 @@
         }
       }
     }
-    .modal__day {
+    .form {
       display: flex;
       justify-content: center;
-      margin-top: 6%;
-      &--button {
-        @extend %buttonNext;
-      }
-      &--button:focus {
-        background-color: $background-tags;
-        color: $black-color;
-      }
-      &--button:hover {
-        background-color: $background-tags;
-        color: $black-color;
-      }
     }
     h1 {
       margin-bottom: 5%;
@@ -75,6 +65,44 @@
     .picker {
       display: flex;
       justify-content: center;
+    }
+    .modalD-card--time {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 6%;
+      .time--morning {
+        text-align: center;
+        button {
+          @extend %buttonNext;
+        }
+        button:focus {
+          background-color: $background-tags;
+          color: $black-color;
+        }
+        button:hover {
+          background-color: $background-tags;
+          color: $black-color;
+        }
+      }
+    }
+    .modalHalf-card__bnt {
+      display: flex;
+      justify-content: center;
+      .modalHalf--btnHalf {
+        margin-top: 6%;
+        @extend %buttonNext;
+      }
+      .modalHalf--btnHalf:focus {
+        background-color: $background-tags;
+        color: $black-color;
+      }
+      .modalHalf--btnHalf:hover {
+        background-color: $background-tags;
+        color: $black-color;
+      }
+    }
+    .modalHalf__btnHalf {
+      @extend %buttonNext;
     }
   }
 }
