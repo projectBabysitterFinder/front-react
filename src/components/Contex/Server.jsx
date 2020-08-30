@@ -18,9 +18,10 @@ export function ServerProvider(props) {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState(new Date());
   const [openAdd, setOpenAdd] = useState(false);
+  const [openCheck, setOpenCheck] = useState(false);
   const [flagV, setFlagV] = useState('');
-  const [child, setChild] = useState([]);
-  const [age, setAge] = useState([]);
+  const [childd, setChild] = useState([]);
+  const [agee, setAge] = useState([]);
   const [addChild, setAddChild] = useState([1]);
   const [form, setForm] = useState([]);
 
@@ -121,6 +122,25 @@ export function ServerProvider(props) {
     counter = [1];
     setChild([]);
     setAge([]);
+    setForm([]);
+    setDate(new Date());
+  }, []);
+
+  const modalOpenCheck = useCallback(() => {
+    setOpenCheck(true);
+  }, []);
+
+  const modalCloseCheck = useCallback(() => {
+    setOpenCheck(false);
+    setFlagV('');
+    setAddChild([1]);
+    counterAdd = 0;
+    counterRemove = 0;
+    counter = [1];
+    setChild([]);
+    setAge([]);
+    setForm([]);
+    setDate(new Date());
   }, []);
 
   const onChange = useCallback((date) => {
@@ -132,20 +152,16 @@ export function ServerProvider(props) {
     setOpenAdd(true);
   }, []);
 
+  const buttonCheck = useCallback(() => {
+    setOpen(false);
+    setOpenAdd(false);
+    setOpenCheck(true);
+  }, []);
+
   const valueFlag = useCallback(() => {
     var selectFlag = document.getElementById('flag');
     setFlagV(selectFlag.value);
   }, []);
-
-  // const valueChild = useCallback((indexAdd) => {
-  //   var selectChild = document.getElementById('child');
-  //   setChild(selectChild.value);
-  // },[]);
-
-  // const valueAge = useCallback(() => {
-  //   var selectAge = document.getElementById('age');
-  //   setAge(parseInt(selectAge.value));
-  // },[]);
 
   const addChildren = useCallback(() => {
     counterAdd = counterAdd + 1;
@@ -164,15 +180,30 @@ export function ServerProvider(props) {
     }
   }, []);
 
+  const totalValue = useCallback(() => {
+    alert('Gracias por contratar con nosotros');
+    setOpenCheck(false);
+    setFlagV('');
+    setAddChild([1]);
+    counterAdd = 0;
+    counterRemove = 0;
+    counter = [1];
+    setChild([]);
+    setAge([]);
+    setForm([]);
+    setDate(new Date());
+  }, []);
+
   const value = useMemo(() => {
     return {
+      openCheck,
       setAge,
       setChild,
       form,
       setForm,
       addChild,
-      age,
-      child,
+      agee,
+      childd,
       flagV,
       openAdd,
       date,
@@ -198,15 +229,20 @@ export function ServerProvider(props) {
       valueFlag,
       addChildren,
       removeChildren,
+      modalOpenCheck,
+      modalCloseCheck,
+      buttonCheck,
+      totalValue,
     };
   }, [
+    openCheck,
     setAge,
     setChild,
     form,
     setForm,
     addChild,
-    age,
-    child,
+    agee,
+    childd,
     flagV,
     openAdd,
     date,
@@ -232,6 +268,10 @@ export function ServerProvider(props) {
     valueFlag,
     addChildren,
     removeChildren,
+    modalOpenCheck,
+    modalCloseCheck,
+    buttonCheck,
+    totalValue,
   ]);
 
   return <Server.Provider value={value} {...props} />;

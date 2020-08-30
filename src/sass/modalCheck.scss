@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-.modalA {
+.check {
   position: fixed;
   z-index: 1;
   display: flex;
@@ -17,14 +17,15 @@
     border-radius: 10px;
     background-color: $background-color;
     padding-bottom: 3%;
-    .container__add {
+    background-color: $white-color;
+    .check__add {
       width: 100%;
       padding: 10px;
       box-sizing: border-box;
       display: flex;
       justify-content: ceen;
       justify-content: flex-end;
-      .add__close {
+      .check__close {
         border: none;
         border-radius: 50px;
         background-color: transparent;
@@ -36,7 +37,7 @@
         justify-content: center;
         transition: all 0.2s;
         opacity: 0.7;
-        &--container {
+        &--check {
           border-radius: 50px;
           padding: 4px 6px;
           width: 20px;
@@ -54,13 +55,40 @@
         }
       }
     }
-    .form {
+    &--check {
       display: flex;
       justify-content: center;
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: 1fr 5fr;
+      margin: 6%;
+      h2 {
+        margin: 10px;
+        font-family: Amaranth-Bold;
+        font-size: large;
+        color: #2c2b3c;
+      }
+      p {
+        margin: 10px;
+        font-family: Amaranth-Bold;
+        font-size: large;
+        color: #2c2b3c;
+        text-align: justify;
+      }
+      .check-card--value {
+        color: $secondary-color;
+      }
     }
     h1 {
       margin-bottom: 5%;
       @include font(large, Roboto-Light, center);
+    }
+    .button__pay {
+      display: flex;
+      justify-content: center;
+      &--next {
+        @extend %buttonNext;
+      }
     }
   }
 }

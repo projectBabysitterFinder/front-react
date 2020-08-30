@@ -32,7 +32,7 @@ const NanaData = (props) => {
         />
         <div className='button'>
           <button onClick={modalOpen}>Contratar</button>
-          <Link to='/'>
+          <Link to='/nana'>
             <button>Regresar</button>
           </Link>
         </div>

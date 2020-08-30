@@ -9,7 +9,7 @@ function App() {
     <ServerProvider>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={Filter} />
+          <Route exact path='/nana' component={Filter} />
           <Route exact path='/nana/:id' component={NanaProfile} />
         </Switch>
       </BrowserRouter>

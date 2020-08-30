@@ -9,9 +9,19 @@ import '../../sass/forms.scss';
 var data = [];
 
 const Forms = () => {
-  var { addChildren, addChild, removeChildren, setForm } = useServer();
+  var {
+    addChildren,
+    addChild,
+    removeChildren,
+    setForm,
+    buttonCheck,
+    childd,
+    agee,
+    flagV,
+  } = useServer();
 
   const valueAll = () => {
+    data = [];
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var phone = document.getElementById('phone').value;
@@ -23,6 +33,20 @@ const Forms = () => {
     data.push(address);
     data.push(recommendations);
     setForm(data);
+    if (
+      name === '' ||
+      email === '' ||
+      phone === '' ||
+      address === '' ||
+      recommendations === '' ||
+      childd.length === 0 ||
+      agee.length === 0 ||
+      flagV === ''
+    ) {
+      alert('Por favor ingrese completos los valores');
+    } else {
+      buttonCheck();
+    }
   };
 
   return (
