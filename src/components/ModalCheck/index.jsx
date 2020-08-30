@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import '../../sass/modalCheck.scss';
 
 const ModalCheck = (props) => {
-  const { openCheck } = props;
+  const { openCheck, time } = props;
 
   const {
     modalCloseCheck,
@@ -38,7 +38,7 @@ const ModalCheck = (props) => {
           <h2>Fecha:</h2>
           <p>{date.toLocaleDateString()}</p>
           <h2>Jornada:</h2>
-          {day === '' ? <p>Tiempo Completo</p> : <p>{day}</p>}
+          {day === '' ? <p>{time}</p> : <p>{day}</p>}
           <h2>E-mail</h2>
           <p>{form[1]}</p>
           <span>

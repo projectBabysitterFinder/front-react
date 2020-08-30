@@ -6,11 +6,19 @@ import '../../sass/modalHalfTime.scss';
 const ModalHalfTime = (props) => {
   const { openHalfTime } = props;
 
-  const { modalCloseHalf, buttonDay, knowMorning, knowLate } = useServer();
+  const { modalCloseHalf, buttonDay, knowMorning, knowLate, day } = useServer();
 
   if (openHalfTime === false) {
     return null;
   }
+
+  const checkDay = () => {
+    if (day === '') {
+      alert('Por favor selecciona la jornada');
+    } else {
+      buttonDay();
+    }
+  };
 
   return (
     <main className='modalHalf'>
@@ -39,7 +47,7 @@ const ModalHalfTime = (props) => {
           </div>
         </section>
         <div className='modalHalf-card__bnt'>
-          <button onClick={buttonDay} className='modalHalf--btnHalf'>
+          <button onClick={checkDay} className='modalHalf--btnHalf'>
             Continuar
           </button>
         </div>

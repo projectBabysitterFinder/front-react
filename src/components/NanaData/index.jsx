@@ -55,8 +55,8 @@ const NanaData = (props) => {
           </div>
           <div className='text__information'>
             <h2>Nombre:</h2>
-            <p>{name}</p>
-            <h2>Tiempo:</h2>
+            <p className='name--nana'>{name}</p>
+            <h2>Jornada:</h2>
             <dir className='text__information--time'>
               <Tags name={time} />
             </dir>

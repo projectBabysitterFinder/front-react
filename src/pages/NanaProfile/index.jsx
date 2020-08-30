@@ -5,17 +5,23 @@ import ModalDate from '../../components/ModalDate';
 import ModalAddInfo from '../../components/ModalAddInfo';
 import ModalCheck from '../../components/ModalCheck';
 import ModalHalfTime from '../../components/ModalHalfTime';
+import ModalNight from '../../components/ModalNight';
 import '../../sass/nanaProfile.scss';
 
 const NanaProfile = () => {
-  var { Idd, open, openAdd, openCheck, openHalfTime } = useServer();
+  var { Idd, open, openAdd, openCheck, openHalfTime, openNight } = useServer();
 
   return (
     <div className='nanaData'>
       <ModalDate open={open} />
       <ModalAddInfo openAdd={openAdd} />
-      <ModalCheck openCheck={openCheck} />
+      {Idd.length === 0 ? (
+        ''
+      ) : (
+        <ModalCheck openCheck={openCheck} time={Idd[0].time} />
+      )}
       <ModalHalfTime openHalfTime={openHalfTime} />
+      <ModalNight openNight={openNight} />
       {Idd.map((nana) => (
         <React.Fragment key={nana.id}>
           <NanaData

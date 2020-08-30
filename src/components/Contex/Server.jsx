@@ -114,7 +114,7 @@ export function ServerProvider(props) {
         setOpenHalfTime(true);
       } else if (valueOnly[0].time === 'Por Horas') {
         setOpenForHours(true);
-      } else if (valueOnly[0].time === 'Nocturno') {
+      } else if (valueOnly[0].time === 'Nocturna') {
         setOpenNight(true);
       }
     },
@@ -126,6 +126,7 @@ export function ServerProvider(props) {
     setOpenHalfTime(false);
     setOpenForHours(false);
     setOpenNight(false);
+    setDay('');
   }, []);
 
   // const modalOpenAdd = useCallback(() => {
@@ -145,6 +146,7 @@ export function ServerProvider(props) {
     setDate(new Date());
     setOpenForHours(false);
     setOpenNight(false);
+    setDay('');
   }, []);
 
   const modalCloseHalf = useCallback(() => {
@@ -161,6 +163,24 @@ export function ServerProvider(props) {
     setOpenHalfTime(false);
     setOpenForHours(false);
     setOpenNight(false);
+    setDay('');
+  }, []);
+
+  const modalCloseNight = useCallback(() => {
+    setOpenAdd(false);
+    setFlagV('');
+    setAddChild([1]);
+    counterAdd = 0;
+    counterRemove = 0;
+    counter = [1];
+    setChild([]);
+    setAge([]);
+    setForm([]);
+    setDate(new Date());
+    setOpenHalfTime(false);
+    setOpenForHours(false);
+    setOpenNight(false);
+    setDay('');
   }, []);
 
   const modalOpenCheck = useCallback(() => {
@@ -178,6 +198,7 @@ export function ServerProvider(props) {
     setAge([]);
     setForm([]);
     setDate(new Date());
+    setDay('');
   }, []);
 
   const onChange = useCallback((date) => {
@@ -188,6 +209,7 @@ export function ServerProvider(props) {
     setOpen(false);
     setOpenAdd(true);
     setOpenHalfTime(false);
+    setOpenNight(false);
   }, []);
 
   const buttonCheck = useCallback(() => {
@@ -288,6 +310,7 @@ export function ServerProvider(props) {
       modalCloseHalf,
       knowMorning,
       knowLate,
+      modalCloseNight,
     };
   }, [
     day,
@@ -334,6 +357,7 @@ export function ServerProvider(props) {
     modalCloseHalf,
     knowMorning,
     knowLate,
+    modalCloseNight,
   ]);
 
   return <Server.Provider value={value} {...props} />;

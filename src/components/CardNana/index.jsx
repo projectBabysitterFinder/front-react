@@ -23,7 +23,7 @@ const cardNana = (props) => {
             <div>{<Star score={score}></Star>}</div>
           </div>
           <div className='data__nana'>
-            <h2>Disponibilidad:</h2>
+            <h2>Jornada:</h2>
             <Tags name={time} />
             <h2>Especialidad:</h2>
             <Tags name={specialty} />
