@@ -10,18 +10,13 @@ import PrivateRoute from './components/Login/PrivateRoute';
 import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
-  console.log('useAuth0 rutas: ', useAuth0());
   let role = [];
   const objectrole = useAuth0().user;
-  console.log(objectrole);
   if (objectrole) {
-    console.log('role informado');
     role = Object.values(objectrole);
-    console.log('role', role[0][0]);
     const rolenuevo = role[0][0];
     localStorage.setItem('role', rolenuevo);
   }
-  console.log('localStorage', localStorage.getItem('role'));
   return (
     <div className='App'>
       <ServerProvider>
