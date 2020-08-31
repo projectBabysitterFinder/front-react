@@ -32,6 +32,20 @@ $nav-padding: 0.875em 1em;
   &__li {
     &:not(:last-child) {
       border-bottom: solid 1px $secondary-color;
+      & button{
+        width: 100%;
+        padding: 0.875em 1em;
+        color: #06a77d;
+        line-height: 1.5em;
+        font-weight: 300;
+        border: none;
+        border-style: none;
+        background-color: #fafbfc;
+        font-size: 1.6rem;
+        &:hover {
+          background-color: $hover-menu;
+        }
+      }
     }
     &:hover {
       background-color: $hover-menu;
