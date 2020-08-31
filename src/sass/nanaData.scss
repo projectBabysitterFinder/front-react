@@ -3,7 +3,6 @@
 .nana {
   padding-top: 5%;
   display: flex;
-  // background-color: #EAEFF2;
   @include media('m') {
     display: block;
   }

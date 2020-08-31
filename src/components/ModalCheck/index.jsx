@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import '../../sass/modalCheck.scss';
 
 const ModalCheck = (props) => {
+
   const { openCheck, time } = props;
 
   const {
@@ -17,6 +18,7 @@ const ModalCheck = (props) => {
     date,
     totalValue,
     day,
+    hours
   } = useServer();
 
   if (openCheck === false) {
@@ -36,9 +38,9 @@ const ModalCheck = (props) => {
           <h2>Nombre:</h2>
           <p>{form[0]}</p>
           <h2>Fecha:</h2>
-          <p>{date.toLocaleDateString()}</p>
+          <p>{hours.length === 0 ? date.toLocaleDateString() : hours[0]}</p>
           <h2>Jornada:</h2>
-          {day === '' ? <p>{time}</p> : <p>{day}</p>}
+          {day === '' && hours.length === 0 ? <p>{time}</p> : hours.length !== 0 ? <div className='star--end'><p>Llegada: {hours[1]}</p><p>Salida: {hours[2]}</p></div> : <p>{day}</p>}
           <h2>E-mail</h2>
           <p>{form[1]}</p>
           <span>

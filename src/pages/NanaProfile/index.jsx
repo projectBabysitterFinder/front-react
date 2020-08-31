@@ -6,10 +6,11 @@ import ModalAddInfo from '../../components/ModalAddInfo';
 import ModalCheck from '../../components/ModalCheck';
 import ModalHalfTime from '../../components/ModalHalfTime';
 import ModalNight from '../../components/ModalNight';
+import ModalForHours from '../../components/ModalForHours';
 import '../../sass/nanaProfile.scss';
 
 const NanaProfile = () => {
-  var { Idd, open, openAdd, openCheck, openHalfTime, openNight } = useServer();
+  var { Idd, open, openAdd, openCheck, openHalfTime, openNight, openHours } = useServer();
 
   return (
     <div className='nanaData'>
@@ -22,6 +23,7 @@ const NanaProfile = () => {
       )}
       <ModalHalfTime openHalfTime={openHalfTime} />
       <ModalNight openNight={openNight} />
+      <ModalForHours openHours={openHours}/>
       {Idd.map((nana) => (
         <React.Fragment key={nana.id}>
           <NanaData

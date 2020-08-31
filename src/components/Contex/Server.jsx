@@ -27,7 +27,9 @@ export function ServerProvider(props) {
   const [openHalfTime, setOpenHalfTime] = useState(false);
   const [openForHours, setOpenForHours] = useState(false);
   const [openNight, setOpenNight] = useState(false);
+  const [openHours, setOpenHours] = useState(false);
   const [day, setDay] = useState('');
+  const [hours, setHours] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,7 +115,7 @@ export function ServerProvider(props) {
       } else if (valueOnly[0].time === 'Medio Tiempo') {
         setOpenHalfTime(true);
       } else if (valueOnly[0].time === 'Por Horas') {
-        setOpenForHours(true);
+        setOpenHours(true);
       } else if (valueOnly[0].time === 'Nocturna') {
         setOpenNight(true);
       }
@@ -128,10 +130,6 @@ export function ServerProvider(props) {
     setOpenNight(false);
     setDay('');
   }, []);
-
-  // const modalOpenAdd = useCallback(() => {
-  //   setOpenAdd(true);
-  // }, []);
 
   const modalCloseAdd = useCallback(() => {
     setOpenAdd(false);
@@ -163,6 +161,24 @@ export function ServerProvider(props) {
     setOpenHalfTime(false);
     setOpenForHours(false);
     setOpenNight(false);
+    setDay('');
+  }, []);
+
+  const modalCloseHours = useCallback(() => {
+    setOpenAdd(false);
+    setFlagV('');
+    setAddChild([1]);
+    counterAdd = 0;
+    counterRemove = 0;
+    counter = [1];
+    setChild([]);
+    setAge([]);
+    setForm([]);
+    setDate(new Date());
+    setOpenHalfTime(false);
+    setOpenForHours(false);
+    setOpenNight(false);
+    setOpenHours(false);
     setDay('');
   }, []);
 
@@ -210,6 +226,7 @@ export function ServerProvider(props) {
     setOpenAdd(true);
     setOpenHalfTime(false);
     setOpenNight(false);
+    setOpenHours(false);
   }, []);
 
   const buttonCheck = useCallback(() => {
@@ -264,8 +281,16 @@ export function ServerProvider(props) {
     setDay(selectLate.value);
   }, []);
 
+  const valueDate = useCallback((e) => {
+    var valueDataDate = document.getElementById(e).value;
+    var arrayDeCadenas = valueDataDate.split(',') 
+    setHours(arrayDeCadenas);
+  },[]);
+
   const value = useMemo(() => {
     return {
+      hours,
+      openHours,
       day,
       openHalfTime,
       openForHours,
@@ -311,8 +336,12 @@ export function ServerProvider(props) {
       knowMorning,
       knowLate,
       modalCloseNight,
+      modalCloseHours,
+      valueDate
     };
   }, [
+    hours,
+    openHours,
     day,
     openHalfTime,
     openForHours,
@@ -358,6 +387,8 @@ export function ServerProvider(props) {
     knowMorning,
     knowLate,
     modalCloseNight,
+    modalCloseHours,
+    valueDate
   ]);
 
   return <Server.Provider value={value} {...props} />;
