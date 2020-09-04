@@ -20,7 +20,7 @@ export function ServerProvider(props) {
   const [openAdd, setOpenAdd] = useState(false);
   const [openCheck, setOpenCheck] = useState(false);
   const [flagV, setFlagV] = useState('');
-  const [childd, setChild] = useState([]);
+  const [child, setChild] = useState([]);
   const [agee, setAge] = useState([]);
   const [addChild, setAddChild] = useState([1]);
   const [form, setForm] = useState([]);
@@ -287,6 +287,20 @@ export function ServerProvider(props) {
     setHours(arrayDeCadenas);
   },[]);
 
+  const postData = useCallback((e) => {
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        e
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+  },[]);
+
   const value = useMemo(() => {
     return {
       hours,
@@ -302,7 +316,7 @@ export function ServerProvider(props) {
       setForm,
       addChild,
       agee,
-      childd,
+      child,
       flagV,
       openAdd,
       date,
@@ -337,7 +351,8 @@ export function ServerProvider(props) {
       knowLate,
       modalCloseNight,
       modalCloseHours,
-      valueDate
+      valueDate,
+      postData
     };
   }, [
     hours,
@@ -353,7 +368,7 @@ export function ServerProvider(props) {
     setForm,
     addChild,
     agee,
-    childd,
+    child,
     flagV,
     openAdd,
     date,
@@ -388,7 +403,8 @@ export function ServerProvider(props) {
     knowLate,
     modalCloseNight,
     modalCloseHours,
-    valueDate
+    valueDate,
+    postData
   ]);
 
   return <Server.Provider value={value} {...props} />;

@@ -7,6 +7,19 @@ import { useServer } from '../Contex/Server';
 import '../../sass/forms.scss';
 
 var data = [];
+var data2 = {
+  'name': '',
+  'email': '',
+  'phone': '',
+  'address': '',
+  'recommendations': '',
+  'child': [],
+  'age': [],
+  'flag': '',
+  'date': new Date(),
+  'day': '',
+  'hours': []
+};
 
 const Forms = () => {
   var {
@@ -15,10 +28,16 @@ const Forms = () => {
     removeChildren,
     setForm,
     buttonCheck,
-    childd,
+    child,
     agee,
     flagV,
+    postData,
+    date,
+    day,
+    hours
   } = useServer();
+
+
 
   const valueAll = () => {
     data = [];
@@ -28,18 +47,30 @@ const Forms = () => {
     var address = document.getElementById('address').value;
     var recommendations = document.getElementById('recommendations').value;
     data.push(name);
+    data2.name=name;
     data.push(email);
+    data2.email=email;
     data.push(phone);
+    data2.phone=phone;
     data.push(address);
+    data2.address=address;
     data.push(recommendations);
+    data2.recommendations=recommendations;
+    data2.child=child;
+    data2.age=agee;
+    data2.flag=flagV;
+    data2.date=date.toLocaleDateString();
+    data2.day=day;
+    data2.hours=hours;
     setForm(data);
+    postData(data2);
     if (
       name === '' ||
       email === '' ||
       phone === '' ||
       address === '' ||
       recommendations === '' ||
-      childd.length === 0 ||
+      child.length === 0 ||
       agee.length === 0 ||
       flagV === ''
     ) {

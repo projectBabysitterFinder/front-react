@@ -11,7 +11,7 @@ const ModalCheck = (props) => {
 
   const {
     modalCloseCheck,
-    childd,
+    child,
     agee,
     flagV,
     form,
@@ -48,9 +48,9 @@ const ModalCheck = (props) => {
             {flagV === 'México' ? <Mx /> : null}
           </span>
           <p>{form[2]}</p>
-          {childd.map((child, index) => (
+          {child.map((child, index) => (
             <React.Fragment key={index}>
-              <h2>{childd[index]}</h2>
+              <h2>{child}</h2>
               {agee[index] === 1 ? (
                 <p>{`${agee[index]} Año`}</p>
               ) : (
@@ -65,11 +65,11 @@ const ModalCheck = (props) => {
           <h2 className='check-card--value'>Valor a cancelar</h2>
           {flagV === 'Colombia' ? (
             <p className='check-card--value'>{`${
-              childd.length * 15000
+              child.length * 15000
             } COP`}</p>
           ) : (
             <p className='check-card--value'>{`${
-              childd.length * 15000
+              child.length * 15000
             } MXN`}</p>
           )}
         </section>
