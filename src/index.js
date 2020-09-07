@@ -4,14 +4,20 @@ import './sass/index.scss';
 import App from './App';
 import Auth0ProviderWithHistory from './utils/Auth0ProviderWithHistory';
 import { BrowserRouter as Router } from 'react-router-dom';
+import ListUsersContext from './components/Contex/ListUsersContext';
+import UserContext from './components/Contex/UserContext';
 /* import * as serviceWorker from './serviceWorker'; */
 
 ReactDOM.render(
   <Router>
     <Auth0ProviderWithHistory>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <ListUsersContext>
+        <UserContext>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </UserContext>
+      </ListUsersContext>
     </Auth0ProviderWithHistory>
   </Router>,
   document.getElementById('root')

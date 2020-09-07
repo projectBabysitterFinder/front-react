@@ -1,5 +1,20 @@
 import React from 'react';
+import '../../sass/loading.scss';
 
-const index = () => <h1>Cargando</h1>;
+const index = () => (
+  <div className='loading'>
+    <div className='lds-grid'>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+);
 
 export default index;

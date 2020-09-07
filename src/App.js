@@ -8,29 +8,42 @@ import Layout from './components/Layout';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/Login/PrivateRoute';
 import HomeAdmin from './pages/HomeAdmin';
+import ListUsers from './pages/ListUsers';
+import NewUser from './pages/NewUser';
 import { useAuth0 } from '@auth0/auth0-react';
-import UserContext from './components/Contex/UserContext';
+/* import { ListUsersContext } from './components/Contex/ListUsersContext'; */
 
 function App() {
-  let role = [];
-  const objectrole = useAuth0().user;
-  if (objectrole) {
-    role = Object.values(objectrole);
-    const rolenuevo = role[0][0];
-    localStorage.setItem('role', rolenuevo);
-    console.log('localStorage role', rolenuevo);
+  let arrayUseAuth = [];
+  const objectUseAuth = useAuth0().user;
+
+  if (objectUseAuth) {
+    console.log('Paso 1 autenticación');
+    arrayUseAuth = Object.values(objectUseAuth);
+    const roleAuth = arrayUseAuth[0][0];
+    const emailAuth = arrayUseAuth[2];
+    console.log('emailAuth :', emailAuth);
+    localStorage.setItem('role', roleAuth);
+    console.log('localStorage role', roleAuth);
   }
+
+  /* console.log('Paso 2 llamado a la api');
+  let statusConetx = 0;
+  const { users } = useContext(ListUsersContext);
+  statusConetx = users;
+  console.log('statusConetx', statusConetx); */
+
   if (localStorage.getItem('role') === 'admin') {
     return (
       <div className='App'>
-        <UserContext>
-          <Layout>
-            <Switch>
-              <Route exact path='/' component={HomeAdmin} />
-              <Route component={NotFound} />
-            </Switch>
-          </Layout>
-        </UserContext>
+        <Layout>
+          <Switch>
+            <Route exact path='/' component={HomeAdmin} />
+            <Route exact path='/listusers' component={ListUsers} />
+            <Route exact path='/newuser' component={NewUser} />
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
       </div>
     );
   } else {

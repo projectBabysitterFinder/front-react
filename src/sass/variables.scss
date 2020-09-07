@@ -70,59 +70,6 @@ $break-md: 1024px;
   }
 }
 
-
-/* html {
-  font-size: 62.5%;
-}
-body {
-  font-family: $font-family-paragraph;
-  background-color: $background-color;
-}
-h1 {
-  font-family: $font-family-title;
-  font-size: 6rem;
-  @include media(xs) {
-    font-size: 4rem;
-  }
-}
-h2 {
-  font-size: 4rem;
-  @include media(xs) {
-    font-size: 3rem;
-  }
-}
-h3,
-h4,
-h5,
-h6 {
-  font-size: 3rem;
-  @include media(xs) {
-    font-size: 2.5rem;
-  }
-}
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $font-family-subtitle;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 2rem;
-}
-p,
-a {
-  margin: 0;
-}
-a {
-  text-decoration: none;
-}
-*/
 @mixin font($size, $font, $align) {
   font-family: $font;
   font-size: $size;

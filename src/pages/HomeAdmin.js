@@ -1,11 +1,27 @@
 import React from 'react';
-import Formulario from '../components/Admin/Formulario';
+import { Link } from 'react-router-dom';
+import '../sass/admin/homeAdmin.scss';
 
 const HomeAdmin = () => (
-  <>
-    <h1>Este es el home del admin</h1>
-    <Formulario />
-  </>
+  <section className='sectionMenu'>
+    <div className='sectionMenu__title'>
+      <h2>Menu</h2>
+    </div>
+    <div className='menuAdmin'>
+      <Link to='/newuser'>
+        <button className='menuAdmin__button'>Nuevo Usuario</button>
+      </Link>
+      <Link to='/listusers'>
+        <button className='menuAdmin__button'>Editar Usuario</button>
+      </Link>
+      <Link to='/'>
+        <button className='menuAdmin__button'>Nueva Nana</button>
+      </Link>
+      <Link to='/'>
+        <button className='menuAdmin__button'>Editar Nana</button>
+      </Link>
+    </div>
+  </section>
 );
 
 export default HomeAdmin;
