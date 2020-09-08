@@ -6,4 +6,7 @@
   @include media-min(xs) {
     width: 60%;
   }
+  @include media-min(md) {
+    width: 50%;
+  }
 }

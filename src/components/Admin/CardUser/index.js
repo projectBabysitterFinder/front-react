@@ -21,6 +21,9 @@ const index = ({ listusers }) => {
               <p>{user.DES_FULLNAME}</p>
               <p>{user.DES_EMAIL}</p>
             </div>
+            <div className='cardUser__button'>
+              <button>Editar</button>
+            </div>
           </div>
         );
       })}

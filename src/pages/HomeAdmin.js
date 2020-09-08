@@ -14,7 +14,7 @@ const HomeAdmin = () => (
       <Link to='/listusers'>
         <button className='menuAdmin__button'>Editar Usuario</button>
       </Link>
-      <Link to='/'>
+      <Link to='/newnana'>
         <button className='menuAdmin__button'>Nueva Nana</button>
       </Link>
       <Link to='/'>

@@ -9,6 +9,7 @@ $color-link: #06a77d;
 $hover-menu: #ade2ff;
 $hover-button: #08d09a;
 $background-tags: #aefce7;
+$message-error: #c42510;
 
 $break-m: 425px;
 $break-xs: 500px;
@@ -120,4 +121,11 @@ $break-md: 1024px;
   -webkit-border-radius: 20px 20px 20px 20px;
   font-family: Amaranth-Regular;
   font-weight: bold;
+}
+
+.Toastify{
+  &__toast{
+    font-size:2rem;
+    border-radius: 15px;
+  }
 }

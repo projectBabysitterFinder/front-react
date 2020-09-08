@@ -11,6 +11,7 @@ import HomeAdmin from './pages/HomeAdmin';
 import ListUsers from './pages/ListUsers';
 import NewUser from './pages/NewUser';
 import { useAuth0 } from '@auth0/auth0-react';
+import { ToastContainer } from 'react-toastify';
 /* import { ListUsersContext } from './components/Contex/ListUsersContext'; */
 
 function App() {
@@ -36,11 +37,13 @@ function App() {
   if (localStorage.getItem('role') === 'admin') {
     return (
       <div className='App'>
+        <ToastContainer />
         <Layout>
           <Switch>
             <Route exact path='/' component={HomeAdmin} />
-            <Route exact path='/listusers' component={ListUsers} />
             <Route exact path='/newuser' component={NewUser} />
+            <Route exact path='/listusers' component={ListUsers} />
+            <Route exact path='/listusers/:id/edit' component={ListUsers} />
             <Route component={NotFound} />
           </Switch>
         </Layout>
