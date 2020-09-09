@@ -30,12 +30,12 @@
     & select{
       border: 2px solid;
     }
-    /* &:nth-child(6){
+    &:nth-child(6){
       input {
         padding: 5px 0;
         border-radius: 0;
       }
-    } */
+    }
   }
   &__error{
     font-size: 1.5rem;

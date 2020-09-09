@@ -10,6 +10,7 @@ import PrivateRoute from './components/Login/PrivateRoute';
 import HomeAdmin from './pages/HomeAdmin';
 import ListUsers from './pages/ListUsers';
 import NewUser from './pages/NewUser';
+/* import FileImages from './pages/fileimages'; */
 import { useAuth0 } from '@auth0/auth0-react';
 import { ToastContainer } from 'react-toastify';
 /* import { ListUsersContext } from './components/Contex/ListUsersContext'; */

@@ -7,6 +7,7 @@ error.response.headers
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+/* import firebase from '../../../firebase'; */
 import 'react-toastify/dist/ReactToastify.css';
 import '../../../sass/admin/formUser.scss';
 
@@ -29,10 +30,7 @@ const UserForm = () => {
     NUM_STATUS: '',
   };
 
-  const [validateData, updateValidate] = useState({
-    nameError: '',
-    emailError: '',
-  });
+  const [validateData, updateValidate] = useState({});
 
   const [userData, updateUserData] = useState({
     ...initalState,
@@ -55,36 +53,49 @@ const UserForm = () => {
     let stateError = '';
     let cityError = '';
     let statusError = '';
+    const expregText = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/u;
+    const expregPrhone = /^\d{10}$/;
+    const emptyMessage = 'El campo es obligatorio';
+    const notText = 'Este campo solo admite texto';
+    const invalidEmail = 'Email invalido';
+    const invalidPhone = 'Numero teléfonico incorrecto';
 
     if (!userData.DES_FULLNAME) {
-      nameError = 'El campo es obligatorio';
+      nameError = emptyMessage;
+    } else if (!expregText.test(userData.DES_FULLNAME)) {
+      nameError = notText;
     }
     if (!userData.DES_EMAIL) {
-      emailError = 'El campo es obligatorio';
-    }
-    if (!userData.DES_EMAIL.includes('@')) {
-      emailError = 'Email invalido';
+      emailError = emptyMessage;
+    } else if (!userData.DES_EMAIL.includes('@')) {
+      emailError = invalidEmail;
     }
     if (!userData.DATE_BIRTH) {
-      datebirthError = 'El campo es obligatorio';
+      datebirthError = emptyMessage;
     }
     if (!userData.DES_ADDRESS) {
-      addressError = 'El campo es obligatorio';
+      addressError = emptyMessage;
     }
     if (!userData.NUM_PHONE) {
-      phoneError = 'El campo es obligatorio';
+      phoneError = emptyMessage;
+    } else if (!expregPrhone.test(userData.NUM_PHONE)) {
+      phoneError = invalidPhone;
     }
     if (!userData.DES_COUNTRY) {
-      countryError = 'El campo es obligatorio';
+      countryError = emptyMessage;
     }
     if (!userData.DES_STATE) {
-      stateError = 'El campo es obligatorio';
+      stateError = emptyMessage;
+    } else if (!expregText.test(userData.DES_FULLNAME)) {
+      nameError = notText;
     }
     if (!userData.DES_CITY) {
-      cityError = 'El campo es obligatorio';
+      cityError = emptyMessage;
+    } else if (!expregText.test(userData.DES_FULLNAME)) {
+      nameError = notText;
     }
     if (!userData.NUM_STATUS) {
-      statusError = 'El campo es obligatorio';
+      statusError = emptyMessage;
     }
 
     if (
@@ -112,7 +123,6 @@ const UserForm = () => {
       console.log('validateData :', validateData);
       return false;
     }
-
     return true;
   };
 
@@ -227,19 +237,17 @@ const UserForm = () => {
           />
           <div className='formUser__error'>{validateData.emailError}</div>
         </div>
-        {/* <div className='formUser__div'>
-        <label>Foto</label>
-        <input
-          onChange={handleChange}
-          className='inputForm'
-          type='file'
-          name='DES_URL_IMAGE'
-          value={userData.DES_URL_IMAGE}
-        />
-        <div className='formUser__error'>
-          {validateData.imageError}
+        <div className='formUser__div'>
+          <label>Foto</label>
+          <input
+            onChange={handleChange}
+            className='inputForm'
+            type='file'
+            name='DES_URL_IMAGE'
+            value={userData.DES_URL_IMAGE}
+          />
+          <div className='formUser__error'>{validateData.imageError}</div>
         </div>
-      </div> */}
         <div className='formUser__div'>
           <label>País</label>
           <select
