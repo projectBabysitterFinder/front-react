@@ -7,7 +7,7 @@ error.response.headers
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-/* import firebase from '../../../firebase'; */
+import firebase from '../../../firebase';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../../sass/admin/formUser.scss';
 
@@ -30,6 +30,10 @@ const UserForm = () => {
     NUM_STATUS: '',
   };
 
+  const [datoInput, updateDatoInput] = useState({
+    urlimages: '',
+  });
+
   const [validateData, updateValidate] = useState({});
 
   const [userData, updateUserData] = useState({
@@ -39,8 +43,40 @@ const UserForm = () => {
   const handleChange = (e) => {
     updateUserData({
       ...userData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: [e.target.value],
     });
+  };
+
+  const handleChangeImages = (e) => {
+    console.log('handleChangeImages e.target', e.target);
+    console.log('handleChangeImages e.target.files', e.target.files);
+    const today = new Date();
+    const date = `${today.getDate()}${today.getMonth()}${today.getFullYear()}${today.getHours()}${today.getMinutes()}${today.getSeconds()}`;
+    console.log('date', date);
+    const files = e.target.files;
+    const bucketName = 'users';
+    const file = files[0];
+    const storageRef = firebase
+      .storage()
+      .ref(`${bucketName}/${date}${file.name}`);
+    const uploadTask = storageRef.put(file);
+    uploadTask.on(
+      'state_changed',
+      null,
+      function (error) {
+        console.log('Error al subir el archivo', error);
+      },
+      function () {
+        console.log('Subida completada');
+        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          console.log('File available at', downloadURL);
+          updateDatoInput({
+            ...datoInput,
+            urlimages: downloadURL,
+          });
+        });
+      }
+    );
   };
 
   const validate = () => {
@@ -57,7 +93,6 @@ const UserForm = () => {
     const expregPrhone = /^\d{10}$/;
     const emptyMessage = 'El campo es obligatorio';
     const notText = 'Este campo solo admite texto';
-    const invalidEmail = 'Email invalido';
     const invalidPhone = 'Numero teléfonico incorrecto';
 
     if (!userData.DES_FULLNAME) {
@@ -67,8 +102,6 @@ const UserForm = () => {
     }
     if (!userData.DES_EMAIL) {
       emailError = emptyMessage;
-    } else if (!userData.DES_EMAIL.includes('@')) {
-      emailError = invalidEmail;
     }
     if (!userData.DATE_BIRTH) {
       datebirthError = emptyMessage;
@@ -127,12 +160,14 @@ const UserForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    userData.DES_URL_IMAGE = datoInput.urlimages;
+    console.log('datos a enviar :', userData.DES_URL_IMAGE);
+    console.log('datoInput', datoInput);
     console.log('evento del submit');
     e.preventDefault();
-    console.log('data a enviar : ', userData);
     const isValid = validate();
     if (isValid) {
-      console.log(userData);
+      console.log('datos a enviar :', userData);
 
       const url = 'https://babys-api.herokuapp.com/api/users';
       try {
@@ -240,10 +275,10 @@ const UserForm = () => {
         <div className='formUser__div'>
           <label>Foto</label>
           <input
-            onChange={handleChange}
+            onChange={handleChangeImages}
             className='inputForm'
             type='file'
-            name='DES_URL_IMAGE'
+            name='imagesData'
             value={userData.DES_URL_IMAGE}
           />
           <div className='formUser__error'>{validateData.imageError}</div>

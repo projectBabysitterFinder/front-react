@@ -11,11 +11,11 @@ const index = ({ listusers }) => {
         return (
           <div key={user.ID} className='cardUser'>
             <div className='cardUser__images'>
-              {/* <img
+              <img
                 src={user.DES_URL_IMAGE === null ? imgUser : user.DES_URL_IMAGE}
                 alt={user.DES_FULLNAME}
-              /> */}
-              <img src={imgUser} alt={user.DES_FULLNAME} />
+              />
+              {/* <img src={imgUser} alt={user.DES_FULLNAME} /> */}
             </div>
             <div className='cardUser__data'>
               <p>{user.DES_FULLNAME}</p>
