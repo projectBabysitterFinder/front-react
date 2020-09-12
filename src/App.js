@@ -10,6 +10,7 @@ import PrivateRoute from './components/Login/PrivateRoute';
 import HomeAdmin from './pages/HomeAdmin';
 import ListUsers from './pages/ListUsers';
 import NewUser from './pages/NewUser';
+import EditUser from './pages/EditUser';
 /* import FileImages from './pages/fileimages'; */
 import { useAuth0 } from '@auth0/auth0-react';
 import { ToastContainer } from 'react-toastify';
@@ -41,10 +42,10 @@ function App() {
         <ToastContainer />
         <Layout>
           <Switch>
-            <Route exact path='/' component={HomeAdmin} />
-            <Route exact path='/newuser' component={NewUser} />
+            <Route exact path='/listusers/:id/edit' component={EditUser} />
             <Route exact path='/listusers' component={ListUsers} />
-            <Route exact path='/listusers/:id/edit' component={ListUsers} />
+            <Route exact path='/newuser' component={NewUser} />
+            <Route exact path='/' component={HomeAdmin} />
             <Route component={NotFound} />
           </Switch>
         </Layout>
@@ -56,9 +57,9 @@ function App() {
         <ServerProvider>
           <Layout>
             <Switch>
-              <Route exact path='/' component={Home} />
-              <PrivateRoute exact path='/nana' component={Filter} />
               <PrivateRoute exact path='/nana/:id' component={NanaProfile} />
+              <PrivateRoute exact path='/nana' component={Filter} />
+              <Route exact path='/' component={Home} />
               <Route component={NotFound} />
             </Switch>
           </Layout>

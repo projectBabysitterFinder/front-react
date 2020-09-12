@@ -8,28 +8,37 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import firebase from '../../../firebase';
+/* import { useHistory } from 'react-router'; */
 import 'react-toastify/dist/ReactToastify.css';
 import '../../../sass/admin/formUser.scss';
 
-const UserForm = () => {
+const EditUserForm = (dataUser) => {
+  /* const history = useHistory(); */
+  // console.log('props edituseform', Object.values(dataUser));
+  console.log('props edituseform', dataUser.dataUser.ID);
+  console.log('props edituseform', dataUser.dataUser.DATE_BIRTH);
+  const userInfo = dataUser.dataUser;
+  const birth = userInfo.DATE_BIRTH.substr(0, 10);
+  console.log('cumple', birth);
   const initalState = {
-    ID: '',
-    ID_ROL: '1',
-    DES_FULLNAME: '',
-    DATE_BIRTH: '',
+    ID: userInfo.ID,
+    ID_ROL: userInfo.ID_ROL,
+    DES_FULLNAME: userInfo.DES_FULLNAME,
+    DATE_BIRTH: birth,
     DES_URL_IMAGE: '',
-    DES_USER: '',
-    DES_PASSWORD: '',
-    DES_ADDRESS: '',
-    DES_ADDRESS_LAT: '',
-    DES_ADDRESS_LONG: '',
-    NUM_PHONE: '',
-    DES_EMAIL: '',
-    DES_COUNTRY: '',
-    DES_STATE: '',
-    DES_CITY: '',
-    NUM_STATUS: '',
+    DES_USER: userInfo.DES_USER,
+    DES_PASSWORD: userInfo.DES_PASSWORD,
+    DES_ADDRESS: userInfo.DES_ADDRESS,
+    DES_ADDRESS_LAT: userInfo.DES_ADDRESS_LAT,
+    DES_ADDRESS_LONG: userInfo.DES_ADDRESS_LONG,
+    NUM_PHONE: userInfo.NUM_PHONE,
+    DES_EMAIL: userInfo.DES_EMAIL,
+    DES_COUNTRY: userInfo.DES_COUNTRY,
+    DES_STATE: userInfo.DES_STATE,
+    DES_CITY: userInfo.DES_CITY,
+    NUM_STATUS: userInfo.NUM_STATUS,
   };
+  console.log('initialState :', initalState);
 
   const [datoInput, updateDatoInput] = useState({
     urlimages: '',
@@ -161,34 +170,34 @@ const UserForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    userData.DES_URL_IMAGE = datoInput.urlimages;
-    console.log('datos a enviar :', userData.DES_URL_IMAGE);
-    console.log('datoInput', datoInput);
+    console.log('imagen a enviar :', userData.DES_URL_IMAGE);
     console.log('evento del submit');
     e.preventDefault();
+    if (userData.DES_URL_IMAGE === '') {
+      userData.DES_URL_IMAGE = userInfo.DES_URL_IMAGE;
+    } else {
+      userData.DES_URL_IMAGE = datoInput.urlimages;
+    }
     const isValid = validate();
     if (isValid) {
       console.log('datos a enviar :', userData);
 
       const url = 'https://babys-api.herokuapp.com/api/users';
       try {
-        const res = await axios.post(url, userData);
-        console.log('Respuesta post: ', res);
+        const res = await axios.put(url, userData);
+        console.log('Respuesta put: ', res);
         notify();
       } catch (error) {
         const statusReturn = error.response.status;
         notify(statusReturn);
       }
-
-      updateUserData({
-        ...initalState,
-      });
     }
+    /* history.push('/listusers'); */
   };
 
   const notify = (status) => {
     if (status === 500) {
-      toast.error('El usuario ya existe', {
+      toast.error('Los cambios no se guardaron, intente más tarde', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -198,7 +207,7 @@ const UserForm = () => {
         progress: undefined,
       });
     } else {
-      toast.success('El usuario fue agregado con exito', {
+      toast.success('El usuario fue modificado con éxito', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -213,7 +222,7 @@ const UserForm = () => {
   return (
     <>
       <div className='titleForm'>
-        <h2>Nuevo Usuario</h2>
+        <h2>Editar Usuario</h2>
       </div>
       <form className='formUser' onSubmit={handleSubmit}>
         <div className='formUser__div'>
@@ -340,4 +349,4 @@ const UserForm = () => {
   );
 };
 
-export default UserForm;
+export default EditUserForm;

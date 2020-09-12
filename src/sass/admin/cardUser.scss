@@ -6,18 +6,15 @@
 .cardUser {
   display: grid;
   grid-template-columns: 100px 1fr 80px;
-  height: 80px;
+  height: 100px;
   margin: 10px 0;
   border-radius: 15px;
   border: 1px solid $primary-color;
-  &__images{
-    text-align: center;
-    & img{
-      width: auto;
-      height: 70px;
-      padding: 5px 0;
-      border-radius: 15px;
-    }
+  & img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 15px;
   }
   &__data{
     display: flex;
@@ -25,6 +22,7 @@
     justify-content: center;
     font-size: 1.3em;
     overflow-x: scroll;
+    padding: 0 15px;
     @include media-min(xs) {
       font-size: 1.5em;
       overflow-x: hidden;
@@ -32,12 +30,14 @@
   }
   &__button{
     @include flex;
+    & a{
+      width: 100%;
+    }
     & button{
       @include base_button;
-      width: 100%;
+      width: inherit;
       padding: 10px 0;
       font-size: 1.5rem;
     }
-    
   }
 }

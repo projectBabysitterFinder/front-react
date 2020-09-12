@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import imgUser from '../../../assets/images/usuario.png';
 import '../../../sass/admin/cardUser.scss';
+import { Link } from 'react-router-dom';
 
-const index = ({ listusers }) => {
+const CardUser = ({ listusers }) => {
   console.log('componente lista de usuarios', listusers);
 
   return (
@@ -22,7 +24,9 @@ const index = ({ listusers }) => {
               <p>{user.DES_EMAIL}</p>
             </div>
             <div className='cardUser__button'>
-              <button>Editar</button>
+              <Link to={`/listusers/${user.ID}/edit`}>
+                <button type='button'>Editar</button>
+              </Link>
             </div>
           </div>
         );
@@ -31,4 +35,4 @@ const index = ({ listusers }) => {
   );
 };
 
-export default index;
+export default CardUser;
