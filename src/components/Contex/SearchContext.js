@@ -19,8 +19,6 @@ const UserProvider = (props) => {
       const getUser = async () => {
         const url = `https://babys-api.herokuapp.com/api/users/user/${selectduser}`;
         const result = await axios.get(url);
-        console.log('url consultada de usuario', result.status);
-        console.log('url consultada de usuario', result.data.body[0]);
         statusFound(result.status);
         saveUser(result.data.body[0]);
       };

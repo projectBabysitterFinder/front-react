@@ -50,13 +50,10 @@ const UserForm = () => {
       [e.target.name]: [e.target.value],
     });
   };
-
+  // user image upload to upload to firebase and get storage url
   const handleChangeImages = (e) => {
-    console.log('handleChangeImages e.target', e.target);
-    console.log('handleChangeImages e.target.files', e.target.files);
     const today = new Date();
     const date = `${today.getDate()}${today.getMonth()}${today.getFullYear()}${today.getHours()}${today.getMinutes()}${today.getSeconds()}`;
-    console.log('date', date);
     const files = e.target.files;
     const bucketName = 'users';
     const file = files[0];
@@ -71,9 +68,7 @@ const UserForm = () => {
         console.log('Error al subir el archivo', error);
       },
       function () {
-        console.log('Subida completada');
         uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-          console.log('File available at', downloadURL);
           updateDatoInput({
             ...datoInput,
             urlimages: downloadURL,
@@ -82,7 +77,7 @@ const UserForm = () => {
       }
     );
   };
-
+  // input validation
   const validate = () => {
     let nameError = '';
     let emailError = '';
@@ -151,7 +146,6 @@ const UserForm = () => {
         stateError: stateError,
         cityError: cityError,
       });
-      console.log('validateData :', validateData);
       return false;
     }
     return true;
@@ -159,14 +153,9 @@ const UserForm = () => {
 
   const handleSubmit = async (e) => {
     userData.DES_URL_IMAGE = datoInput.urlimages;
-    console.log('datos a enviar :', userData.DES_URL_IMAGE);
-    console.log('datoInput', datoInput);
-    console.log('evento del submit');
     e.preventDefault();
     const isValid = validate();
     if (isValid) {
-      console.log('datos a enviar :', userData);
-
       const url = 'https://babys-api.herokuapp.com/api/users';
       try {
         const res = await axios.post(url, userData);
@@ -188,7 +177,7 @@ const UserForm = () => {
       });
     }
   };
-
+  // notificaction
   const notify = (status) => {
     if (status === 500) {
       toast.error('El usuario ya existe', {

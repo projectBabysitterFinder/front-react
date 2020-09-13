@@ -10,10 +10,6 @@ const ListUsers = () => {
   let status = 0;
   const { users } = useContext(ListUsersContext);
   status = users.status;
-  /* console.log('contex users:', status);
-  console.log('contex users body:', users.body);
-  console.log('contex users status:', users.status);
-  console.log('contex users text:', users.statusText); */
 
   switch (status) {
     case undefined:

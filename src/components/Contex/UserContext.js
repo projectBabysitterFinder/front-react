@@ -19,11 +19,8 @@ const UserProvider = (props) => {
 
       try {
         const result = await axios.get(url);
-        console.log('resultado de getUser', result.data);
         saveUser(result.data);
-        console.log('use context', userInfo);
       } catch (error) {
-        console.log('entra en el catch');
         saveUser(error.response);
       }
     };

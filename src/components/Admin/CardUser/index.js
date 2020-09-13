@@ -5,8 +5,6 @@ import '../../../sass/admin/cardUser.scss';
 import { Link } from 'react-router-dom';
 
 const CardUser = ({ listusers }) => {
-  console.log('componente lista de usuarios', listusers);
-
   return (
     <div className='listUsers'>
       {listusers.map((user) => {
@@ -17,7 +15,6 @@ const CardUser = ({ listusers }) => {
                 src={user.DES_URL_IMAGE === null ? imgUser : user.DES_URL_IMAGE}
                 alt={user.DES_FULLNAME}
               />
-              {/* <img src={imgUser} alt={user.DES_FULLNAME} /> */}
             </div>
             <div className='cardUser__data'>
               <p>{user.DES_FULLNAME}</p>

@@ -14,12 +14,8 @@ import '../../../sass/admin/formUser.scss';
 
 const EditUserForm = (dataUser) => {
   const history = useHistory();
-  // console.log('props edituseform', Object.values(dataUser));
-  console.log('props edituseform', dataUser.dataUser.ID);
-  console.log('props edituseform', dataUser.dataUser.DATE_BIRTH);
   const userInfo = dataUser.dataUser;
   const birth = userInfo.DATE_BIRTH.substr(0, 10);
-  console.log('cumple', birth);
   const initalState = {
     ID: userInfo.ID,
     ID_ROL: userInfo.ID_ROL,
@@ -38,7 +34,6 @@ const EditUserForm = (dataUser) => {
     DES_CITY: userInfo.DES_CITY,
     NUM_STATUS: userInfo.NUM_STATUS,
   };
-  console.log('initialState :', initalState);
 
   const [datoInput, updateDatoInput] = useState({
     urlimages: '',
@@ -56,13 +51,10 @@ const EditUserForm = (dataUser) => {
       [e.target.name]: [e.target.value],
     });
   };
-
+  // user image upload to upload to firebase and get storage url
   const handleChangeImages = (e) => {
-    console.log('handleChangeImages e.target', e.target);
-    console.log('handleChangeImages e.target.files', e.target.files);
     const today = new Date();
     const date = `${today.getDate()}${today.getMonth()}${today.getFullYear()}${today.getHours()}${today.getMinutes()}${today.getSeconds()}`;
-    console.log('date', date);
     const files = e.target.files;
     const bucketName = 'users';
     const file = files[0];
@@ -77,9 +69,7 @@ const EditUserForm = (dataUser) => {
         console.log('Error al subir el archivo', error);
       },
       function () {
-        console.log('Subida completada');
         uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-          console.log('File available at', downloadURL);
           updateDatoInput({
             ...datoInput,
             urlimages: downloadURL,
@@ -88,7 +78,7 @@ const EditUserForm = (dataUser) => {
       }
     );
   };
-
+  // input validation
   const validate = () => {
     let nameError = '';
     let emailError = '';
@@ -163,15 +153,12 @@ const EditUserForm = (dataUser) => {
         cityError: cityError,
         statusError: statusError,
       });
-      console.log('validateData :', validateData);
       return false;
     }
     return true;
   };
 
   const handleSubmit = async (e) => {
-    console.log('imagen a enviar :', userData.DES_URL_IMAGE);
-    console.log('evento del submit');
     e.preventDefault();
     if (userData.DES_URL_IMAGE === '') {
       userData.DES_URL_IMAGE = userInfo.DES_URL_IMAGE;
@@ -180,8 +167,6 @@ const EditUserForm = (dataUser) => {
     }
     const isValid = validate();
     if (isValid) {
-      console.log('datos a enviar :', userData);
-
       const url = 'https://babys-api.herokuapp.com/api/users';
       try {
         const res = await axios.put(url, userData);
@@ -196,7 +181,7 @@ const EditUserForm = (dataUser) => {
       }
     }
   };
-
+  // notificaction
   const notify = (status) => {
     if (status === 500) {
       toast.error('Los cambios no se guardaron, intente más tarde', {
