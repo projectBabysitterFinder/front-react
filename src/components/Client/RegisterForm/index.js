@@ -7,38 +7,32 @@ error.response.headers
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useAuth0 } from '@auth0/auth0-react';
 import firebase from '../../../firebase';
-import { useHistory } from 'react-router';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../../sass/admin/formUser.scss';
 
-const EditUserForm = (dataUser) => {
-  const history = useHistory();
-  // console.log('props edituseform', Object.values(dataUser));
-  console.log('props edituseform', dataUser.dataUser.ID);
-  console.log('props edituseform', dataUser.dataUser.DATE_BIRTH);
-  const userInfo = dataUser.dataUser;
-  const birth = userInfo.DATE_BIRTH.substr(0, 10);
-  console.log('cumple', birth);
+const UserForm = () => {
   const initalState = {
-    ID: userInfo.ID,
-    ID_ROL: userInfo.ID_ROL,
-    DES_FULLNAME: userInfo.DES_FULLNAME,
-    DATE_BIRTH: birth,
+    ID: '',
+    ID_ROL: '1',
+    DES_FULLNAME: '',
+    DATE_BIRTH: '',
     DES_URL_IMAGE: '',
-    DES_USER: userInfo.DES_USER,
-    DES_PASSWORD: userInfo.DES_PASSWORD,
-    DES_ADDRESS: userInfo.DES_ADDRESS,
-    DES_ADDRESS_LAT: userInfo.DES_ADDRESS_LAT,
-    DES_ADDRESS_LONG: userInfo.DES_ADDRESS_LONG,
-    NUM_PHONE: userInfo.NUM_PHONE,
-    DES_EMAIL: userInfo.DES_EMAIL,
-    DES_COUNTRY: userInfo.DES_COUNTRY,
-    DES_STATE: userInfo.DES_STATE,
-    DES_CITY: userInfo.DES_CITY,
-    NUM_STATUS: userInfo.NUM_STATUS,
+    DES_USER: '',
+    DES_PASSWORD: '',
+    DES_ADDRESS: '',
+    DES_ADDRESS_LAT: '',
+    DES_ADDRESS_LONG: '',
+    NUM_PHONE: '',
+    DES_EMAIL: localStorage.getItem('emailUser'),
+    DES_COUNTRY: '',
+    DES_STATE: '',
+    DES_CITY: '',
+    NUM_STATUS: '1',
   };
-  console.log('initialState :', initalState);
+
+  const { logout } = useAuth0();
 
   const [datoInput, updateDatoInput] = useState({
     urlimages: '',
@@ -98,7 +92,6 @@ const EditUserForm = (dataUser) => {
     let countryError = '';
     let stateError = '';
     let cityError = '';
-    let statusError = '';
     const expregText = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/u;
     const expregPrhone = /^\d{10}$/;
     const emptyMessage = 'El campo es obligatorio';
@@ -137,9 +130,6 @@ const EditUserForm = (dataUser) => {
     } else if (!expregText.test(userData.DES_FULLNAME)) {
       nameError = notText;
     }
-    if (!userData.NUM_STATUS) {
-      statusError = emptyMessage;
-    }
 
     if (
       emailError ||
@@ -149,8 +139,7 @@ const EditUserForm = (dataUser) => {
       datebirthError ||
       countryError ||
       stateError ||
-      cityError ||
-      statusError
+      cityError
     ) {
       updateValidate({
         nameError: nameError,
@@ -161,7 +150,6 @@ const EditUserForm = (dataUser) => {
         countryError: countryError,
         stateError: stateError,
         cityError: cityError,
-        statusError: statusError,
       });
       console.log('validateData :', validateData);
       return false;
@@ -170,36 +158,40 @@ const EditUserForm = (dataUser) => {
   };
 
   const handleSubmit = async (e) => {
-    console.log('imagen a enviar :', userData.DES_URL_IMAGE);
+    userData.DES_URL_IMAGE = datoInput.urlimages;
+    console.log('datos a enviar :', userData.DES_URL_IMAGE);
+    console.log('datoInput', datoInput);
     console.log('evento del submit');
     e.preventDefault();
-    if (userData.DES_URL_IMAGE === '') {
-      userData.DES_URL_IMAGE = userInfo.DES_URL_IMAGE;
-    } else {
-      userData.DES_URL_IMAGE = datoInput.urlimages;
-    }
     const isValid = validate();
     if (isValid) {
       console.log('datos a enviar :', userData);
 
       const url = 'https://babys-api.herokuapp.com/api/users';
       try {
-        const res = await axios.put(url, userData);
-        console.log('Respuesta put: ', res);
+        const res = await axios.post(url, userData);
+        console.log('Respuesta post: ', res);
         notify();
         setTimeout(() => {
-          history.push('/listusers');
+          localStorage.clear();
+          logout({
+            returnTo: window.location.origin,
+          });
         }, 5500);
       } catch (error) {
         const statusReturn = error.response.status;
         notify(statusReturn);
       }
+
+      updateUserData({
+        ...initalState,
+      });
     }
   };
 
   const notify = (status) => {
     if (status === 500) {
-      toast.error('Los cambios no se guardaron, intente más tarde', {
+      toast.error('El usuario ya existe', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -209,7 +201,7 @@ const EditUserForm = (dataUser) => {
         progress: undefined,
       });
     } else {
-      toast.success('El usuario fue modificado con éxito', {
+      toast.success('El usuario fue agregado con exito', {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -224,7 +216,11 @@ const EditUserForm = (dataUser) => {
   return (
     <>
       <div className='titleForm'>
-        <h2>Editar Usuario</h2>
+        <h2>Registra tu datos</h2>
+        <h5>
+          Una vez que llenes tus datos deberas volver a iniciar sesión para
+          poder utilizar este servicio.
+        </h5>
       </div>
       <form className='formUser' onSubmit={handleSubmit}>
         <div className='formUser__div'>
@@ -331,24 +327,10 @@ const EditUserForm = (dataUser) => {
           />
           <div className='formUser__error'>{validateData.cityError}</div>
         </div>
-        <div className='formUser__div'>
-          <label>Estado del usuario</label>
-          <select
-            className='selectForm'
-            name='NUM_STATUS'
-            onChange={handleChange}
-            value={userData.NUM_STATUS}
-          >
-            <option value=''> -- Selecciona un opción -- </option>
-            <option value='1'> Activo </option>
-            <option value='0'> Baja </option>
-          </select>
-          <div className='formUser__error'>{validateData.statusError}</div>
-        </div>
-        <input type='submit' value='Enviar' className='inputFormButton' />
+        <input type='submit' value='Guardar' className='inputFormButton' />
       </form>
     </>
   );
 };
 
-export default EditUserForm;
+export default UserForm;

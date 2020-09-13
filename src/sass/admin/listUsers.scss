@@ -2,7 +2,7 @@
 
 .sectionList{
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 30px;
   @include media-min(xs) {
     width: 60%;
   }

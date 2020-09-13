@@ -12,7 +12,7 @@ const UserProvider = (props) => {
 
   useEffect(() => {
     const getUser = async () => {
-      console.log('idUser context', idUser);
+      /* console.log('idUser context', idUser); */
       if (!idUser) return;
 
       const url = `https://babys-api.herokuapp.com/api/users/user/${idUser}`;

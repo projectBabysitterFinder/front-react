@@ -14,7 +14,7 @@ const Index = () => {
 
   return (
     <header className='header'>
-      <Link to='/'>
+      <Link className='header__a' to='/'>
         <img className='header__logo' src={logo} alt='Babysitter Finder' />
       </Link>
       <span
