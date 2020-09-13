@@ -17,9 +17,6 @@ const UsersProvider = (props) => {
   useEffect(() => {
     const getUsers = async () => {
       const url = `https://babys-api.herokuapp.com/api/users/${userCliente}`;
-      /* const users = await axios.get(url);
-
-      userSelect(users.data.body); */
       try {
         const users = await axios.get(url);
         console.log('respuesta :', users.data);
