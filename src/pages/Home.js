@@ -15,8 +15,10 @@ const Home = () => {
   return (
     <>
       <section className='sectionMain'>
-        <h1>Ya no más preocupaciones al salir de casa</h1>
-        <h3>Deja a tus hijos en las mejores manos mientras no estás en casa</h3>
+        <h1>Ya no más preocupaciones al salir de casa.</h1>
+        <h3>
+          Deja a tus hijos en las mejores manos mientras no estás en casa.
+        </h3>
         {isAuthenticated ? (
           <Link to='/nana'>
             <button>Busca a tu niñera</button>
