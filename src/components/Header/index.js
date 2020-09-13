@@ -49,11 +49,6 @@ const Index = () => {
               Item 1
             </Link>
           </li>
-          <li className='navigation__li'>
-            <Link className='navigation__link' to='/'>
-              Item 2
-            </Link>
-          </li>
         </ul>
       </nav>
     </header>
