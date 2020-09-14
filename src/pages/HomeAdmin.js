@@ -14,10 +14,10 @@ const HomeAdmin = () => (
       <Link to='/listusers'>
         <button className='menuAdmin__button'>Editar Usuario</button>
       </Link>
-      <Link to='/newnana'>
+      <Link to='/newbabysitter'>
         <button className='menuAdmin__button'>Nueva Nana</button>
       </Link>
-      <Link to='/'>
+      <Link to='/listbabysitters'>
         <button className='menuAdmin__button'>Editar Nana</button>
       </Link>
     </div>
