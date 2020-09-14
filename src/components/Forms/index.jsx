@@ -7,6 +7,7 @@ import { useServer } from '../Contex/Server';
 import '../../sass/forms.scss';
 
 var data = [];
+var clientOnly = [];
 
 const Forms = () => {
   var {
@@ -22,11 +23,16 @@ const Forms = () => {
     Idd,
     coordinate,
     longitude,
-    latitude
+    latitude,
+    client
   } = useServer();
   
   if (longitude === 0) {
     coordinate();
+  }
+
+  if (clientOnly.length === 0) {
+    clientOnly = client.filter((client) => client.ID === parseInt(1))
   }
 
   const valueAll = () => {
@@ -70,6 +76,7 @@ const Forms = () => {
           type='text'
           placeholder='Nombre y Apellido'
           className='input'
+          value={clientOnly[0].DES_FULLNAME}
         />
         <ErrorMessage name='name'>
           {(message) => <div className='error'>{message}</div>}
@@ -83,6 +90,7 @@ const Forms = () => {
           type='email'
           placeholder='Correo Electrónico'
           className='input'
+          value={clientOnly[0].DES_EMAIL}
         />
         <ErrorMessage name='email'>
           {(message) => <div className='error'>{message}</div>}
@@ -90,7 +98,7 @@ const Forms = () => {
       </div>
 
       <div className='phone'>
-        <Flag />
+        {/* <Flag /> */}
         <div className='row--phone'>
           <Field
             name='phone'
@@ -98,6 +106,7 @@ const Forms = () => {
             type='tel'
             placeholder='Teléfono Móvil'
             className='input--phone'
+            value={clientOnly[0].NUM_PHONE}
           />
           <ErrorMessage name='phone'>
             {(message) => <div className='error'>{message}</div>}
@@ -134,6 +143,7 @@ const Forms = () => {
           type='text'
           placeholder='La dirección se validara con geolocalización'
           className='input'
+          value={clientOnly[0].DES_ADDRESS}
         />
         <ErrorMessage name='address'>
           {(message) => <div className='error'>{message}</div>}

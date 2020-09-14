@@ -19,7 +19,8 @@ const ModalCheck = (props) => {
     totalValue,
     day,
     hours,
-    finalTotalValue
+    finalTotalValue,
+    Idd
   } = useServer();
 
   if (openCheck === false) {
@@ -37,6 +38,10 @@ const ModalCheck = (props) => {
       return ((parseInt(e)-12) + ' pm');
     }
   }
+
+  const removeAccents = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  } 
 
   return (
     <main className='check'>
@@ -78,15 +83,8 @@ const ModalCheck = (props) => {
           <h2>Recomendaciones</h2>
           <p>{form[4]}</p>
           <h2 className='check-card--value'>Valor a cancelar</h2>
-          {flagV === 'Colombia' ? (
-            <p className='check-card--value'>{`$ ${
-              finalTotalValue()
-            } COP`}</p>
-          ) : (
-            <p className='check-card--value'>{`$ ${
-              finalTotalValue()
-            } MXN`}</p>
-          )}
+          {/* {removeAccents(Idd[0].DES_COUNTRY).toUpperCase() === 'COLOMBIA' ? console.log('Igual')
+          : console.log('No es igual')} */}
         </section>
         <div className='button__pay'>
           <Link to='/nana'>

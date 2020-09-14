@@ -14,7 +14,6 @@ const NanaDataProfile = (props) => {
     DES_DATA_STUDIES,
     DES_DATA_EXPERIECE,
     DES_DATA_ABILITIES,
-    DES_DATA_SERVICE_TIME,
     DES_DATA_SPECIALTIES,
     nameButton,
     nameButton2,

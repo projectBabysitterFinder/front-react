@@ -16,9 +16,12 @@
 .phone {
   display: flex;
   justify-content: space-between;
+  width: 300px;
   .row--phone {
     padding: 0.8rem 0;
+    // width: 100%;
     .input--phone {
+      // width: 100%;
       border-radius: 6px;
       border: 1px solid white;
       padding: 0.5rem;
@@ -55,7 +58,7 @@
 }
 
 .input {
-  width: 100%;
+  // width: 100%;
   border-radius: 6px;
   border: 1px solid white;
   padding: 0.5rem;
