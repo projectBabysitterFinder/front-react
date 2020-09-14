@@ -3,7 +3,7 @@ import { useServer } from '../Contex/Server';
 import '../../sass/country.scss';
 
 const Country = () => {
-  var { data, valueCountry, onlyCountry } = useServer();
+  var { valueCountry, countryAll } = useServer();
 
   return (
     <div className='country'>
@@ -11,10 +11,10 @@ const Country = () => {
       <form className='country__form'>
         <select className='id' id='countryId' onChange={valueCountry}>
           <option value='DEFAULT'>Seleccione</option>
-          {data.length === 0
-            ? ''
-            : onlyCountry.map((country) => (
-                <React.Fragment key={country.toString()}>
+          {countryAll.length !== 0
+            && 
+            countryAll.map((country, index) => (
+                <React.Fragment key={index}>
                   <option value={country}>{country}</option>
                 </React.Fragment>
               ))}

@@ -60,7 +60,7 @@
     }
     h1 {
       margin-bottom: 5%;
-      @include font(large, Roboto-Light, center);
+      @include font(large, Roboto-Regular, center);
     }
     .picker {
       display: flex;

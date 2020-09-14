@@ -1,19 +1,54 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
-var dataState = [];
 var dataCapital = [];
 var counter = [1];
 var counterRemove = 0;
 var counterAdd = 0;
+var hourValue = 0;
+var valueCop = 60000;
+var valueMx = 350;
+var countryValue = [];
+var arrColombia = [];
+var arrMexico = [];
+var arrCountry = [];
+var stateValue = [];
+var arrColombiaCity = [];
+var arrMexicoCity = [];
+
+var dataBoys = {
+  'GENERO': '',
+  'EDAD': 0
+};
+
+var dataHours = {
+  'MODALIDAD': '',
+  'DISPONIBILIDAD': false
+}
+
+var data2 = {
+  'ID': '',
+  'ID_USER_CLIENT': 0,
+  'ID_USER_BABYSITTER': 0,
+  'DES_EMAIL': '',
+  'DES_PHONE': '',
+  'DES_ADDRESS': '',
+  'DES_ADDRESS_LATLONG': '',
+  'DES_RECOMMENDATIONS': '',
+  'DES_DATA_BOYS': [],
+  'DES_DATA_HOURS': [],
+  'NUM_TOTAL_COST': 0,
+  'NUM_STATUS': 0,
+  'DES_ADDRESS_LONG': 0,
+  'DES_ADDRESS_LAT': 0
+};
 
 const Server = React.createContext();
 
 export function ServerProvider(props) {
-  const [data, setData] = useState([]);
   const [country, setCountry] = useState([]);
   const [state, setState] = useState([]);
   const [capital, setCapital] = useState([]);
-  const [onlyCountry, setOnlyCountry] = useState([]);
+  // const [onlyCountry, setOnlyCountry] = useState([]);
   const [Idd, setIdd] = useState([]);
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState(new Date());
@@ -30,15 +65,120 @@ export function ServerProvider(props) {
   const [openHours, setOpenHours] = useState(false);
   const [day, setDay] = useState('');
   const [hours, setHours] = useState([]);
+  const [nanas, setNanas] = useState([]);
+  const [services, setServices] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [edit, setEdit] = useState(0);
+  const [service, setService] = useState(0);
+  const [client, setClient] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [review, setReview] = useState([]);
+  const [onlyUser, setOnlyUser] = useState([]);
+  const [openService2, setOpenService2] = useState(false);
+  const [onlyService, setOnlyService] = useState(false);
+  const [countryAll, setCountryAll] = useState([]);
+  const [stateColombia, setStateColombia] = useState([]);
+  const [stateColombiaCity, setStateColombiaCity] = useState([]);
+  const [stateMexico, setStateMexico] = useState([]);
+  const [stateMexicoCity, setStateMexicoCity] = useState([]);
+  const [ longitude, setLongitude ] = useState(0)
+  const [ latitude, setLatitude ] = useState(0)
+  const [url, setUrl] = useState('');
+
+  const coordinate = useCallback(() => {
+
+    navigator.geolocation.getCurrentPosition(
+      function (position){
+          setLongitude(position.coords.longitude)
+          setLatitude(position.coords.latitude)
+      },
+      function (error){
+        if(error) {
+          
+        }
+      },
+      {
+        enableHighAccuracy: true
+      }
+    );
+  },[])
+
+  const removeAccents = useCallback((str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  },[]) 
+
+  const validate = useCallback((e) => {
+    stateValue = [];
+    e.sort();
+    for (let i=0; i < e.length; i++) {
+      if(i===0) {
+        stateValue.push(e[i]);
+      } else if (e[i-1] !== e[i]) {
+        stateValue.push(e[i]);
+      }
+    }
+    return(stateValue)
+  },[])
+
+  const countryOnly = useCallback((e) => {
+    countryValue = [];
+    arrCountry = [];
+    for (let i=0; i < e.length; i++) {
+      arrCountry.push(e[i].DES_COUNTRY);
+    }
+    arrCountry.sort();
+    for (let i=0; i < arrCountry.length; i++) {
+      if(i===0) {
+        countryValue.push(arrCountry[i]);
+      } else if (arrCountry[i-1] !== arrCountry[i]) {
+        countryValue.push(arrCountry[i]);
+      }
+    }
+    setCountryAll(countryValue)
+  },[])
+
+  const stateOnly = useCallback((e) => {
+    arrColombia = [];
+    arrMexico = [];
+    arrColombiaCity = [];
+    arrMexicoCity = [];
+    for (let i=0; i < e.length; i++) {
+      if(e[i].DES_COUNTRY === 'Colombia') {
+        arrColombia.push(e[i].DES_STATE);
+        arrColombiaCity.push(e[i].DES_CITY)
+      } else {
+        arrMexico.push(e[i].DES_STATE);
+        arrMexicoCity.push(e[i].DES_CITY)
+      }
+    }
+    setStateColombia(validate(arrColombia));
+    setStateMexico(validate(arrMexico));
+    setStateColombiaCity(validate(arrColombiaCity));
+    setStateMexicoCity(validate(arrMexicoCity));
+  },[validate])
 
   useEffect(() => {
     const fetchData = async () => {
-      const data1 = await fetch('http://localhost:3000/nana');
+      const data1 = await fetch('https://babys-api.herokuapp.com/api/users');
       const info = await data1.json();
-      setData(info);
+      const data2 = await fetch('https://babys-api.herokuapp.com/api/users/2');
+      const info2 = await data2.json();
+      const data3 = await fetch('https://babys-api.herokuapp.com/api/services');
+      const info3 = await data3.json();
+      const data4 = await fetch('https://babys-api.herokuapp.com/api/reviews');
+      const info4 = await data4.json();
+      const data5 = await fetch('https://babys-api.herokuapp.com/api/users/1');
+      const info5 = await data5.json();
+      setUsers(info.body);
+      setNanas(info2.body);
+      setServices(info3.body);
+      setReviews(info4.body);
+      setClient(info5.body);
+      countryOnly(info2.body);
+      stateOnly(info2.body);
     };
     fetchData();
-  }, [setData]);
+  }, [setUsers, setNanas, setServices, setReviews, setClient, countryOnly, stateOnly]);
 
   const order = (x) => {
     for (var i = x.length - 1; i >= 0; i--) {
@@ -46,17 +186,6 @@ export function ServerProvider(props) {
     }
     return x;
   };
-
-  useEffect(() => {
-    if (data.length !== 0) {
-      var orderedCountry = [];
-
-      for (let i = 0; i < data.length; i++) {
-        orderedCountry.push(data[i].country);
-      }
-      setOnlyCountry(order(orderedCountry));
-    }
-  }, [data]);
 
   const valueCountry = useCallback(() => {
     var select = document.getElementById('countryId');
@@ -76,51 +205,64 @@ export function ServerProvider(props) {
     setCapital(select.value);
   }, []);
 
-  const validatorState = useCallback(() => {
-    dataState.splice(0, dataState.length);
-    if (data.length !== 0) {
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].country === country) {
-          dataState.push(data[i].state);
-        }
-      }
-    }
-    return order(dataState);
-  }, [data, country]);
-
   const validatorCapital = useCallback(() => {
     dataCapital.splice(0, dataCapital.length);
-    if (data.length !== 0) {
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].state === state) {
-          dataCapital.push(data[i].capital);
+    if (nanas.length !== 0) {
+      for (let i = 0; i < nanas.length; i++) {
+        if (nanas[i].DES_STATE === state) {
+          dataCapital.push(nanas[i].DES_CITY);
         }
       }
     }
     return order(dataCapital);
-  }, [data, state]);
+  }, [nanas, state]);
 
   const valueId = useCallback(
     (x) => {
-      setIdd(data.filter((nana) => nana.id === parseInt(x)));
+      setIdd(nanas.filter((nana) => nana.ID === parseInt(x)));
     },
-    [data]
+    [nanas]
   );
 
   const modalOpen = useCallback(
     (e) => {
-      const valueOnly = data.filter((only) => only.id === parseInt(e));
-      if (valueOnly[0].time === 'Tiempo Completo') {
-        setOpen(true);
-      } else if (valueOnly[0].time === 'Medio Tiempo') {
-        setOpenHalfTime(true);
-      } else if (valueOnly[0].time === 'Por Horas') {
-        setOpenHours(true);
-      } else if (valueOnly[0].time === 'Nocturna') {
-        setOpenNight(true);
-      }
+      const valueOnly = nanas.filter((only) => only.ID === parseInt(e));
+      // if(valueOnly[0].DES_NAME === 2) {
+        if (removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'TIEMPO COMPLETO') {
+          setOpen(true);
+        } else if (removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'MEDIO TIEMPO') {
+          setOpenHalfTime(true);
+        } else if (removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'POR HORAS') {
+          setOpenHours(true);
+        } else if (removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'NOCTURNA') {
+          setOpenNight(true);
+        } 
+      // }
+      // else {
+      //   setOpen(true)
+      // }
     },
-    [data]
+    [nanas, removeAccents]
+  );
+
+  const pageEdit = useCallback(
+    (e) => {
+      const onlyEdit = nanas.filter((only) => only.ID === parseInt(e));
+      setEdit(onlyEdit)
+    },
+    [nanas]
+  );
+
+  const pageService = useCallback(
+    (e) => {
+      const onlyService = services.filter((service) => service.ID_USER_BABYSITTER === parseInt(e));
+      const onlyUser = users.filter((service) => service.ID === parseInt(e));
+      setService(onlyService)
+      setOnlyUser(onlyUser)
+      const onlyReview = reviews.filter((review) => review.ID_USER_BABYSITTER === 7);
+      setReview(onlyReview)
+    },
+    [services, reviews, users]
   );
 
   const modalClose = useCallback(() => {
@@ -201,6 +343,17 @@ export function ServerProvider(props) {
 
   const modalOpenCheck = useCallback(() => {
     setOpenCheck(true);
+  }, []);
+
+  const openService = useCallback((e) => {
+    const onlyService = services.filter((service) => service.ID === parseInt(e));
+    setOnlyService(onlyService)
+    setOpenService2(true);
+  }, [services]);
+
+  const modalCloseService = useCallback(() => {
+    setOnlyService([])
+    setOpenService2(false);
   }, []);
 
   const modalCloseCheck = useCallback(() => {
@@ -286,23 +439,134 @@ export function ServerProvider(props) {
     var arrayDeCadenas = valueDataDate.split(',') 
     setHours(arrayDeCadenas);
   },[]);
+  
+  const confirm = useCallback(() => {
+    setOpenService2(false);
+  },[]);
 
-  const postData = useCallback((e) => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+  const finalTotalValue = useCallback(() => {
+    if(day === '' && hours.length === 0) {
+      if(parseInt(child.length) === 1) {
+        if(flagV === 'Colombia') {
+          return Math.round(valueCop);
+        } else {
+          return Math.round(valueMx);
+        }
+      } else {
+        if(flagV === 'Colombia') {
+          return Math.round((valueCop + ((parseInt(child.length)-1) * ((valueCop/3)*2))));
+        } else {
+          return Math.round((valueMx + ((parseInt(child.length)-1) * ((valueMx/3)*2))));
+        }
+      }
+    }
+    if(hours.length !== 0) {
+      if(child.length === 1) {
+        if(flagV === 'Colombia') {
+          hourValue = parseInt(hours[2]) - parseInt(hours[1]);
+          return Math.round((hourValue * (valueCop/5)));
+        } else {
+          hourValue = parseInt(hours[2]) - parseInt(hours[1]);
+          return Math.round((hourValue * (valueMx/5)));
+        }
+      }
+      if(child.length > 1) {
+        if(flagV === 'Colombia') {
+          return Math.round(((valueCop/5) + (child.length-1 * (valueCop/7.5))));
+        } else {
+          return Math.round(((valueMx/5) + (child.length-1 * (valueMx/7.5))));
+        }
+      }
+    }
+    if(day !== '') {
+      if(parseInt(child.length) === 1) {
+        if(flagV === 'Colombia') {
+          return Math.round(((valueCop/3)*2));
+        } else {
+          return Math.round(((valueMx/3)*2));
+        }
+      } else {
+        if(flagV === 'Colombia') {
+          return Math.round((((valueCop/3)*2) + ((parseInt(child.length)-1) * ((valueCop/3)+(valueCop/12)))));
+        } else {
+          return Math.round((((valueMx/3)*2) + ((parseInt(child.length)-1) * ((valueMx/3)+(valueMx/12)))));
+        }
+      }
+    }
+  },[child.length, day, flagV, hours])
+
+  const postData = useCallback((email, phone, address, recommendations, Idd, longitude, latitude) => {
+
+    data2.ID='';
+    data2.ID_USER_CLIENT = 10;
+    data2.ID_USER_BABYSITTER=Idd[0].ID;
+    data2.DES_EMAIL=email;
+    data2.DES_PHONE=phone;
+    data2.DES_ADDRESS=address;
+    data2.DES_ADDRESS_LAT=latitude;
+    data2.DES_ADDRESS_LONG=longitude;
+    data2.DES_RECOMMENDATIONS=recommendations;
+    for(let i=0; i<child.length; i++) {
+      dataBoys.GENERO=child[i];
+      dataBoys.EDAD=agee[i];
+      data2.DES_DATA_BOYS.push(dataBoys)
+      dataBoys = {};
+    }
+    dataHours.MODALIDAD=Idd[0].DES_NAME;
+    dataHours.DISPONIBILIDAD=true;
+    data2.DES_DATA_HOURS.push(dataHours);
+    data2.NUM_TOTAL_COST=finalTotalValue();
+    data2.NUM_STATUS=1;
+    // fetch('https://babys-api.herokuapp.com/api/services', {
+      fetch('https://jsonplaceholder.typicode.com/posts', {
       method: 'POST',
       body: JSON.stringify({
-        e
+        ...data2
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8"
       }
     })
     .then(response => response.json())
-    .then(json => console.log(json))
+    // .then(json => console.log(json))
+  },[agee, child, finalTotalValue]);
+
+  const postNana = useCallback((nana) => {
+    // fetch('https://babys-api.herokuapp.com/api/users', {
+      fetch('https://jsonplaceholder.typicode.com/posts/1', {
+      method: 'PUT',
+      body: JSON.stringify({
+        ...nana
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(response => response.json())
+    // .then(json => console.log(json))
   },[]);
 
   const value = useMemo(() => {
     return {
+      url, 
+      setUrl,
+      longitude,
+      latitude,
+      stateColombiaCity,
+      stateMexicoCity,
+      stateColombia,
+      stateMexico,
+      countryAll,
+      openService2,
+      onlyUser,
+      review,
+      users,
+      client,
+      service,
+      edit,
+      reviews,
+      services,
+      nanas,
       hours,
       openHours,
       day,
@@ -320,15 +584,12 @@ export function ServerProvider(props) {
       flagV,
       openAdd,
       date,
-      data,
       country,
       state,
       capital,
       valueCountry,
-      onlyCountry,
       valueState,
       valueCapital,
-      validatorState,
       validatorCapital,
       valueId,
       Idd,
@@ -337,7 +598,6 @@ export function ServerProvider(props) {
       modalClose,
       buttonDay,
       onChange,
-      // modalOpenAdd,
       modalCloseAdd,
       valueFlag,
       addChildren,
@@ -352,9 +612,39 @@ export function ServerProvider(props) {
       modalCloseNight,
       modalCloseHours,
       valueDate,
-      postData
+      postData,
+      finalTotalValue,
+      pageEdit,
+      pageService,
+      openService,
+      modalCloseService,
+      onlyService,
+      countryOnly,
+      stateOnly,
+      coordinate,
+      confirm,
+      postNana
     };
   }, [
+    url, 
+    setUrl,
+    longitude,
+    latitude,
+    stateColombiaCity,
+    stateMexicoCity,
+    stateColombia,
+    stateMexico,
+    countryAll,
+    openService2,
+    onlyUser,
+    review,
+    users,
+    client,
+    service,
+    edit,
+    reviews,
+    services,
+    nanas,
     hours,
     openHours,
     day,
@@ -372,15 +662,12 @@ export function ServerProvider(props) {
     flagV,
     openAdd,
     date,
-    data,
     country,
     state,
     capital,
     valueCountry,
-    onlyCountry,
     valueState,
     valueCapital,
-    validatorState,
     validatorCapital,
     valueId,
     Idd,
@@ -389,7 +676,6 @@ export function ServerProvider(props) {
     modalClose,
     buttonDay,
     onChange,
-    // modalOpenAdd,
     modalCloseAdd,
     valueFlag,
     addChildren,
@@ -404,7 +690,18 @@ export function ServerProvider(props) {
     modalCloseNight,
     modalCloseHours,
     valueDate,
-    postData
+    postData,
+    finalTotalValue,
+    pageEdit,
+    pageService,
+    openService,
+    modalCloseService,
+    onlyService,
+    countryOnly,
+    stateOnly,
+    coordinate,
+    confirm,
+    postNana
   ]);
 
   return <Server.Provider value={value} {...props} />;

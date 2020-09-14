@@ -1,0 +1,270 @@
+@import './variables.scss';
+
+
+.edit__form {
+  width: 70%;
+  @include media('m') {
+    width: 90%;
+  }
+  .edit__button {
+    @extend %buttonNext;
+    margin-bottom: 3%;
+  }
+  &--title {
+    font-family: Amaranth-Bold;
+    font-size: x-large;
+    text-align: center;
+    color: #2c2b3c;
+    margin: 5%;
+  }
+  .edit {
+    display: flex;
+    margin-bottom: 3%;
+    p {
+      display: flex;
+      align-items: center;
+      min-width: 30%;
+      font-family: Amaranth-Bold;
+      font-size: medium;
+      color: #2c2b3c;
+    }
+    .edit__div {
+      width: 100%;
+    }
+  }
+  .error__edit {
+    padding: 0.5rem;
+    background-color: rgba(255, 0, 0, 0.5);
+    border: 1px solid red;
+    border-radius: 6px;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .edit__study {
+    display: flex;
+    margin-bottom: 3%;
+    @include media('m') {
+      display: block;
+    }
+    &--p {
+      display: flex;
+      min-width: 30%;
+      font-family: Amaranth-Bold;
+      font-size: medium;
+      color: #2c2b3c;
+      @include media('m') {
+        margin-bottom: 3%;
+        justify-content: center;
+      }
+    }
+    &__div {
+      width: 100%;
+      .input__study {
+        width: 100%;
+        border-radius: 6px;
+        border: 1px solid white;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 12px -2px rgba(46, 43, 43, 0.68);
+        border-radius: 10px 10px 10px 10px;
+        -moz-border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        margin-bottom: 4%;
+      }
+      .study__online {
+        display: flex;
+        p {
+          display: flex;
+          min-width: 30%;
+          font-family: Amaranth-Bold;
+          font-size: medium;
+          color: #2c2b3c;
+        }
+      }
+    }
+  }
+
+  .edit__specialties {
+    display: flex;
+    margin-bottom: 3%;
+    @include media('m') {
+      display: block;
+    }
+    &--p {
+      display: flex;
+      min-width: 30%;
+      font-family: Amaranth-Bold;
+      font-size: medium;
+      color: #2c2b3c;
+      @include media('m') {
+        justify-content: center;
+        margin-bottom: 3%;
+      }
+    }
+    &__div {
+      width: 100%;
+      .input__specialties {
+        width: 100%;
+        border-radius: 6px;
+        border: 1px solid white;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 12px -2px rgba(46, 43, 43, 0.68);
+        border-radius: 10px 10px 10px 10px;
+        -moz-border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        margin-bottom: 4%;
+      }
+    }
+  }
+
+  .edit__abilities {
+    display: flex;
+    margin-bottom: 3%;
+    @include media('m') {
+      display: block;
+    }
+    &--p {
+      display: flex;
+      min-width: 30%;
+      font-family: Amaranth-Bold;
+      font-size: medium;
+      color: #2c2b3c;
+      @include media('m') {
+        justify-content: center;
+        margin-bottom: 3%;
+      }
+    }
+    &__div {
+      width: 100%;
+      .input__abilities {
+        width: 100%;
+        border-radius: 6px;
+        border: 1px solid white;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 12px -2px rgba(46, 43, 43, 0.68);
+        border-radius: 10px 10px 10px 10px;
+        -moz-border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        margin-bottom: 4%;
+      }
+    }
+  }
+
+  .edit__experience {
+    display: flex;
+    margin-bottom: 3%;
+    @include media('m') {
+      display: block;
+    }
+    &--p {
+      display: flex;
+      min-width: 30%;
+      font-family: Amaranth-Bold;
+      font-size: medium;
+      color: #2c2b3c;
+      @include media('m') {
+        justify-content: center;
+        margin-bottom: 3%;
+      }
+    }
+    &__div {
+      width: 100%;
+      @include media('m') {
+        margin-bottom: 8%;
+      }
+      .input__experience {
+        width: 100%;
+        border-radius: 6px;
+        border: 1px solid white;
+        padding: 0.5rem;
+        box-sizing: border-box;
+        box-shadow: 0px 0px 12px -2px rgba(46, 43, 43, 0.68);
+        border-radius: 10px 10px 10px 10px;
+        -moz-border-radius: 10px 10px 10px 10px;
+        -webkit-border-radius: 10px 10px 10px 10px;
+        margin-bottom: 4%;
+      }
+      .start__only {
+        display: flex;
+        p {
+          display: flex;
+          min-width: 30%;
+          font-family: Amaranth-Bold;
+          font-size: medium;
+          color: #2c2b3c;
+        }
+      }
+    }
+  }
+}
+
+.child__edit {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+  &--edit {
+    @extend %buttonNext;
+  }
+  button:focus {
+    background-color: $hover-button;
+  }
+  button:hover {
+    background-color: $hover-button;
+  }
+}
+
+.input__edit {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid white;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 12px -2px rgba(46, 43, 43, 0.68);
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+}
+
+.submit {
+  padding: 0.5rem 0;
+  background-color: #00a6ff;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 100%;
+  box-shadow: 0 1px 4px 0 rgba(22, 24, 26, 0.15);
+}
+
+.button--edit {
+  display: flex;
+  justify-content: center;
+  margin-top: 6%;
+  button {
+    @extend %buttonNext;
+  }
+  button:focus {
+    background-color: $hover-button;
+  }
+  button:hover {
+    background-color: $hover-button;
+  }
+}
+
+.row__back {
+  display: flex;
+  justify-content: center;
+  margin-top: 8%;
+  button {
+    color: #fafbfc;
+    background-color: #06a77d;
+    font-size: medium;
+    cursor: pointer;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    font-family: Amaranth-Regular;
+    font-weight: bold;
+  }
+}

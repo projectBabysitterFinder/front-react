@@ -7,19 +7,6 @@ import { useServer } from '../Contex/Server';
 import '../../sass/forms.scss';
 
 var data = [];
-var data2 = {
-  'name': '',
-  'email': '',
-  'phone': '',
-  'address': '',
-  'recommendations': '',
-  'child': [],
-  'age': [],
-  'flag': '',
-  'date': new Date(),
-  'day': '',
-  'hours': []
-};
 
 const Forms = () => {
   var {
@@ -32,14 +19,18 @@ const Forms = () => {
     agee,
     flagV,
     postData,
-    date,
-    day,
-    hours
+    Idd,
+    coordinate,
+    longitude,
+    latitude
   } = useServer();
-
-
+  
+  if (longitude === 0) {
+    coordinate();
+  }
 
   const valueAll = () => {
+    
     data = [];
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
@@ -47,23 +38,13 @@ const Forms = () => {
     var address = document.getElementById('address').value;
     var recommendations = document.getElementById('recommendations').value;
     data.push(name);
-    data2.name=name;
     data.push(email);
-    data2.email=email;
     data.push(phone);
-    data2.phone=phone;
     data.push(address);
-    data2.address=address;
     data.push(recommendations);
-    data2.recommendations=recommendations;
-    data2.child=child;
-    data2.age=agee;
-    data2.flag=flagV;
-    data2.date=date.toLocaleDateString();
-    data2.day=day;
-    data2.hours=hours;
     setForm(data);
-    postData(data2);
+    postData(email, phone, address, recommendations, Idd, longitude, latitude);
+
     if (
       name === '' ||
       email === '' ||
@@ -128,36 +109,36 @@ const Forms = () => {
         <div key={index} className='child__add'>
           <Child indexAdd={index} />
           <Age indexAdd={index} />
-          <button
-            type='submit'
-            onClick={addChildren}
-            className='child__add--one'
-          >
-            Agregar
-          </button>
-          <button
-            type='submit'
-            onClick={removeChildren}
-            className='child__add--one'
-          >
-            Eliminar
-          </button>
         </div>
       ))}
-
+      <div className='button__child'>
+        <button
+          type='submit'
+          onClick={addChildren}
+          className='child__add--one'
+        >
+          Agregar
+        </button>
+        <button
+          type='submit'
+          onClick={removeChildren}
+          className='child__add--one'
+        >
+          Eliminar
+        </button>
+      </div>
       <div className='row'>
         <Field
           name='address'
           id='address'
           type='text'
-          placeholder='Dirección'
+          placeholder='La dirección se validara con geolocalización'
           className='input'
         />
         <ErrorMessage name='address'>
           {(message) => <div className='error'>{message}</div>}
         </ErrorMessage>
       </div>
-
       <div className='row'>
         <Field
           name='recommendations'

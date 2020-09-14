@@ -33,7 +33,7 @@
 
 .child__add {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 3%;
   &--one {
     @extend %buttonNext;
@@ -44,6 +44,14 @@
   button:hover {
     background-color: $hover-button;
   }
+  .age {
+    margin-left: 3%;
+  }
+}
+
+.button__child {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .input {

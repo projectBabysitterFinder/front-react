@@ -10,9 +10,9 @@ const ModalForHours = (props) => {
 
   const { modalCloseHours, buttonDay, Idd, valueDate, hours } = useServer();
 
-  if(Idd.length !== 0) {
-    nanaHours = [Idd[0].forHours];
-  } 
+  // if(Idd.length !== 0) {
+  //   nanaHours = [Idd[0].forHours];
+  // } 
 
   if (openHours === false) {
     return null;
@@ -25,6 +25,18 @@ const ModalForHours = (props) => {
       buttonDay();
     }
   };
+
+  const calculateTime = (e) => {
+    if(parseInt(e) < 13 ) {
+      if(parseInt(e) === 12) {
+        return (e + ' pm')
+      } else {
+        return (e + ' am');
+      }
+    } else {
+      return ((parseInt(e)-12) + ' pm');
+    }
+  }
 
   return (
     <main className='modalHours'>
@@ -47,8 +59,8 @@ const ModalForHours = (props) => {
                     <button id={index+1} value={Object.values(id)} onClick={()=>valueDate(index+1)}>Seleccionar</button>
                   </div>
                   <div className='nana__star'>
-                    <p>{id.star}</p> 
-                    <p>{id.end}</p>
+                    <p>{calculateTime(id.star)}</p> 
+                    <p>{calculateTime(id.end)}</p> 
                   </div> 
                 </div> : '' }
               </section>

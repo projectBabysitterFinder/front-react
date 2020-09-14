@@ -20,6 +20,7 @@ const ModalAddInfo = (props) => {
           </button>
         </div>
         <h1>Ingresa tu Información</h1>
+        <p>Para diligenciar este formulario debes estar en el lugar donde se prestará el servicio debido a que la dirección quedará guardada por geolocalización</p>
         <section className='form'>
           <Forms />
         </section>

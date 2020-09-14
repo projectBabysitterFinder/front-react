@@ -3,7 +3,7 @@ import { useServer } from '../Contex/Server';
 import '../../sass/state.scss';
 
 const State = () => {
-  var { data, valueState, validatorState } = useServer();
+  var { valueState, stateColombia, stateMexico, country } = useServer();
 
   return (
     <div className='state'>
@@ -11,13 +11,18 @@ const State = () => {
       <form className='state__form'>
         <select className='id' id='state' onChange={valueState}>
           <option value='DEFAULT'>Seleccione</option>
-          {data.length === 0
-            ? ''
-            : validatorState().map((state) => (
-                <React.Fragment key={state.toString()}>
-                  {<option value={state}>{state}</option>}
-                </React.Fragment>
-              ))}
+            {country === 'Colombia' ? 
+              stateColombia.map((state, index) => (
+              <React.Fragment key={index}>
+                {<option value={state}>{state}</option>}
+              </React.Fragment>
+            )) : 
+            stateMexico.map((state, index) => (
+              <React.Fragment key={index}>
+                {<option value={state}>{state}</option>}
+              </React.Fragment>
+            ))
+            }
         </select>
       </form>
     </div>

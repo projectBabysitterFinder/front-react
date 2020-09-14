@@ -20,6 +20,7 @@
     .imgButton {
       margin-top: 1%;
       margin-left: 4%;
+
       img {
         @extend %img;
         @include media('m') {
@@ -61,7 +62,7 @@
         }
       }
       .article--description {
-        font-family: Roboto-Light;
+        font-family: Roboto-Regular;
         font-size: medium;
         color: $black-color;
         text-align: justify;

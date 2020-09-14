@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+.upload {
+  &__img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button {
+      margin-left: 3%;
+      @extend %buttonNext;
+    }
+  }
+}

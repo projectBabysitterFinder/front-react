@@ -18,11 +18,24 @@ const ModalCheck = (props) => {
     date,
     totalValue,
     day,
-    hours
+    hours,
+    finalTotalValue
   } = useServer();
 
   if (openCheck === false) {
     return null;
+  }
+
+  const calculateTime = (e) => {
+    if(parseInt(e) < 13 ) {
+      if(parseInt(e) === 12) {
+        return (e + ' pm')
+      } else {
+        return (e + ' am');
+      }
+    } else {
+      return ((parseInt(e)-12) + ' pm');
+    }
   }
 
   return (
@@ -40,7 +53,9 @@ const ModalCheck = (props) => {
           <h2>Fecha:</h2>
           <p>{hours.length === 0 ? date.toLocaleDateString() : hours[0]}</p>
           <h2>Jornada:</h2>
-          {day === '' && hours.length === 0 ? <p>{time}</p> : hours.length !== 0 ? <div className='star--end'><p>Llegada: {hours[1]}</p><p>Salida: {hours[2]}</p></div> : <p>{day}</p>}
+          {day === '' && hours.length === 0 ? <p>{time}</p> : hours.length !== 0 ? 
+            <div className='star--end'><p>Llegada: {calculateTime(hours[1])}</p><p>Salida: {calculateTime(hours[2])}</p></div>
+          : <p>{day}</p>}
           <h2>E-mail</h2>
           <p>{form[1]}</p>
           <span>
@@ -64,12 +79,12 @@ const ModalCheck = (props) => {
           <p>{form[4]}</p>
           <h2 className='check-card--value'>Valor a cancelar</h2>
           {flagV === 'Colombia' ? (
-            <p className='check-card--value'>{`${
-              child.length * 15000
+            <p className='check-card--value'>{`$ ${
+              finalTotalValue()
             } COP`}</p>
           ) : (
-            <p className='check-card--value'>{`${
-              child.length * 15000
+            <p className='check-card--value'>{`$ ${
+              finalTotalValue()
             } MXN`}</p>
           )}
         </section>

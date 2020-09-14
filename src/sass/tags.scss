@@ -1,21 +1,43 @@
 @import './variables.scss';
 
-.Tags {
+.tags {
   display: flex;
-  justify-content: center;
-  background-color: $background-tags;
-  width: max-content;
-  border-radius: 8px;
   @include media('m') {
-    width: auto;
+    justify-content: center;
   }
-  p {
-    font-family: Roboto-Light;
-    color: $black-color;
-    font-size: medium;
-    padding: 10px;
-    margin-top: 0px;
-    margin-bottom: 0;
-    text-align: center;
+  .TagsService {
+    background-color: $background-tags;
+    width: max-content;
+    border-radius: 8px;
+    @include media('m') {
+      width: auto;
+    }
+    p {
+      font-family: Roboto-Regular;
+      color: $black-color;
+      font-size: medium;
+      padding: 10px;
+      margin-top: 0px;
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+  .TagsSpecialties {
+    background-color: $background-tags;
+    width: max-content;
+    border-radius: 8px;
+    margin-right: 3%;
+    @include media('m') {
+      width: auto;
+    }
+    p {
+      font-family: Roboto-Regular;
+      color: $black-color;
+      font-size: medium;
+      padding: 10px;
+      margin-top: 0px;
+      margin-bottom: 0;
+      text-align: center;
+    }
   }
 }

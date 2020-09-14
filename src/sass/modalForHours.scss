@@ -60,7 +60,7 @@
     }
     h1 {
       margin-bottom: 5%;
-      @include font(large, Roboto-Light, center);
+      @include font(large, Roboto-Regular, center);
     }
     .modalD-card--hours {
       display: flex;
@@ -106,17 +106,23 @@
           .nana__date {
             text-align: center;
             p{
-              font-family: Roboto-Light;
+              font-family: Roboto-Regular;
               font-size: medium;
               color: #2c2b3c;
               text-align: center;
             }
             button {
               @extend %buttonNext;
+              &:focus {
+                background-color: $hover-button;
+              }
+              &:hover {
+                background-color: $hover-button;
+              }
             }
           }
           .nana__star {
-            font-family: Roboto-Light;
+            font-family: Roboto-Regular;
             font-size: medium;
             color: #2c2b3c;
             text-align: center;
