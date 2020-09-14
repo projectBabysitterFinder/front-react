@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import NanaProfile from '../src/pages/NanaProfile';
 import Filter from '../src/pages/Filter';
 import { ServerProvider } from '../src/components/Contex/Server';
 import Home from './pages/Home';
-import HomeRegister from './pages/HomeRegister';
 import Layout from './components/Layout';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/Login/PrivateRoute';
@@ -12,7 +11,6 @@ import HomeAdmin from './pages/HomeAdmin';
 import ListUsers from './pages/ListUsers';
 import NewUser from './pages/NewUser';
 import EditUser from './pages/EditUser';
-import Register from './pages/Register';
 import Loading from './components/Loading';
 import PerfilNana from './pages/PerfilNana';
 import ListBabysitter from './pages/ListBabysitter';
@@ -26,31 +24,29 @@ function App() {
   let dataUserAuth = [];
   let roleAuth = '';
   let emailAuth = '';
-  let idUserAuth = '';
-  const [loadRole, updateLoadRole] = useState(true);
   const objectUseAuth = useAuth0().user;
   const { isLoading } = useAuth0();
 
   // get role of logged in user
-  const getRole = async (email) => {
+  const getId = async (role, email) => {
     const url = `https://babys-api.herokuapp.com/api/users/email/${email}`;
     try {
       const result = await axios.get(url);
+      /* console.log('result', result); */
       dataUserAuth = result.data.body;
-      if (dataUserAuth.length === 0) {
-        roleAuth = 'byregister';
-      } else {
-        dataUserAuth[0].ID_ROL === 1
-          ? (roleAuth = 'client')
-          : (roleAuth = 'nana');
-        idUserAuth = dataUserAuth[0].ID;
-      }
-      localStorage.setItem('role', roleAuth);
-      localStorage.setItem('emailUser', emailAuth);
-      localStorage.setItem('idUser', idUserAuth);
-      updateLoadRole(false);
+      const idRecovered = dataUserAuth[0].ID;
+      /* console.log('dataUserAuth', dataUserAuth);
+      console.log('id', idRecovered); */
+
+      localStorage.setItem('role', role);
+      localStorage.setItem('emailUser', email);
+      localStorage.setItem('id', idRecovered);
     } catch (error) {
-      console.log('entra en el catch', error);
+      const idRecovered = '';
+      /* console.log('entra en el catch', error); */
+      localStorage.setItem('role', role);
+      localStorage.setItem('emailUser', email);
+      localStorage.setItem('id', idRecovered);
     }
   };
 
@@ -59,11 +55,23 @@ function App() {
     roleAuth = arrayUseAuth[0][0];
     emailAuth = arrayUseAuth[2];
 
-    if (!roleAuth) {
-      getRole(emailAuth);
-    } else {
-      localStorage.setItem('role', roleAuth);
-      localStorage.setItem('emailUser', emailAuth);
+    /* console.log('arrayUseAuth', arrayUseAuth);
+    console.log('roleAuth', roleAuth);
+    console.log('emailAuth', emailAuth); */
+
+    switch (roleAuth) {
+      case undefined:
+        if (emailAuth) {
+          roleAuth = 'client';
+          getId(roleAuth, emailAuth);
+        }
+        break;
+      case 'nana':
+        getId(roleAuth, emailAuth);
+        break;
+
+      default:
+        break;
     }
   }
 
@@ -71,7 +79,7 @@ function App() {
     return <Loading />;
   }
   // routes depending on the user's profile
-  if (localStorage.getItem('role') === 'admin') {
+  if (roleAuth === 'admin') {
     return (
       <div className='App'>
         <ToastContainer />
@@ -88,7 +96,7 @@ function App() {
         </Layout>
       </div>
     );
-  } else if (localStorage.getItem('role') === 'client' && !loadRole) {
+  } else if (roleAuth === 'client') {
     return (
       <div className='App'>
         <ServerProvider>
@@ -103,21 +111,7 @@ function App() {
         </ServerProvider>
       </div>
     );
-  } else if (localStorage.getItem('role') === 'byregister' && !loadRole) {
-    return (
-      <div className='App'>
-        <ServerProvider>
-          <Layout>
-            <Switch>
-              <Route exact path='/register' component={Register} />
-              <Route exact path='/' component={HomeRegister} />
-              <Route component={NotFound} />
-            </Switch>
-          </Layout>
-        </ServerProvider>
-      </div>
-    );
-  } else if (localStorage.getItem('role') === 'nana') {
+  } else if (roleAuth === 'nana') {
     return (
       <div className='App'>
         <ToastContainer />
@@ -129,7 +123,7 @@ function App() {
         </Layout>
       </div>
     );
-  } else {
+  } else if (objectUseAuth === false) {
     return (
       <div className='App'>
         <ServerProvider>

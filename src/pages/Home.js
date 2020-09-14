@@ -24,7 +24,7 @@ const Home = () => {
         ) : (
           <button
             onClick={() =>
-              alert('Debe esta logueado para acceder a la lista de niñeras')
+              alert('Debe estar logueado para acceder a la lista de niñeras')
             }
           >
             Busca a tu niñera
