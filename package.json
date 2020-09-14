@@ -21,6 +21,7 @@
     "serve": "^11.3.2"
   },
   "scripts": {
+    "deploy": "vercel",
     "start": "serve -s build",
     "start-react": "react-scripts start",
     "build": "react-scripts build",
