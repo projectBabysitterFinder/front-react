@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import LoginButton from '../Login/LoginButton';
+import SignupButton from '../Login/SignupButton';
+import LogoutButton from '../Login/LogoutButton';
 import logo from '../../assets/images/logo.png';
 import '../../sass/header.scss';
 import '../../sass/menu.scss';
 
 const Index = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const { isAuthenticated } = useAuth0();
 
   return (
     <header className='header'>
-      <Link to='/'><img className='header__logo' src={logo} alt='Babysitter Finder' /></Link>
+      <Link to='/'>
+        <img className='header__logo' src={logo} alt='Babysitter Finder' />
+      </Link>
       <span
         className='header--hamburger material-icons'
         onClick={() => setOpenMenu(!openMenu)}
@@ -22,14 +29,16 @@ const Index = () => {
             account_circle
           </span>
           <Link to='/'> Nombre de usuario </Link>
-          <Link to='/'>Cerrar Sesión</Link>
         </div>
         <ul className='navigation__ul'>
           <li className='navigation__li'>
-            <Link className='navigation__link' to='/'>
-              Loguin
-            </Link>
+            {isAuthenticated ? <LogoutButton /> : <LoginButton />}
           </li>
+          {!isAuthenticated && (
+            <li className='navigation__li'>
+              <SignupButton />
+            </li>
+          )}
           <li className='navigation__li'>
             <Link className='navigation__link' to='/'>
               Contact

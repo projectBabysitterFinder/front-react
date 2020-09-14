@@ -8,14 +8,24 @@ import NanaProfileAdmin from './pages/NanaProfileAdmin';
 import editNana from './pages/editNana';
 import NanaService from './pages/NanaService';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import NotFound from './pages/NotFound';
+// import PrivateRoute from './components/Login/PrivateRoute';
+import { useAuth0 } from '@auth0/auth0-react';
+
 
 
 function App() {
+  let role = [];
+  const objectrole = useAuth0().user;
+  if (objectrole) {
+    role = Object.values(objectrole);
+    const rolenuevo = role[0][0];
+    localStorage.setItem('role', rolenuevo);
+  }
+
   return (
     <div className='App'>
-    
     <ServerProvider>
-    
         <Router>
           <Layout>
             <Switch>
@@ -25,7 +35,7 @@ function App() {
               <Route exact path='/nana/perfil/:id' component={NanaProfileAdmin} />
               <Route exact path='/nana/editar/:id' component={editNana} />
               <Route exact path='/nana/servicios/:id' component={NanaService} />
-              
+              <Route component={NotFound} />
             </Switch>
           </Layout>
         </Router>

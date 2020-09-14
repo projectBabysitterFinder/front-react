@@ -70,17 +70,20 @@ const Forms = () => {
   return (
     <Form>
       <div className='row'>
-        <Field
-          name='name'
-          id='name'
-          type='text'
-          placeholder='Nombre y Apellido'
-          className='input'
-          value={clientOnly[0].DES_FULLNAME}
-        />
-        <ErrorMessage name='name'>
-          {(message) => <div className='error'>{message}</div>}
-        </ErrorMessage>
+        <div>
+          <p>Nombre</p>
+          <Field
+            name='name'
+            id='name'
+            type='text'
+            placeholder='Nombre y Apellido'
+            className='input'
+            value={clientOnly[0].DES_FULLNAME}
+          />
+          <ErrorMessage name='name'>
+            {(message) => <div className='error'>{message}</div>}
+          </ErrorMessage>
+        </div>
       </div>
 
       <div className='row'>

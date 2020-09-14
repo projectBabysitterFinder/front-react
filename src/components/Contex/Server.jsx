@@ -85,6 +85,9 @@ export function ServerProvider(props) {
   const [ latitude, setLatitude ] = useState(0)
   const [url, setUrl] = useState('');
 
+  // const prueba = localStorage.getItem('role')
+  // console.log(prueba, 'prueba')
+
   const coordinate = useCallback(() => {
 
     navigator.geolocation.getCurrentPosition(
