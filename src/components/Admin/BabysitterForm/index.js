@@ -33,6 +33,28 @@ const UserForm = () => {
     DES_CITY: '',
     NUM_STATUS: '',
     DES_NAME: '',
+    NUM_VALUE: '',
+    ID_META: '',
+    ID_USER: '',
+    ID_AVAILABILITY: '',
+    NUM_HOURLY_RATE: '',
+    DES_DATA_SERVICE_TIME: '',
+    DES_DATA_STUDIES: [
+      {
+        TITULO: '',
+        INSTITUCIÓN: '',
+        AÑO: '',
+      },
+    ],
+    DES_DATA_SPECIALTIES: [],
+    DES_DATA_ABILITIES: [],
+    DES_DATA_EXPERIECE: [
+      {
+        INICIO: '',
+        TAREAS: '',
+        EMPRESA: '',
+      },
+    ],
   };
 
   const [datoInput, updateDatoInput] = useState({
@@ -168,13 +190,14 @@ const UserForm = () => {
   const handleSubmit = async (e) => {
     console.log('userData', userData);
     userData.DES_URL_IMAGE = datoInput.urlimages;
+    console.log('userData: ', userData);
     e.preventDefault();
     const isValid = validate();
     if (isValid) {
       const url = 'https://babys-api.herokuapp.com/api/users';
       try {
         const res = await axios.post(url, userData);
-        console.log('Respuesta post: ', res);
+        console.log('Respuesta post: ', res.data);
         notify();
       } catch (error) {
         const statusReturn = error.response.status;
