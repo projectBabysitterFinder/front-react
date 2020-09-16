@@ -4,44 +4,63 @@ error.response.data
 error.response.status
 error.response.headers
 */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import firebase from '../../../firebase';
-import { useHistory } from 'react-router';
-/* import { ListBabysitterContext } from '../../Contex/ListBabysitterContext'; */
+import { ListBabysitterContext } from '../../Contex/ListBabysitterContext';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../../sass/admin/formUser.scss';
 
-const UserForm = () => {
-  /* const { availability } = useContext(ListBabysitterContext);
-  const dataAvailability = availability.body; */
+const UserFormMeta = (dataUser) => {
+  console.log('entra en UseFormMeta');
+  const { availability } = useContext(ListBabysitterContext);
+  const dataAvailability = availability.body;
+  const userInfo = dataUser.dataUser;
+  console.log('dataUser Babysitterformmeta', userInfo);
+  const birth = userInfo.DATE_BIRTH.substr(0, 10);
+
   const initalState = {
-    ID: '',
-    ID_ROL: 2,
-    DES_FULLNAME: '',
-    DATE_BIRTH: '',
-    DES_URL_IMAGE: '',
-    DES_USER: '',
-    DES_PASSWORD: '',
-    DES_ADDRESS: '',
-    DES_ADDRESS_LAT: '',
-    DES_ADDRESS_LONG: '',
-    NUM_PHONE: '',
-    DES_EMAIL: '',
-    DES_COUNTRY: '',
-    DES_STATE: '',
-    DES_CITY: '',
-    NUM_STATUS: '',
+    ID: userInfo.ID,
+    ID_ROL: userInfo.ID_ROL,
+    DES_FULLNAME: userInfo.DES_FULLNAME,
+    DATE_BIRTH: birth,
+    DES_URL_IMAGE: userInfo.DES_URL_IMAGE,
+    DES_USER: userInfo.DES_USER,
+    DES_PASSWORD: userInfo.DES_PASSWORD,
+    DES_ADDRESS: userInfo.DES_ADDRESS,
+    DES_ADDRESS_LAT: userInfo.DES_ADDRESS_LAT,
+    DES_ADDRESS_LONG: userInfo.DES_ADDRESS_LONG,
+    NUM_PHONE: userInfo.NUM_PHONE,
+    DES_EMAIL: userInfo.DES_EMAIL,
+    DES_COUNTRY: userInfo.DES_COUNTRY,
+    DES_STATE: userInfo.DES_STATE,
+    DES_CITY: userInfo.DES_CITY,
+    NUM_STATUS: userInfo.NUM_STATUS,
+    DES_DATA_STUDIES: [
+      {
+        TITULO: 'Administración',
+        INSTITUCIÓN: 'LA MEJOR',
+        AÑO: '2005',
+      },
+    ],
+    DES_DATA_SPECIALTIES: ['COCINAR', 'PREESCOLAR'],
+    DES_DATA_ABILITIES: ['Limpieza2', 'Enseñanza2'],
+    DES_DATA_EXPERIECE: [
+      {
+        INICIO: '2020-09-16',
+        TAREAS: 'LIMPIAR LA CASA',
+        EMPRESA: 'JARDIN AMABILIDAD',
+      },
+    ],
+    DES_DATA_SERVICE_TIME: '',
+    NUM_HOURLY_RATE: '191.9',
+    ID_AVAILABILITY: '1',
+    DES_NAME: 'TIEMPO COMPLETO',
+    NUM_VALUE: '8',
+    ID_META: '',
   };
 
-  const history = useHistory();
-
-  const [datoInput, updateDatoInput] = useState({
-    urlimages: '',
-  });
-
-  const [validateData, updateValidate] = useState({});
+  /* const [validateData, updateValidate] = useState({}); */
 
   const [userData, updateUserData] = useState({
     ...initalState,
@@ -53,35 +72,8 @@ const UserForm = () => {
       [e.target.name]: [e.target.value],
     });
   };
-  // user image upload to upload to firebase and get storage url
-  const handleChangeImages = (e) => {
-    const today = new Date();
-    const date = `${today.getDate()}${today.getMonth()}${today.getFullYear()}${today.getHours()}${today.getMinutes()}${today.getSeconds()}`;
-    const files = e.target.files;
-    const bucketName = 'users';
-    const file = files[0];
-    const storageRef = firebase
-      .storage()
-      .ref(`${bucketName}/${date}${file.name}`);
-    const uploadTask = storageRef.put(file);
-    uploadTask.on(
-      'state_changed',
-      null,
-      function (error) {
-        console.log('Error al subir el archivo', error);
-      },
-      function () {
-        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-          updateDatoInput({
-            ...datoInput,
-            urlimages: downloadURL,
-          });
-        });
-      }
-    );
-  };
   // input validation
-  const validate = () => {
+  /* const validate = () => {
     let nameError = '';
     let emailError = '';
     let addressError = '';
@@ -91,6 +83,7 @@ const UserForm = () => {
     let stateError = '';
     let cityError = '';
     let statusError = '';
+    let desnameError = '';
     const expregText = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/u;
     const expregPrhone = /^\d{10}$/;
     const emptyMessage = 'El campo es obligatorio';
@@ -132,6 +125,9 @@ const UserForm = () => {
     if (!userData.NUM_STATUS) {
       statusError = emptyMessage;
     }
+    if (!userData.DES_NAME) {
+      desnameError = emptyMessage;
+    }
 
     if (
       emailError ||
@@ -142,7 +138,8 @@ const UserForm = () => {
       countryError ||
       stateError ||
       cityError ||
-      statusError
+      statusError ||
+      desnameError
     ) {
       updateValidate({
         nameError: nameError,
@@ -154,29 +151,37 @@ const UserForm = () => {
         stateError: stateError,
         cityError: cityError,
         statusError: statusError,
+        desnameError: desnameError,
       });
       console.log('validateData :', validateData);
       return false;
     }
     return true;
-  };
+  }; */
 
   const handleSubmit = async (e) => {
-    console.log('userData', userData);
-    userData.DES_URL_IMAGE = datoInput.urlimages;
     console.log('userData: ', userData);
     e.preventDefault();
-    const isValid = validate();
+    const url = 'https://babys-api.herokuapp.com/api/users';
+    try {
+      const res = await axios.put(url, userData);
+      console.log('Respuesta put: ', res.data);
+      if (res.data.status === 201) {
+        notify();
+      }
+    } catch (error) {
+      const statusReturn = error.response.status;
+      console.log('statusReturn', statusReturn);
+      notify(statusReturn);
+    }
+    /* const isValid = validate();
     if (isValid) {
       const url = 'https://babys-api.herokuapp.com/api/users';
       try {
-        const res = await axios.post(url, userData);
-        console.log('Respuesta post: ', res.data);
+        const res = await axios.put(url, userData);
+        console.log('Respuesta put: ', res.data);
         if (res.data.status === 201) {
           notify();
-          setTimeout(() => {
-            history.push(`/newbabysittermeta/${userData.DES_EMAIL}/meta`);
-          }, 5500);
         } else {
           notify();
         }
@@ -185,10 +190,10 @@ const UserForm = () => {
         notify(statusReturn);
       }
 
-      /* updateUserData({
+      updateUserData({
         ...initalState,
-      }); */
-    }
+      });
+    } */
   };
   // notification
   const notify = (status) => {
@@ -218,10 +223,10 @@ const UserForm = () => {
   return (
     <>
       <div className='titleForm'>
-        <h2>Nueva Nana</h2>
+        <h2>Datos adicionales</h2>
       </div>
       <form className='formUser' onSubmit={handleSubmit}>
-        <div className='formUser__div'>
+        {/* <div className='formUser__div'>
           <label>Nombre</label>
           <input
             onChange={handleChange}
@@ -338,6 +343,26 @@ const UserForm = () => {
             <option value='0'> Baja </option>
           </select>
           <div className='formUser__error'>{validateData.statusError}</div>
+        </div> */}
+        <div className='formUser__div'>
+          <label>Disponibilidad</label>
+          <select
+            className='selectForm'
+            name='DES_NAME'
+            onChange={handleChange}
+            value={userData.DES_NAME}
+          >
+            <option value=''> -- Selecciona un opción -- </option>
+            {dataAvailability.map((data) => {
+              return (
+                <option key={data.ID_AVAILABILITY} value={data.ID_AVAILABILITY}>
+                  {' '}
+                  {data.DES_NAME}{' '}
+                </option>
+              );
+            })}
+          </select>
+          {/* <div className='formUser__error'>{validateData.desnameError}</div> */}
         </div>
         <input type='submit' value='Enviar' className='inputFormButton' />
       </form>
@@ -345,4 +370,4 @@ const UserForm = () => {
   );
 };
 
-export default UserForm;
+export default UserFormMeta;

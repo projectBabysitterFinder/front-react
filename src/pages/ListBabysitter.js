@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import CardUser from '../components/Admin/CardUser';
+import CardNana from '../components/Admin/CardNana';
 import MessageError from '../components/MessageError';
 import Loading from '../components/Loading';
 import { ListBabysitterContext } from '../components/Contex/ListBabysitterContext';
@@ -18,7 +18,7 @@ const ListBabysitter = () => {
       dataUsers = babysitter.body;
       return (
         <section className='sectionList'>
-          <CardUser listusers={dataUsers} />
+          <CardNana listusers={dataUsers} />
         </section>
       );
     case 404:

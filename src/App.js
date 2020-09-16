@@ -15,6 +15,7 @@ import Loading from './components/Loading';
 import PerfilNana from './pages/PerfilNana';
 import ListBabysitter from './pages/ListBabysitter';
 import NewBabysitter from './pages/NewBabysitter';
+import NewBabysitterMeta from './pages/NewBabysitterMeta';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ToastContainer } from 'react-toastify';
@@ -90,6 +91,11 @@ function App() {
             <Route exact path='/listbabysitters' component={ListBabysitter} />
             <Route exact path='/newuser' component={NewUser} />
             <Route exact path='/newbabysitter' component={NewBabysitter} />
+            <Route
+              exact
+              path='/newbabysittermeta/:email/meta'
+              component={NewBabysitterMeta}
+            />
             <Route exact path='/' component={HomeAdmin} />
             <Route component={NotFound} />
           </Switch>
