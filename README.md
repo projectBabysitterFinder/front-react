@@ -19,6 +19,11 @@ PORT = 3001
 ## Firebase
 - REACT_APP_FIREBASE_API_KEY
 #
+
+## Execute project
+
+npm run react-start
+
 ## Tecnologies
 
 ## Front
@@ -59,3 +64,5 @@ The functionality of the application consists of requesting the babysitter servi
 ## Deploy
 
 - Vercel
+
+  npm run deploy
