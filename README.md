@@ -66,3 +66,14 @@ The functionality of the application consists of requesting the babysitter servi
 - Vercel
 
   npm run deploy
+
+## Demo accounts
+
+Cliente
+- Account: pruebas.cliente07214@gmail.com
+- Password: 	7pXN0H%UGenAlb#8
+
+Babysitter
+- Account: phpmailer05@gmail.com
+- Password:	U5#M#e7PgP1^VALw
+
