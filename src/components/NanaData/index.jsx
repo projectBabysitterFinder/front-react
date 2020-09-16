@@ -7,42 +7,44 @@ import '../../sass/nanaData.scss';
 
 const NanaData = (props) => {
   const {
-    id,
-    name,
+    ID,
+    DES_FULLNAME,
     description,
-    // score,
-    time,
-    studies,
-    experiences,
-    skills,
-    country,
-    state,
-    capital,
-    specialty,
-    averageScore,
+    NUM_STATUS,
+    DES_DATA_STUDIES,
+    DES_DATA_EXPERIECE,
+    DES_DATA_ABILITIES,
+    DES_DATA_SERVICE_TIME,
+    DES_DATA_SPECIALTIES,
+    to,
+    nameButton,
+    nameButton2,
+    DES_URL_IMAGE,
+    DES_COUNTRY,
+    DES_STATE,
+    DES_CITY,
   } = props;
 
   var { modalOpen } = useServer();
 
   const toOpen = () => {
-    var openContratar = document.getElementById(id).value;
+    var openContratar = document.getElementById(ID).value;
     modalOpen(parseInt(openContratar));
   };
 
   return (
     <div className='nana'>
       <article className='nana__photo'>
-        <img
-          src={require('../../assets/images/Nanas/maria-sandobal.png')}
-          alt={name}
-        />
+        <img src={DES_URL_IMAGE} alt={DES_FULLNAME} />
         <div className='button'>
-          <button id={id} value={id} onClick={toOpen}>
-            Contratar
+          <button id={ID} value={ID} onClick={toOpen}>
+            {nameButton}
           </button>
-          <Link to='/nana'>
-            <button>Regresar</button>
-          </Link>
+          <div>
+            <Link to={to}>
+              <button>{nameButton2}</button>
+            </Link>
+          </div>
         </div>
       </article>
       <section className='nana__data'>
@@ -50,88 +52,76 @@ const NanaData = (props) => {
           <div className='score'>
             <h2>Promedio de calificaciones:</h2>
             <div className='star'>
-              <Star score={averageScore} name={name} />
+              <Star score={NUM_STATUS} name={DES_FULLNAME} />
             </div>
           </div>
           <div className='text__information'>
-            <h2>Nombre:</h2>
-            <p className='name--nana'>{name}</p>
-            <h2>Jornada:</h2>
-            <dir className='text__information--time'>
-              <Tags name={time} />
-            </dir>
-            <h2>Cursos:</h2>
-            <ul>
-              {studies.map((study, index) => (
-                <li key={index}>
-                  <Tags name={study} />
-                </li>
-              ))}
-            </ul>
-            <h2>Especialidad:</h2>
-            <span>
-              <Tags name={specialty} />
-            </span>
-            <h2>Descripción:</h2>
-            <p className='text__information--p'>{description}</p>
+            <h2 className='text__information--name'>Nombre:</h2>
+            <p className='name--nana'>{DES_FULLNAME}</p>
+            <h2>Disponibilidad:</h2>
+            <div className='text__information--time'>
+              <Tags DES_DATA_SERVICE_TIME={DES_DATA_SERVICE_TIME} />
+            </div>
+            <h2>País:</h2>
+            <p className='text__information--paragraph'>{DES_COUNTRY}</p>
+            <h2>Estado:</h2>
+            <p className='text__information--paragraph'>{DES_STATE}</p>
             <h2>Ciudad</h2>
-            <span>
-              <Tags name={country} />
-            </span>
-            <h2>Estado</h2>
-            <span>
-              <Tags name={state} />
-            </span>
-            <h2>Capital</h2>
-            <span>
-              <Tags name={capital} />
-            </span>
+            <p className='text__information--paragraph'>{DES_CITY}</p>
           </div>
+          <p className='name__description'>{description}</p>
         </article>
-        <section className='nana__experience'>
-          <article className='years'>
-            <ul className='info'>
-              <h2>Experiencia</h2>
-              {experiences.map((experience, index) => (
+        <section className='nana__studies'>
+          <article className='title__studies'>
+            <ul className='info__studies'>
+              <h2 className='info__studies--h2'>Estudios</h2>
+              {DES_DATA_STUDIES.map((experience, index) => (
                 <span key={index}>
-                  <div className='info__country'>
-                    <li>{experience.year}</li>
-                    <li>{experience.country}</li>
+                  <div className='info__institution'>
+                    <h2>Título</h2>
+                    <li>{DES_DATA_STUDIES[index].TITULO}</li>
+                    <h2>Institución</h2>
+                    <li>{DES_DATA_STUDIES[index].INSTITUCIÓN}</li>
+                    <h2>Año</h2>
+                    <li>{DES_DATA_STUDIES[index].AÑO}</li>
                   </div>
-                  <li className='experienceI'>{experience.info}</li>
                 </span>
               ))}
             </ul>
           </article>
         </section>
-        <section className='skill'>
-          <h2>Habilidades y Aptitudes</h2>
-          <ul>
-            {skills.map((skill, index) => (
-              <li key={index}>
-                <Tags name={skill} />
-              </li>
+        <article className='nana__experience'>
+          <ul className='info__experience'>
+            <h2 className='info__experience--h2'>Experiencia</h2>
+            {DES_DATA_EXPERIECE.map((experience, index) => (
+              <span key={index}>
+                <div className='info__expe'>
+                  <h2>Inicio</h2>
+                  <li>{DES_DATA_EXPERIECE[index].INICIO}</li>
+                  <h2>Tareas</h2>
+                  <li>{DES_DATA_EXPERIECE[index].TAREAS}</li>
+                  <h2>Empresa</h2>
+                  <li>{DES_DATA_EXPERIECE[index].EMPRESA}</li>
+                </div>
+              </span>
             ))}
           </ul>
+        </article>
+        <section className='skill'>
+          <h2 className='skill--h2'>Habilidades</h2>
+          <ul>
+            <li>
+              <Tags DES_DATA_ABILITIES={DES_DATA_ABILITIES} />
+            </li>
+          </ul>
         </section>
-        <section className='review'>
-          <h2>Reseñas</h2>
-          <article className='review__article'>
-            <img
-              className='article--img'
-              src={require('../../assets/images/Nanas/maria-sandobal.png')}
-              alt={name}
-            />
-            <div className='score__review'>
-              <div className='score__name'>
-                <h2>{name}</h2>
-                <div>
-                  <Star score={averageScore} name={name} />
-                </div>
-              </div>
-              <p className='review--description'>{description}</p>
-            </div>
-          </article>
+        <section className='specialties'>
+          <h2 className='specialties--h2'>Especialidades</h2>
+          <ul>
+            <li>
+              <Tags DES_DATA_SPECIALTIES={DES_DATA_SPECIALTIES} />
+            </li>
+          </ul>
         </section>
       </section>
     </div>

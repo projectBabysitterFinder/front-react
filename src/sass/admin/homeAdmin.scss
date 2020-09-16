@@ -6,20 +6,20 @@
   @include media-min(sm) {
     height: calc(100vh - 175px);
   }
-  &__title{
+  &__title {
     text-align: center;
   }
 }
-.menuAdmin{
+.menuAdmin {
   @include flex;
   @include media-min(md) {
     padding: 0 20%;
   }
-  & a{
+  & a {
     width: 100%;
   }
   flex-direction: column;
-  &__button{
+  &__button {
     @include base_button;
     margin: 10px 0;
     padding: 10px 0;

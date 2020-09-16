@@ -2,6 +2,7 @@
 
 .filter {
   max-width: 1440px;
+  min-height: 85vh;
   margin: auto;
   background-color: $background-color;
   &__items {

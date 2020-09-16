@@ -5,11 +5,44 @@
       "name": "Maria Sandobal",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 1,
+      "forHours": [
+        {
+          "date": "31/8/2020",
+          "star": 8,
+          "end": 10
+        },
+        {
+          "date": "31/8/2020",
+          "star": 14,
+          "end": 16
+        }
+      ],
       "averageScore": 3,
       "time": "Tiempo Completo",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Mexico",
       "state": "Aguascalientes",
       "capital": "Aguascalientes",
@@ -20,11 +53,44 @@
       "name": "Sandra Mendez",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 4,
+      "forHours": [
+        {
+          "date": "1/9/2020",
+          "star": 8,
+          "end": 9
+        },
+        {
+          "date": "1/9/2020",
+          "star": 11,
+          "end": 13
+        }
+      ],
       "averageScore": 2,
       "time": "Medio Tiempo",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Mexico",
       "state": "Coahuila",
       "capital": "Saltillo",
@@ -35,11 +101,44 @@
       "name": "Viviana Pérez",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 3,
+      "forHours": [
+        {
+          "date": "1/9/2020",
+          "star": 11,
+          "end": 12
+        },
+        {
+          "date": "2/9/2020",
+          "star": 14,
+          "end": 16
+        }
+      ],
       "averageScore": 4,
       "time": "Por Horas",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Mexico",
       "state": "Coahuila",
       "capital": "Villahermosa",
@@ -50,11 +149,44 @@
       "name": "Yuliana Barbosa",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 2,
+      "forHours": [
+        {
+          "date": "3/9/2020",
+          "star": 10,
+          "end": 12
+        },
+        {
+          "date": "3/9/2020",
+          "star": 14,
+          "end": 17
+        }
+      ],
       "averageScore": 5,
       "time": "Nocturna",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Mexico",
       "state": "Yucatán",
       "capital": "Mérida",
@@ -65,11 +197,44 @@
       "name": "Erika Parra",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 5,
+      "forHours": [
+        {
+          "date": "4/9/2020",
+          "star": 8,
+          "end": 10
+        },
+        {
+          "date": "4/9/2020",
+          "star": 14,
+          "end": 16
+        }
+      ],
       "averageScore": 1,
       "time": "Tiempo Completo",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Mexico",
       "state": "Nayarit",
       "capital": "Tepic",
@@ -80,11 +245,44 @@
       "name": "Martha Carreño",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 1,
+      "forHours": [
+        {
+          "date": "5/9/2020",
+          "star": 7,
+          "end": 10
+        },
+        {
+          "date": "5/9/2020",
+          "star": 13,
+          "end": 15
+        }
+      ],
       "averageScore": 3,
       "time": "Medio Tiempo",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Colombia",
       "state": "Cundinamarca",
       "capital": "Bogota",
@@ -95,11 +293,44 @@
       "name": "Rosa Guerrero",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 3,
+      "forHours": [
+        {
+          "date": "6/9/2020",
+          "star": 8,
+          "end": 9
+        },
+        {
+          "date": "6/9/2020",
+          "star": 15,
+          "end": 16
+        }
+      ],
       "averageScore": 5,
       "time": "Por Horas",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Colombia",
       "state": "Antioquia",
       "capital": "Medellin",
@@ -110,11 +341,44 @@
       "name": "Paola Mendez",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 5,
+      "forHours": [
+        {
+          "date": "7/9/2020",
+          "star": 12,
+          "end": 14
+        },
+        {
+          "date": "7/9/2020",
+          "star": 16,
+          "end": 18
+        }
+      ],
       "averageScore": 4,
       "time": "Nocturna",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Colombia",
       "state": "Antioquia",
       "capital": "Medellin",
@@ -125,11 +389,44 @@
       "name": "Andrea Moreno",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 2,
+      "forHours": [
+        {
+          "date": "8/9/2020",
+          "star": 8,
+          "end": 11
+        },
+        {
+          "date": "8/9/2020",
+          "star": 13,
+          "end": 15
+        }
+      ],
       "averageScore": 3,
       "time": "Tiempo Completo",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Colombia",
       "state": "Caqueta",
       "capital": "Florencia",
@@ -140,15 +437,51 @@
       "name": "Juana Suarez",
       "description": "Nana con plena dedicación y experiencia en cuidado diario de niños, flexible y adptable, con conocimiento de psicología infantil. Muy responsable y fiable, con pensamiento crativo y facilidad para resolver problemas de manera independiente",
       "score": 3,
+      "forHours": [
+        {
+          "date": "9/9/2020",
+          "star": 8,
+          "end": 9
+        },
+        {
+          "date": "9/9/2020",
+          "star": 15,
+          "end": 16
+        }
+      ],
       "averageScore": 1,
       "time": "Medio tiempo",
-      "studies": ["Lenguaje infantil", "Educacion Infantil", "Atencion Infantil", "Psicología Infantil"],
-      "experiences": [{"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}, {"year": "2019 - 2020", "country": "Nana Independiente", "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"}],
-      "skills": ["Conocimiento de tecnicas de comportamiento", "Confiable y puntual", "Trabajo con ni;os de necesidades especiales", "Metodos de refuerzo positivo"],
+      "studies": [
+        "Lenguaje infantil",
+        "Educacion Infantil",
+        "Atencion Infantil",
+        "Psicología Infantil"
+      ],
+      "experiences": [
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        },
+        {
+          "year": "2019 - 2020",
+          "country": "Nana Independiente",
+          "info": "Respuesta a un amplio espectro de necesidades de cuidado de ni;os para padres trabajando o de viaje de negocios o particular"
+        }
+      ],
+      "skills": [
+        "Conocimiento de tecnicas de comportamiento",
+        "Confiable y puntual",
+        "Trabajo con ni;os de necesidades especiales",
+        "Metodos de refuerzo positivo"
+      ],
       "country": "Colombia",
       "state": "Caqueta",
       "capital": "Valledupar",
       "specialty": "Eduación Infantil"
+    },
+    {
+      "id": 11
     }
   ]
 }
