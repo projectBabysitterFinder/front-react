@@ -7,7 +7,7 @@ import '../../sass/modalService.scss';
 const ModalService = (props) => {
   const { openService2 } = props;
 
-  const { modalCloseService, onlyService, confirm } = useServer();
+  const { modalCloseService, onlyService, confirm, date, users } = useServer();
 
   if (openService2 === false) {
     return null;
@@ -21,6 +21,8 @@ const ModalService = (props) => {
     }
   };
 
+  const user = users.filter((nana) => nana.ID === parseInt(onlyService[0].ID_USER_CLIENT));
+
   return (
     <main className='serviceC'>
       <div className='serviceC-card'>
@@ -32,9 +34,9 @@ const ModalService = (props) => {
         <h1>Verifica tus Datos</h1>
         <section className='serviceC-card--serviceC'>
           <h2>Nombre:</h2>
-          <p>Esto hay que cambiarlo</p>
+          <p>{user[0].DES_FULLNAME}</p>
           <h2>Fecha:</h2>
-          <p>Esto hay que cambiarlo</p>
+          <p>{date.toLocaleDateString()}</p>
           <h2>Jornada:</h2>
           <p>{schedule()}</p>
           <h2>E-mail</h2>
@@ -43,6 +45,15 @@ const ModalService = (props) => {
           <p>{onlyService[0].DES_PHONE}</p>
           <h2>Dirección</h2>
           <p>{onlyService[0].DES_ADDRESS}</p>
+          <h2>Niños</h2>
+          <div className='boy_service'>
+            {onlyService[0].DES_DATA_BOYS.map((boy, index) => (
+              <span className='boy_service--all' key={index}>
+                <p>{boy.GENERO}</p>
+                <p>{boy.EDAD}</p>
+              </span>
+            ))}
+          </div>
           <h2>Recomendaciones</h2>
           <p>{onlyService[0].DES_RECOMMENDATIONS}</p>
           <h2 className='serviceC-card--value'>Valor cancelado</h2>

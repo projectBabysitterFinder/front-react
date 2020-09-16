@@ -19,6 +19,9 @@ const Forms = () => {
     coordinate,
     longitude,
     users,
+    postData,
+    Idd,
+    latitude
   } = useServer();
 
   if (longitude === 0) {
@@ -44,7 +47,7 @@ const Forms = () => {
     data.push(address);
     data.push(recommendations);
     setForm(data);
-    // postData(email, phone, address, recommendations, Idd, longitude, latitude);
+    postData(email, phone, address, recommendations, Idd, longitude, latitude);
 
     if (recommendations === '' || child.length === 0) {
       alert('Por favor ingrese los niños y/o la recomendación');

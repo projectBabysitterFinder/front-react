@@ -1,14 +1,10 @@
 import React from 'react';
-// import NanaDataService from '../../components/NanaDataService';
 import Star from '../../components/Star';
 import { Link } from 'react-router-dom';
 import MapView from '../../components/MapView';
 import ModalService from '../../components/ModalService';
 import { useServer } from '../../components/Contex/Server';
 import '../../sass/nanaService.scss';
-
-// var reviewID = 0;
-// var cont = 0;
 
 const NanaService = () => {
   var {
@@ -19,22 +15,6 @@ const NanaService = () => {
     openService,
     openService2,
   } = useServer();
-
-  // const check = (e) => {
-  //   reviewID=0;
-  //   cont=0;
-  //   for(let i=0; i<reviews.length; i++) {
-  //     if(reviews[i].ID_USER_BABYSITTER===e) {
-  //       reviewID = reviewID + reviews[i].NUM_STARS;
-  //       cont=cont+1;
-  //     }
-  //   }
-  //   if (reviewID>0){
-  //     return (reviewID/cont);
-  //   } else {
-  //     return (0);
-  //   }
-  // }
 
   const toOpen = (e) => {
     var openContratar = document.getElementById(e).value;

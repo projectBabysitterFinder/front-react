@@ -22,6 +22,23 @@
       border-radius: 50% 50%;
       -moz-border-radius: 50% 50%;
       -webkit-border-radius: 50% 50%;
+      -webkit-transition-duration: 0.8s;
+      -moz-transition-duration: 0.8s;
+      -o-transition-duration: 0.8s;
+      transition-duration: 0.8s;
+  
+      -webkit-transition-property: -webkit-transform;
+      -moz-transition-property: -moz-transform;
+      -o-transition-property: -o-transform;
+      transition-property: transform;
+  
+      overflow:hidden;
+    }
+    img:hover {
+      transform: scale(1.2, 1.2) rotate(20deg);
+      -ms-transform: scale(1.2, 1.2) rotate(20deg);
+      -webkit-transform:scale(1.2, 1.2) rotate(20deg);
+      -o-transform: scale(1.2, 1.2) rotate(20deg);
     }
     .button {
       text-align: center;
@@ -70,6 +87,12 @@
       border-radius: 10px 10px 10px 10px;
       -moz-border-radius: 10px 10px 10px 10px;
       -webkit-border-radius: 10px 10px 10px 10px;
+      transition: width 2s, height 2s, margin 2s;
+      &:hover {
+        -webkit-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+        -moz-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+        box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+      }
       .score {
         display: flex;
         justify-content: space-between;
@@ -194,6 +217,12 @@
         border-radius: 10px 10px 10px 10px;
         -moz-border-radius: 10px 10px 10px 10px;
         -webkit-border-radius: 10px 10px 10px 10px;
+        transition: width 2s, height 2s, margin 2s;
+        &:hover {
+          -webkit-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+          -moz-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+          box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+        }
         span {
           .info__institution {
             display: flex;
@@ -227,6 +256,12 @@
       border-radius: 10px 10px 10px 10px;
       -moz-border-radius: 10px 10px 10px 10px;
       -webkit-border-radius: 10px 10px 10px 10px;
+      transition: width 2s, height 2s, margin 2s;
+      &:hover {
+        -webkit-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+        -moz-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+        box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+      }
       span {
         .info__expe {
           display: flex;
@@ -255,6 +290,12 @@
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
+    transition: width 2s, height 2s, margin 2s;
+    &:hover {
+      -webkit-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+      -moz-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+      box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+    }
     &--h2 {
       font-size: x-large;
     }
@@ -287,6 +328,12 @@
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
+    transition: width 2s, height 2s, margin 2s;
+    &:hover {
+      -webkit-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+      -moz-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+      box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+    }
     &--h2 {
       font-size: x-large;
     }
@@ -319,6 +366,12 @@
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
+    transition: width 2s, height 2s, margin 2s;
+    &:hover {
+      -webkit-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+      -moz-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+      box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+    }
     h2 {
       font-family: Amaranth-Bold;
       font-size: medium;
@@ -334,6 +387,12 @@
         border-radius: 50% 50%;
         -moz-border-radius: 50% 50%;
         -webkit-border-radius: 50% 50%;
+        transition: width 2s, height 2s, margin 2s;
+        &:hover {
+          -webkit-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+          -moz-box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+          box-shadow: 0px 0px 29px -2px rgb(20, 20, 20);
+        }
       }
     }
     .review__article {
