@@ -19,7 +19,10 @@ const ModalAddInfo = (props) => {
             <div className='add-close--container'> X </div>
           </button>
         </div>
-        <h1>Ingresa tu Información</h1>
+        <h1>
+          Por favor ingresa el genero y la edad de cada niño y una recomendación
+          para nana
+        </h1>
         <section className='form'>
           <Forms />
         </section>

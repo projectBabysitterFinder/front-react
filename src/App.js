@@ -1,10 +1,13 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 import NanaProfile from '../src/pages/NanaProfile';
 import Filter from '../src/pages/Filter';
 import { ServerProvider } from '../src/components/Contex/Server';
 import Home from './pages/Home';
 import Layout from './components/Layout';
+import NanaProfileAdmin from './pages/NanaProfileAdmin';
+import editNana from './pages/editNana';
+import NanaService from './pages/NanaService';
+import { Switch, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/Login/PrivateRoute';
 import HomeAdmin from './pages/HomeAdmin';
@@ -12,10 +15,12 @@ import ListUsers from './pages/ListUsers';
 import NewUser from './pages/NewUser';
 import EditUser from './pages/EditUser';
 import Loading from './components/Loading';
-import PerfilNana from './pages/PerfilNana';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ToastContainer } from 'react-toastify';
+// import PerfilNana from './pages/PerfilNana';
+// import PrivateRoute from './components/Login/PrivateRoute';
+
 
 function App() {
   let arrayUseAuth = [];
@@ -76,6 +81,7 @@ function App() {
   if (isLoading) {
     return <Loading />;
   }
+
   // routes depending on the user's profile
   if (roleAuth === 'admin') {
     return (
@@ -110,13 +116,22 @@ function App() {
   } else if (roleAuth === 'nana') {
     return (
       <div className='App'>
-        <ToastContainer />
-        <Layout>
-          <Switch>
-            <Route exact path='/' component={PerfilNana} />
-            <Route component={NotFound} />
-          </Switch>
-        </Layout>
+        <ServerProvider>
+          <ToastContainer />
+          <Layout>
+            <Switch>
+              <Route exact path='/' component={NanaProfileAdmin} />
+              <Route
+                exact
+                path='/nana/perfil/:id'
+                component={NanaProfileAdmin}
+              />
+              <Route exact path='/editar' component={editNana} />
+              <Route exact path='/servicios' component={NanaService} />
+              <Route component={NotFound} />
+            </Switch>
+          </Layout>
+        </ServerProvider>
       </div>
     );
   } else if (objectUseAuth === false) {

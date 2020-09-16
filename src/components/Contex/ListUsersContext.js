@@ -22,7 +22,7 @@ const UsersProvider = (props) => {
       userSelect(users.data.body); */
       try {
         const users = await axios.get(url);
-        console.log('respuesta :', users.data);
+        // console.log('respuesta :', users.data);
         userSelect(users.data);
       } catch (error) {
         userSelect(error.response);

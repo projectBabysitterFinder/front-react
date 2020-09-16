@@ -32,7 +32,7 @@ $nav-padding: 0.875em 1em;
   &__li {
     &:not(:last-child) {
       border-bottom: solid 1px $secondary-color;
-      & button{
+      & button {
         width: 100%;
         padding: 0.875em 1em;
         color: #06a77d;
