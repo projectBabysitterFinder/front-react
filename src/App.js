@@ -21,7 +21,6 @@ import { ToastContainer } from 'react-toastify';
 // import PerfilNana from './pages/PerfilNana';
 // import PrivateRoute from './components/Login/PrivateRoute';
 
-
 function App() {
   let arrayUseAuth = [];
   let dataUserAuth = [];
