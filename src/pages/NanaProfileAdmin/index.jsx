@@ -29,7 +29,7 @@ const NanaProfileAdmin = () => {
 
   return (
     <div className='nanaDataProfile'>
-      {nanas.length !== 0 &&
+      {nanas.length !== 0 && localStorage.getItem('id') !== null && localStorage.getItem('id') !== '' && localStorage.getItem('id') !== undefined && 
         nanas
           .filter((nana) => nana.ID === idClient)
           .map((nana, index) => (
