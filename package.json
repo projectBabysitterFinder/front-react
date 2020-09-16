@@ -11,6 +11,7 @@
     "formik": "^2.1.5",
     "leaflet": "^1.7.1",
     "light-toast": "^0.3.0",
+    "axios": "^0.20.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-calendar": "^3.1.0",
@@ -19,10 +20,14 @@
     "react-leaflet": "^2.7.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-toastify": "^6.0.8",
+    "serve": "^11.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "deploy": "vercel",
+    "start": "serve -s build",
+    "start-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint src/ --fix",

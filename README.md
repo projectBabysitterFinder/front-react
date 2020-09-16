@@ -9,19 +9,24 @@ Run json-server local:
 #
 Runs the app in the development mode.<br />
 Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
+
+Requires the following parameters in the .env file:
+
+PORT = 3001
+## Auth0
+- REACT_APP_AUTH0_DOMAIN
+- REACT_APP_AUTH0_CLIENT_ID
+## Firebase
+- REACT_APP_FIREBASE_API_KEY
 #
 ## Tecnologies
-#
+
 ## Front
-- [React](https://reactjs.org/)
+- [React](https://reactjs.org/) JavaScript library for building user interfaces.
+- [React Router](https://reactrouter.com/) A tool that allows you to handle routes in a web app.
+- [Sass](https://sass-lang.com/) CSS preprocessor
 
-  JavaScript library for building user interfaces.
-- [React Router](https://reactrouter.com/)
-
-  A tool that allows you to handle routes in a web app.
-- [Sass](https://sass-lang.com/)
-
-  CSS preprocessor
+- [Firebase](https://firebase.google.com/?hl=es) Image storage
 ## Clean code
 Find and correct errors in the code and have a standard in your work team.
 - [Eslint](https://eslint.org/)
@@ -30,6 +35,27 @@ Find and correct errors in the code and have a standard in your work team.
 - [Husky](https://github.com/typicode/husky#readme)
 
 ## Secure authentication
-- [Auth0](https://auth0.com/)
+- [Auth0](https://auth0.com/) Is a platform to add authentication and authorization servicesTecnologies.
+#
+## Description of the application
 
-  Auth0 is a platform to add authentication and authorization servicesTecnologies.
+The functionality of the application consists of requesting the babysitter service at home through the web application.
+#
+### Client
+- Babysitter filter by country, state and time
+- Reservation of the selected babysitter
+- Client profile
+
+### Babysitter
+- List of services to attend
+- Location of services
+- Babysitter profile
+
+### Admin
+
+- Add and edit customer information
+- Add and edit babysitters information
+
+## Deploy
+
+- Vercel

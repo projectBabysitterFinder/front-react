@@ -7,8 +7,10 @@
   align-items: center;
   justify-content: space-between;
   background-color: $white-color;
-  &__logo {
+  &__a {
     margin-left: 5%;
+  }
+  &__logo {
     max-width: 160px;
   }
   &--hamburger {

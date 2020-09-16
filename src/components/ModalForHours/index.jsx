@@ -1,42 +1,24 @@
 import React from 'react';
 import { useServer } from '../Contex/Server';
+import Picker from '../Picker';
 import '../../sass/modalForHours.scss';
-
-var nanaHours = [];
-var today = new Date();
 
 const ModalForHours = (props) => {
   const { openHours } = props;
 
-  const { modalCloseHours, buttonDay, Idd, valueDate, hours } = useServer();
-
-  // if(Idd.length !== 0) {
-  //   nanaHours = [Idd[0].forHours];
-  // } 
+  const { modalCloseHours, buttonDay, cantHours } = useServer();
 
   if (openHours === false) {
     return null;
   }
 
   const checkHours = () => {
-    if (hours.length === 0) {
-      alert('Por favor selecciona la fecha');
-    } else {
-      buttonDay();
-    }
+    buttonDay();
   };
 
-  const calculateTime = (e) => {
-    if(parseInt(e) < 13 ) {
-      if(parseInt(e) === 12) {
-        return (e + ' pm')
-      } else {
-        return (e + ' am');
-      }
-    } else {
-      return ((parseInt(e)-12) + ' pm');
-    }
-  }
+  const handleChange = (e) => {
+    cantHours(e.target.value);
+  };
 
   return (
     <main className='modalHours'>
@@ -46,27 +28,22 @@ const ModalForHours = (props) => {
             <div className='hours-close--hours'> X </div>
           </button>
         </div>
-        <h1>Selecciona el dia y la hora</h1>
-        
-        <div className='date__nanaTwo'>
-          {nanaHours[0].map((id, index) => (
-            <React.Fragment key={index}>
-              <section className='date__nana'>
-                {Date.parse(id.date) < today.getTime() ? 
-                <div className='nana__time'>
-                  <div className='nana__date'>
-                    <p>{id.date}</p>
-                    <button id={index+1} value={Object.values(id)} onClick={()=>valueDate(index+1)}>Seleccionar</button>
-                  </div>
-                  <div className='nana__star'>
-                    <p>{calculateTime(id.star)}</p> 
-                    <p>{calculateTime(id.end)}</p> 
-                  </div> 
-                </div> : '' }
-              </section>
-            </React.Fragment>
-          ))}
-        </div>
+        <h1 className='card__h1'>Selecciona el dia y la cantidad de horas</h1>
+        <section className='picker'>
+          <Picker />
+        </section>
+        <section className='formH'>
+          <form className='formH__cant'>
+            <label className='formH__cant--label'>
+              Seleccione la cantidad de horas
+              <select id={1} onChange={handleChange}>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+              </select>
+            </label>
+          </form>
+        </section>
         <div className='modalHours-card__bnt'>
           <button onClick={checkHours} className='modalHours--btnHours'>
             Continuar

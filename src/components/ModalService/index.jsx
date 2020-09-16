@@ -1,30 +1,25 @@
 import React from 'react';
 import { useServer } from '../Contex/Server';
 import { Link } from 'react-router-dom';
-import MapViewModal from '../MapViewModal'
+import MapViewModal from '../MapViewModal';
 import '../../sass/modalService.scss';
 
 const ModalService = (props) => {
-
   const { openService2 } = props;
 
-  const {
-    modalCloseService,
-    onlyService,
-    confirm
-  } = useServer();
+  const { modalCloseService, onlyService, confirm } = useServer();
 
   if (openService2 === false) {
     return null;
   }
 
   const schedule = () => {
-    for(let i=0; i<onlyService[0].DES_DATA_HOURS.length; i++) {
-      if(onlyService[0].DES_DATA_HOURS[i].DISPONIBILIDAD) {
-        return (onlyService[0].DES_DATA_HOURS[i].MODALIDAD)
+    for (let i = 0; i < onlyService[0].DES_DATA_HOURS.length; i++) {
+      if (onlyService[0].DES_DATA_HOURS[i].DISPONIBILIDAD) {
+        return onlyService[0].DES_DATA_HOURS[i].MODALIDAD;
       }
     }
-  }
+  };
 
   return (
     <main className='serviceC'>
@@ -56,7 +51,10 @@ const ModalService = (props) => {
         <section className='mapModal'>
           <h3>Lugar para prestar el servicio</h3>
           <div className='mapModal__nana'>
-            <MapViewModal DES_ADDRESS_LAT={onlyService[0].DES_ADDRESS_LAT} DES_ADDRESS_LONG={onlyService[0].DES_ADDRESS_LONG}/>
+            <MapViewModal
+              DES_ADDRESS_LAT={onlyService[0].DES_ADDRESS_LAT}
+              DES_ADDRESS_LONG={onlyService[0].DES_ADDRESS_LONG}
+            />
           </div>
         </section>
         <div className='button__serviceC'>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { withFormik, Field, ErrorMessage, Form } from 'formik';
-import Flag from '../Flag';
 import Child from '../Child';
 import Age from '../Age';
 import { useServer } from '../Contex/Server';
@@ -17,26 +16,22 @@ const Forms = () => {
     setForm,
     buttonCheck,
     child,
-    agee,
-    flagV,
-    postData,
-    Idd,
     coordinate,
     longitude,
-    latitude,
-    client
+    users,
   } = useServer();
-  
+
   if (longitude === 0) {
     coordinate();
   }
 
+  const idClient = localStorage.getItem('id');
+
   if (clientOnly.length === 0) {
-    clientOnly = client.filter((client) => client.ID === parseInt(1))
+    clientOnly = users.filter((user) => user.ID === parseInt(idClient));
   }
 
   const valueAll = () => {
-    
     data = [];
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
@@ -49,44 +44,34 @@ const Forms = () => {
     data.push(address);
     data.push(recommendations);
     setForm(data);
-    postData(email, phone, address, recommendations, Idd, longitude, latitude);
+    // postData(email, phone, address, recommendations, Idd, longitude, latitude);
 
-    if (
-      name === '' ||
-      email === '' ||
-      phone === '' ||
-      address === '' ||
-      recommendations === '' ||
-      child.length === 0 ||
-      agee.length === 0 ||
-      flagV === ''
-    ) {
-      alert('Por favor ingrese completos los valores');
+    if (recommendations === '' || child.length === 0) {
+      alert('Por favor ingrese los niños y/o la recomendación');
     } else {
       buttonCheck();
     }
   };
 
   return (
-    <Form>
+    <Form className='formP'>
       <div className='row'>
-        <div>
-          <p>Nombre</p>
-          <Field
-            name='name'
-            id='name'
-            type='text'
-            placeholder='Nombre y Apellido'
-            className='input'
-            value={clientOnly[0].DES_FULLNAME}
-          />
-          <ErrorMessage name='name'>
-            {(message) => <div className='error'>{message}</div>}
-          </ErrorMessage>
-        </div>
+        <p>Nombre:</p>
+        <Field
+          name='name'
+          id='name'
+          type='text'
+          placeholder='Nombre y Apellido'
+          className='input'
+          value={clientOnly[0].DES_FULLNAME}
+        />
+        <ErrorMessage name='name'>
+          {(message) => <div className='error'>{message}</div>}
+        </ErrorMessage>
       </div>
 
       <div className='row'>
+        <p>Correo:</p>
         <Field
           name='email'
           id='email'
@@ -100,21 +85,19 @@ const Forms = () => {
         </ErrorMessage>
       </div>
 
-      <div className='phone'>
-        {/* <Flag /> */}
-        <div className='row--phone'>
-          <Field
-            name='phone'
-            id='phone'
-            type='tel'
-            placeholder='Teléfono Móvil'
-            className='input--phone'
-            value={clientOnly[0].NUM_PHONE}
-          />
-          <ErrorMessage name='phone'>
-            {(message) => <div className='error'>{message}</div>}
-          </ErrorMessage>
-        </div>
+      <div className='row'>
+        <p>Teléfono:</p>
+        <Field
+          name='phone'
+          id='phone'
+          type='tel'
+          placeholder='Teléfono Móvil'
+          className='input'
+          value={clientOnly[0].NUM_PHONE}
+        />
+        <ErrorMessage name='phone'>
+          {(message) => <div className='error'>{message}</div>}
+        </ErrorMessage>
       </div>
 
       {addChild.map((childAdd, index) => (
@@ -124,11 +107,7 @@ const Forms = () => {
         </div>
       ))}
       <div className='button__child'>
-        <button
-          type='submit'
-          onClick={addChildren}
-          className='child__add--one'
-        >
+        <button type='submit' onClick={addChildren} className='child__add--one'>
           Agregar
         </button>
         <button
@@ -140,6 +119,7 @@ const Forms = () => {
         </button>
       </div>
       <div className='row'>
+        <p>Dirección:</p>
         <Field
           name='address'
           id='address'
@@ -153,11 +133,12 @@ const Forms = () => {
         </ErrorMessage>
       </div>
       <div className='row'>
+        <p>Recomendación:</p>
         <Field
           name='recommendations'
           id='recommendations'
           type='text'
-          placeholder='Recomendaciones'
+          placeholder='Recomendación'
           className='input'
         />
         <ErrorMessage name='recommendations'>
@@ -165,7 +146,7 @@ const Forms = () => {
         </ErrorMessage>
       </div>
 
-      <div className='row button--form'>
+      <div className='button--form'>
         <button type='submit' onClick={valueAll}>
           Continuar
         </button>
@@ -190,23 +171,7 @@ export default withFormik({
     if (Object.keys(errors).length) {
       throw errors;
     }
-    if (!values.name) {
-      errors.name = 'El nombre es requerido';
-    } else if (values.name.length < 2) {
-      errors.name = 'El nombre es demasiado corto';
-    } else if (!values.email) {
-      errors.email = 'El correo es requerido';
-    } else if (!values.phone) {
-      errors.phone = 'El teléfono es requerido';
-    } else if (isNaN(values.phone)) {
-      errors.phone = 'El teléfono debe ser numérico';
-    } else if (values.phone.length < 7) {
-      errors.phone = 'El teléfono debe contener más dígitos';
-    } else if (!values.address) {
-      errors.address = 'La dirección es requerida';
-    } else if (values.address.length < 6) {
-      errors.address = 'La dirección debe contener más información';
-    } else if (!values.recommendations) {
+    if (!values.recommendations) {
       errors.recommendations = 'Deja una recomendación a la nana';
     } else if (values.recommendations.length < 10) {
       errors.recommendations =

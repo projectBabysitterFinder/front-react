@@ -11,8 +11,7 @@ const State = () => {
       <form className='state__form'>
         <select className='id' id='capital' onChange={valueCapital}>
           <option value='DEFAULT'>Seleccione</option>
-          {nanas !== 0
-            &&
+          {nanas !== 0 &&
             validatorCapital().map((country, index) => (
               <React.Fragment key={index}>
                 <option value={country}>{country}</option>

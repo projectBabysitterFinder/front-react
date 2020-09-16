@@ -25,8 +25,8 @@
       border-radius: 50% 50%;
       -moz-border-radius: 50% 50%;
       -webkit-border-radius: 50% 50%;
-    } 
-    .button__service {  
+    }
+    .button__service {
       text-align: center;
       margin-top: 20%;
       @include media('m') {
@@ -135,7 +135,7 @@
           }
           .service__button {
             margin-top: auto;
-            button { 
+            button {
               @extend %buttonNext;
             }
             button:focus {
@@ -147,7 +147,7 @@
           }
         }
       }
-    } 
+    }
     .map {
       h3 {
         margin-top: 3%;
@@ -168,7 +168,7 @@
         }
       }
     }
-    .review__user{
+    .review__user {
       .service__user {
         display: block;
         h3 {
@@ -239,7 +239,7 @@
               }
               .user__button {
                 margin-top: auto;
-                button { 
+                button {
                   @extend %buttonNext;
                 }
               }

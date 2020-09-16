@@ -16,30 +16,30 @@ var arrColombiaCity = [];
 var arrMexicoCity = [];
 
 var dataBoys = {
-  'GENERO': '',
-  'EDAD': 0
+  GENERO: '',
+  EDAD: 0,
 };
 
 var dataHours = {
-  'MODALIDAD': '',
-  'DISPONIBILIDAD': false
-}
+  MODALIDAD: '',
+  DISPONIBILIDAD: false,
+};
 
 var data2 = {
-  'ID': '',
-  'ID_USER_CLIENT': 0,
-  'ID_USER_BABYSITTER': 0,
-  'DES_EMAIL': '',
-  'DES_PHONE': '',
-  'DES_ADDRESS': '',
-  'DES_ADDRESS_LATLONG': '',
-  'DES_RECOMMENDATIONS': '',
-  'DES_DATA_BOYS': [],
-  'DES_DATA_HOURS': [],
-  'NUM_TOTAL_COST': 0,
-  'NUM_STATUS': 0,
-  'DES_ADDRESS_LONG': 0,
-  'DES_ADDRESS_LAT': 0
+  ID: '',
+  ID_USER_CLIENT: 0,
+  ID_USER_BABYSITTER: 0,
+  DES_EMAIL: '',
+  DES_PHONE: '',
+  DES_ADDRESS: '',
+  DES_ADDRESS_LATLONG: '',
+  DES_RECOMMENDATIONS: '',
+  DES_DATA_BOYS: [],
+  DES_DATA_HOURS: [],
+  NUM_TOTAL_COST: 0,
+  NUM_STATUS: 0,
+  DES_ADDRESS_LONG: 0,
+  DES_ADDRESS_LAT: 0,
 };
 
 const Server = React.createContext();
@@ -81,84 +81,86 @@ export function ServerProvider(props) {
   const [stateColombiaCity, setStateColombiaCity] = useState([]);
   const [stateMexico, setStateMexico] = useState([]);
   const [stateMexicoCity, setStateMexicoCity] = useState([]);
-  const [ longitude, setLongitude ] = useState(0)
-  const [ latitude, setLatitude ] = useState(0)
+  const [longitude, setLongitude] = useState(0);
+  const [latitude, setLatitude] = useState(0);
   const [url, setUrl] = useState('');
+  const [valueHours, setValueHorus] = useState(0);
 
   // const prueba = localStorage.getItem('role')
   // console.log(prueba, 'prueba')
 
   const coordinate = useCallback(() => {
-
     navigator.geolocation.getCurrentPosition(
-      function (position){
-          setLongitude(position.coords.longitude)
-          setLatitude(position.coords.latitude)
+      function (position) {
+        setLongitude(position.coords.longitude);
+        setLatitude(position.coords.latitude);
       },
-      function (error){
-        if(error) {
-          
+      function (error) {
+        if (error) {
         }
       },
       {
-        enableHighAccuracy: true
+        enableHighAccuracy: true,
       }
     );
-  },[])
+  }, []);
 
   const removeAccents = useCallback((str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  },[]) 
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }, []);
 
   const validate = useCallback((e) => {
     stateValue = [];
     e.sort();
-    for (let i=0; i < e.length; i++) {
-      if(i===0) {
+    for (let i = 0; i < e.length; i++) {
+      if (i === 0) {
         stateValue.push(e[i]);
-      } else if (e[i-1] !== e[i]) {
+      } else if (e[i - 1] !== e[i]) {
         stateValue.push(e[i]);
       }
     }
-    return(stateValue)
-  },[])
+    return stateValue;
+  }, []);
 
   const countryOnly = useCallback((e) => {
     countryValue = [];
     arrCountry = [];
-    for (let i=0; i < e.length; i++) {
+    for (let i = 0; i < e.length; i++) {
       arrCountry.push(e[i].DES_COUNTRY);
     }
     arrCountry.sort();
-    for (let i=0; i < arrCountry.length; i++) {
-      if(i===0) {
+    for (let i = 0; i < arrCountry.length; i++) {
+      if (i === 0) {
         countryValue.push(arrCountry[i]);
-      } else if (arrCountry[i-1] !== arrCountry[i]) {
+      } else if (arrCountry[i - 1] !== arrCountry[i]) {
         countryValue.push(arrCountry[i]);
       }
     }
-    setCountryAll(countryValue)
-  },[])
+    setCountryAll(countryValue);
+  }, []);
 
-  const stateOnly = useCallback((e) => {
-    arrColombia = [];
-    arrMexico = [];
-    arrColombiaCity = [];
-    arrMexicoCity = [];
-    for (let i=0; i < e.length; i++) {
-      if(e[i].DES_COUNTRY === 'Colombia') {
-        arrColombia.push(e[i].DES_STATE);
-        arrColombiaCity.push(e[i].DES_CITY)
-      } else {
-        arrMexico.push(e[i].DES_STATE);
-        arrMexicoCity.push(e[i].DES_CITY)
+  const stateOnly = useCallback(
+    (e) => {
+      arrColombia = [];
+      arrMexico = [];
+      arrColombiaCity = [];
+      arrMexicoCity = [];
+      for (let i = 0; i < e.length; i++) {
+        if (e[i].DES_COUNTRY === 'Colombia') {
+          arrColombia.push(e[i].DES_STATE);
+          arrColombiaCity.push(e[i].DES_CITY);
+        } else {
+          arrMexico.push(e[i].DES_STATE);
+          arrMexicoCity.push(e[i].DES_CITY);
+        }
       }
-    }
-    setStateColombia(validate(arrColombia));
-    setStateMexico(validate(arrMexico));
-    setStateColombiaCity(validate(arrColombiaCity));
-    setStateMexicoCity(validate(arrMexicoCity));
-  },[validate])
+      setStateColombia(validate(arrColombia));
+      setStateMexico(validate(arrMexico));
+      setStateColombiaCity(validate(arrColombiaCity));
+      setStateMexicoCity(validate(arrMexicoCity));
+    },
+    [validate]
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -181,7 +183,15 @@ export function ServerProvider(props) {
       stateOnly(info2.body);
     };
     fetchData();
-  }, [setUsers, setNanas, setServices, setReviews, setClient, countryOnly, stateOnly]);
+  }, [
+    setUsers,
+    setNanas,
+    setServices,
+    setReviews,
+    setClient,
+    countryOnly,
+    stateOnly,
+  ]);
 
   const order = (x) => {
     for (var i = x.length - 1; i >= 0; i--) {
@@ -231,15 +241,23 @@ export function ServerProvider(props) {
     (e) => {
       const valueOnly = nanas.filter((only) => only.ID === parseInt(e));
       // if(valueOnly[0].DES_NAME === 2) {
-        if (removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'TIEMPO COMPLETO') {
-          setOpen(true);
-        } else if (removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'MEDIO TIEMPO') {
-          setOpenHalfTime(true);
-        } else if (removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'POR HORAS') {
-          setOpenHours(true);
-        } else if (removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'NOCTURNA') {
-          setOpenNight(true);
-        } 
+      if (
+        removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'TIEMPO COMPLETO'
+      ) {
+        setOpen(true);
+      } else if (
+        removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'MEDIO TIEMPO'
+      ) {
+        setOpenHalfTime(true);
+      } else if (
+        removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'POR HORAS'
+      ) {
+        setOpenHours(true);
+      } else if (
+        removeAccents(valueOnly[0].DES_NAME).toUpperCase() === 'NOCTURNA'
+      ) {
+        setOpenNight(true);
+      }
       // }
       // else {
       //   setOpen(true)
@@ -251,19 +269,23 @@ export function ServerProvider(props) {
   const pageEdit = useCallback(
     (e) => {
       const onlyEdit = nanas.filter((only) => only.ID === parseInt(e));
-      setEdit(onlyEdit)
+      setEdit(onlyEdit);
     },
     [nanas]
   );
 
   const pageService = useCallback(
     (e) => {
-      const onlyService = services.filter((service) => service.ID_USER_BABYSITTER === parseInt(e));
+      const onlyService = services.filter(
+        (service) => service.ID_USER_BABYSITTER === parseInt(e)
+      );
       const onlyUser = users.filter((service) => service.ID === parseInt(e));
-      setService(onlyService)
-      setOnlyUser(onlyUser)
-      const onlyReview = reviews.filter((review) => review.ID_USER_BABYSITTER === 7);
-      setReview(onlyReview)
+      setService(onlyService);
+      setOnlyUser(onlyUser);
+      const onlyReview = reviews.filter(
+        (review) => review.ID_USER_BABYSITTER === 7
+      );
+      setReview(onlyReview);
     },
     [services, reviews, users]
   );
@@ -348,14 +370,19 @@ export function ServerProvider(props) {
     setOpenCheck(true);
   }, []);
 
-  const openService = useCallback((e) => {
-    const onlyService = services.filter((service) => service.ID === parseInt(e));
-    setOnlyService(onlyService)
-    setOpenService2(true);
-  }, [services]);
+  const openService = useCallback(
+    (e) => {
+      const onlyService = services.filter(
+        (service) => service.ID === parseInt(e)
+      );
+      setOnlyService(onlyService);
+      setOpenService2(true);
+    },
+    [services]
+  );
 
   const modalCloseService = useCallback(() => {
-    setOnlyService([])
+    setOnlyService([]);
     setOpenService2(false);
   }, []);
 
@@ -439,119 +466,136 @@ export function ServerProvider(props) {
 
   const valueDate = useCallback((e) => {
     var valueDataDate = document.getElementById(e).value;
-    var arrayDeCadenas = valueDataDate.split(',') 
+    var arrayDeCadenas = valueDataDate.split(',');
     setHours(arrayDeCadenas);
-  },[]);
-  
+  }, []);
+
   const confirm = useCallback(() => {
     setOpenService2(false);
-  },[]);
+  }, []);
 
   const finalTotalValue = useCallback(() => {
-    if(day === '' && hours.length === 0) {
-      if(parseInt(child.length) === 1) {
-        if(flagV === 'Colombia') {
+    if (day === '' && hours.length === 0) {
+      if (parseInt(child.length) === 1) {
+        if (flagV === 'Colombia') {
           return Math.round(valueCop);
         } else {
           return Math.round(valueMx);
         }
       } else {
-        if(flagV === 'Colombia') {
-          return Math.round((valueCop + ((parseInt(child.length)-1) * ((valueCop/3)*2))));
+        if (flagV === 'Colombia') {
+          return Math.round(
+            valueCop + (parseInt(child.length) - 1) * ((valueCop / 3) * 2)
+          );
         } else {
-          return Math.round((valueMx + ((parseInt(child.length)-1) * ((valueMx/3)*2))));
+          return Math.round(
+            valueMx + (parseInt(child.length) - 1) * ((valueMx / 3) * 2)
+          );
         }
       }
     }
-    if(hours.length !== 0) {
-      if(child.length === 1) {
-        if(flagV === 'Colombia') {
+    if (hours.length !== 0) {
+      if (child.length === 1) {
+        if (flagV === 'Colombia') {
           hourValue = parseInt(hours[2]) - parseInt(hours[1]);
-          return Math.round((hourValue * (valueCop/5)));
+          return Math.round(hourValue * (valueCop / 5));
         } else {
           hourValue = parseInt(hours[2]) - parseInt(hours[1]);
-          return Math.round((hourValue * (valueMx/5)));
+          return Math.round(hourValue * (valueMx / 5));
         }
       }
-      if(child.length > 1) {
-        if(flagV === 'Colombia') {
-          return Math.round(((valueCop/5) + (child.length-1 * (valueCop/7.5))));
+      if (child.length > 1) {
+        if (flagV === 'Colombia') {
+          return Math.round(
+            valueCop / 5 + (child.length - 1 * (valueCop / 7.5))
+          );
         } else {
-          return Math.round(((valueMx/5) + (child.length-1 * (valueMx/7.5))));
+          return Math.round(valueMx / 5 + (child.length - 1 * (valueMx / 7.5)));
         }
       }
     }
-    if(day !== '') {
-      if(parseInt(child.length) === 1) {
-        if(flagV === 'Colombia') {
-          return Math.round(((valueCop/3)*2));
+    if (day !== '') {
+      if (parseInt(child.length) === 1) {
+        if (flagV === 'Colombia') {
+          return Math.round((valueCop / 3) * 2);
         } else {
-          return Math.round(((valueMx/3)*2));
+          return Math.round((valueMx / 3) * 2);
         }
       } else {
-        if(flagV === 'Colombia') {
-          return Math.round((((valueCop/3)*2) + ((parseInt(child.length)-1) * ((valueCop/3)+(valueCop/12)))));
+        if (flagV === 'Colombia') {
+          return Math.round(
+            (valueCop / 3) * 2 +
+              (parseInt(child.length) - 1) * (valueCop / 3 + valueCop / 12)
+          );
         } else {
-          return Math.round((((valueMx/3)*2) + ((parseInt(child.length)-1) * ((valueMx/3)+(valueMx/12)))));
+          return Math.round(
+            (valueMx / 3) * 2 +
+              (parseInt(child.length) - 1) * (valueMx / 3 + valueMx / 12)
+          );
         }
       }
     }
-  },[child.length, day, flagV, hours])
+  }, [child.length, day, flagV, hours]);
 
-  const postData = useCallback((email, phone, address, recommendations, Idd, longitude, latitude) => {
-
-    data2.ID='';
-    data2.ID_USER_CLIENT = 10;
-    data2.ID_USER_BABYSITTER=Idd[0].ID;
-    data2.DES_EMAIL=email;
-    data2.DES_PHONE=phone;
-    data2.DES_ADDRESS=address;
-    data2.DES_ADDRESS_LAT=latitude;
-    data2.DES_ADDRESS_LONG=longitude;
-    data2.DES_RECOMMENDATIONS=recommendations;
-    for(let i=0; i<child.length; i++) {
-      dataBoys.GENERO=child[i];
-      dataBoys.EDAD=agee[i];
-      data2.DES_DATA_BOYS.push(dataBoys)
-      dataBoys = {};
-    }
-    dataHours.MODALIDAD=Idd[0].DES_NAME;
-    dataHours.DISPONIBILIDAD=true;
-    data2.DES_DATA_HOURS.push(dataHours);
-    data2.NUM_TOTAL_COST=finalTotalValue();
-    data2.NUM_STATUS=1;
-    // fetch('https://babys-api.herokuapp.com/api/services', {
-      fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      body: JSON.stringify({
-        ...data2
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
+  const postData = useCallback(
+    (email, phone, address, recommendations, Idd, longitude, latitude) => {
+      data2.ID = '';
+      data2.ID_USER_CLIENT = 10;
+      data2.ID_USER_BABYSITTER = Idd[0].ID;
+      data2.DES_EMAIL = email;
+      data2.DES_PHONE = phone;
+      data2.DES_ADDRESS = address;
+      data2.DES_ADDRESS_LAT = latitude;
+      data2.DES_ADDRESS_LONG = longitude;
+      data2.DES_RECOMMENDATIONS = recommendations;
+      for (let i = 0; i < child.length; i++) {
+        dataBoys.GENERO = child[i];
+        dataBoys.EDAD = agee[i];
+        data2.DES_DATA_BOYS.push(dataBoys);
+        dataBoys = {};
       }
-    })
-    .then(response => response.json())
-    // .then(json => console.log(json))
-  },[agee, child, finalTotalValue]);
+      dataHours.MODALIDAD = Idd[0].DES_NAME;
+      dataHours.DISPONIBILIDAD = true;
+      data2.DES_DATA_HOURS.push(dataHours);
+      data2.NUM_TOTAL_COST = finalTotalValue();
+      data2.NUM_STATUS = 1;
+      fetch('https://babys-api.herokuapp.com/api/services', {
+        // fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+          ...data2,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => response.json());
+      // .then(json => console.log(json))
+    },
+    [agee, child, finalTotalValue]
+  );
 
   const postNana = useCallback((nana) => {
-    // fetch('https://babys-api.herokuapp.com/api/users', {
-      fetch('https://jsonplaceholder.typicode.com/posts/1', {
+    fetch('https://babys-api.herokuapp.com/api/users', {
+      // fetch('https://jsonplaceholder.typicode.com/posts/1', {
       method: 'PUT',
       body: JSON.stringify({
-        ...nana
+        ...nana,
       }),
       headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    })
-    .then(response => response.json())
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => response.json());
     // .then(json => console.log(json))
-  },[]);
+  }, []);
+
+  const cantHours = useCallback((e) => {
+    setValueHorus(e);
+  }, []);
 
   const value = useMemo(() => {
     return {
-      url, 
+      valueHours,
+      url,
       setUrl,
       longitude,
       latitude,
@@ -626,10 +670,12 @@ export function ServerProvider(props) {
       stateOnly,
       coordinate,
       confirm,
-      postNana
+      postNana,
+      cantHours,
     };
   }, [
-    url, 
+    valueHours,
+    url,
     setUrl,
     longitude,
     latitude,
@@ -704,7 +750,8 @@ export function ServerProvider(props) {
     stateOnly,
     coordinate,
     confirm,
-    postNana
+    postNana,
+    cantHours,
   ]);
 
   return <Server.Provider value={value} {...props} />;

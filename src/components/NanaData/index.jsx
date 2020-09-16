@@ -35,10 +35,7 @@ const NanaData = (props) => {
   return (
     <div className='nana'>
       <article className='nana__photo'>
-        <img
-          src={DES_URL_IMAGE}
-          alt={DES_FULLNAME}
-        />
+        <img src={DES_URL_IMAGE} alt={DES_FULLNAME} />
         <div className='button'>
           <button id={ID} value={ID} onClick={toOpen}>
             {nameButton}
@@ -64,13 +61,13 @@ const NanaData = (props) => {
             <h2>Disponibilidad:</h2>
             <div className='text__information--time'>
               <Tags DES_DATA_SERVICE_TIME={DES_DATA_SERVICE_TIME} />
-            </div> 
+            </div>
             <h2>País:</h2>
-            <p className='text__information--paragraph'>{DES_COUNTRY}</p> 
+            <p className='text__information--paragraph'>{DES_COUNTRY}</p>
             <h2>Estado:</h2>
             <p className='text__information--paragraph'>{DES_STATE}</p>
             <h2>Ciudad</h2>
-            <p className='text__information--paragraph'>{DES_CITY}</p>           
+            <p className='text__information--paragraph'>{DES_CITY}</p>
           </div>
           <p className='name__description'>{description}</p>
         </article>
@@ -94,22 +91,22 @@ const NanaData = (props) => {
           </article>
         </section>
         <article className='nana__experience'>
-            <ul className='info__experience'>
-              <h2 className='info__experience--h2'>Experiencia</h2>
-              {DES_DATA_EXPERIECE.map((experience, index) => (
-                <span key={index}>
-                  <div className='info__expe'>
-                    <h2>Inicio</h2>
-                    <li>{DES_DATA_EXPERIECE[index].INICIO}</li>
-                    <h2>Tareas</h2>
-                    <li>{DES_DATA_EXPERIECE[index].TAREAS}</li>
-                    <h2>Empresa</h2>
-                    <li>{DES_DATA_EXPERIECE[index].EMPRESA}</li>
-                  </div>
-                </span>
-              ))}
-            </ul>
-          </article>
+          <ul className='info__experience'>
+            <h2 className='info__experience--h2'>Experiencia</h2>
+            {DES_DATA_EXPERIECE.map((experience, index) => (
+              <span key={index}>
+                <div className='info__expe'>
+                  <h2>Inicio</h2>
+                  <li>{DES_DATA_EXPERIECE[index].INICIO}</li>
+                  <h2>Tareas</h2>
+                  <li>{DES_DATA_EXPERIECE[index].TAREAS}</li>
+                  <h2>Empresa</h2>
+                  <li>{DES_DATA_EXPERIECE[index].EMPRESA}</li>
+                </div>
+              </span>
+            ))}
+          </ul>
+        </article>
         <section className='skill'>
           <h2 className='skill--h2'>Habilidades</h2>
           <ul>

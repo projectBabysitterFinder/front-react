@@ -11,18 +11,17 @@ const State = () => {
       <form className='state__form'>
         <select className='id' id='state' onChange={valueState}>
           <option value='DEFAULT'>Seleccione</option>
-            {country === 'Colombia' ? 
-              stateColombia.map((state, index) => (
-              <React.Fragment key={index}>
-                {<option value={state}>{state}</option>}
-              </React.Fragment>
-            )) : 
-            stateMexico.map((state, index) => (
-              <React.Fragment key={index}>
-                {<option value={state}>{state}</option>}
-              </React.Fragment>
-            ))
-            }
+          {country === 'Colombia'
+            ? stateColombia.map((state, index) => (
+                <React.Fragment key={index}>
+                  {<option value={state}>{state}</option>}
+                </React.Fragment>
+              ))
+            : stateMexico.map((state, index) => (
+                <React.Fragment key={index}>
+                  {<option value={state}>{state}</option>}
+                </React.Fragment>
+              ))}
         </select>
       </form>
     </div>

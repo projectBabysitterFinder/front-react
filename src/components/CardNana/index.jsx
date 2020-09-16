@@ -4,15 +4,29 @@ import Button from '../Button';
 import Tags from '../Tags';
 import Star from '../Star/index';
 
+const img = 'http://dummyimage.com/239x191.jpg/5fa2dd/ffffff';
+
 const cardNana = (props) => {
-  const { ID, DES_FULLNAME, DES_URL_IMAGE, description, NUM_STARS, DES_DATA_SPECIALTIES, DES_DATA_SERVICE_TIME } = props;
+  const {
+    ID,
+    DES_FULLNAME,
+    DES_URL_IMAGE,
+    description,
+    NUM_STARS,
+    DES_DATA_SPECIALTIES,
+    DES_DATA_SERVICE_TIME,
+  } = props;
 
   return (
     <div className='container'>
       <section className='container__card'>
         <article className='imgButton'>
           <img
-            src={DES_URL_IMAGE}
+            src={
+              DES_URL_IMAGE === null
+                ? 'http://dummyimage.com/239x191.jpg/5fa2dd/ffffff'
+                : DES_URL_IMAGE
+            }
             // src={require('../../assets/images/Nanas/maria-sandobal.png')}
             alt={DES_FULLNAME}
           />

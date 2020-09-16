@@ -22,8 +22,8 @@
       border-radius: 50% 50%;
       -moz-border-radius: 50% 50%;
       -webkit-border-radius: 50% 50%;
-    } 
-    .button__service {  
+    }
+    .button__service {
       text-align: center;
       margin-top: 20%;
       @include media('m') {
@@ -61,7 +61,7 @@
     .service__card {
       display: flex;
       .service__data {
-        margin-left: 4%; 
+        margin-left: 4%;
         .review__service {
           width: 90%;
           margin-top: 3%;
@@ -124,14 +124,14 @@
           }
           .service__button {
             margin-top: auto;
-            button { 
+            button {
               @extend %buttonNext;
             }
           }
         }
       }
-    } 
-    .review__user{
+    }
+    .review__user {
       margin-left: 4%;
       .service__user {
         display: block;
@@ -195,7 +195,7 @@
               }
               .user__button {
                 margin-top: auto;
-                button { 
+                button {
                   @extend %buttonNext;
                 }
               }

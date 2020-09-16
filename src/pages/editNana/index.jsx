@@ -1,15 +1,15 @@
 import React from 'react';
 import FormsEditNana from '../../components/FormsEditNana';
-import '../../sass/editNana.scss'
+import '../../sass/editNana.scss';
 
 const editNana = () => {
   return (
     <div>
       <section className='formsEditNana'>
-        <FormsEditNana/>
+        <FormsEditNana />
       </section>
     </div>
-  )
-}
+  );
+};
 
 export default editNana;

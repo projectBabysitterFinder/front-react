@@ -11,8 +11,14 @@ import '../../sass/nanaService.scss';
 // var cont = 0;
 
 const NanaService = () => {
-
-  var { users, review, service, onlyUser, openService, openService2 } = useServer();
+  var {
+    users,
+    review,
+    service,
+    onlyUser,
+    openService,
+    openService2,
+  } = useServer();
 
   // const check = (e) => {
   //   reviewID=0;
@@ -37,14 +43,11 @@ const NanaService = () => {
 
   return (
     <div className='servicee'>
-      <ModalService openService2={openService2}/>
+      <ModalService openService2={openService2} />
       <article className='servicee__photo'>
-        <img
-          src={onlyUser[0].DES_URL_IMAGE}
-          alt='Img'
-        /> 
-        <div className='button__service'> 
-          <Link to='/nana/perfil/11'>
+        <img src={onlyUser[0].DES_URL_IMAGE} alt='Img' />
+        <div className='button__service'>
+          <Link to='/'>
             <button>Regresar</button>
           </Link>
         </div>
@@ -53,71 +56,87 @@ const NanaService = () => {
         <h3>Servicios</h3>
         <div className='service__card'>
           {service.map((servi, index) => (
-          <section key={index} className='service__data'>
-            <section className='review__service'>
-              <article className='review__service--article'>
-                {users.filter(user => user.ID === servi.ID_USER_CLIENT).map((servi, index) => (
-                  <img key={index}
-                    className='service--img'
-                    src={servi.DES_URL_IMAGE}
-                    alt='img'
-                  />
-                ))}
-                <div className='service__review'>
-                  <div className='service__name'>
-                    {users.filter(user => user.ID === servi.ID_USER_CLIENT).map((servi, index) => (
-                      <h2 key={index}>{servi.DES_FULLNAME}</h2>
+            <section key={index} className='service__data'>
+              <section className='review__service'>
+                <article className='review__service--article'>
+                  {users
+                    .filter((user) => user.ID === servi.ID_USER_CLIENT)
+                    .map((servi, index) => (
+                      <img
+                        key={index}
+                        className='service--img'
+                        src={servi.DES_URL_IMAGE}
+                        alt='img'
+                      />
                     ))}
-                    {/* <div className='star__small'>
+                  <div className='service__review'>
+                    <div className='service__name'>
+                      {users
+                        .filter((user) => user.ID === servi.ID_USER_CLIENT)
+                        .map((servi, index) => (
+                          <h2 key={index}>{servi.DES_FULLNAME}</h2>
+                        ))}
+                      {/* <div className='star__small'>
                       <StarSmall score={3} name='img' />
                     </div> */}
+                    </div>
                   </div>
-                </div>
-                <div className='service__button'>
-                  <button id={servi.ID} value={servi.ID} onClick={() => toOpen(servi.ID)}>Ver</button>
-                </div>
-              </article>
+                  <div className='service__button'>
+                    <button
+                      id={servi.ID}
+                      value={servi.ID}
+                      onClick={() => toOpen(servi.ID)}
+                    >
+                      Ver
+                    </button>
+                  </div>
+                </article>
+              </section>
             </section>
-          </section>
           ))}
         </div>
         <section className='map'>
           <h3>Rutas</h3>
           <div className='map__nana'>
-            <MapView/>
+            <MapView />
           </div>
         </section>
         <section className='review__user'>
           <div className='service__user'>
             <h3>Reseñas</h3>
-                  {review.map((rev, index) => (
-                    <section key={index} className='service__userD'>
-                      <section className='review__all'>
-                        <article className='review__all--article'>
-                          {users.filter(user => user.ID === rev.ID_USER_CLIENT).map((user, index) => (
-                            <img key={index}
-                              className='user--img'
-                              src={user.DES_URL_IMAGE}
-                              alt='img'
-                          />
+            {review.map((rev, index) => (
+              <section key={index} className='service__userD'>
+                <section className='review__all'>
+                  <article className='review__all--article'>
+                    {users
+                      .filter((user) => user.ID === rev.ID_USER_CLIENT)
+                      .map((user, index) => (
+                        <img
+                          key={index}
+                          className='user--img'
+                          src={user.DES_URL_IMAGE}
+                          alt='img'
+                        />
+                      ))}
+                    <div className='user__review'>
+                      <div className='user__name'>
+                        {users
+                          .filter((user) => user.ID === rev.ID_USER_CLIENT)
+                          .map((user, index) => (
+                            <h2 key={index}>{user.DES_FULLNAME}</h2>
                           ))}
-                          <div className='user__review'>
-                            <div className='user__name'>
-                              {users.filter(user => user.ID === rev.ID_USER_CLIENT).map((user, index) => (
-                                  <h2 key={index}>{user.DES_FULLNAME}</h2>
-                              ))}
-                              <div className='star__user'>
-                                <Star score={rev.NUM_STARS} name='img' />
-                              </div>
-                            </div>
-                            <div className='user__p'>
-                              <p>{rev.DES_OPINION}</p>
-                            </div>
-                          </div>
-                        </article>
-                      </section>
-                    </section>
-                  ))}
+                        <div className='star__user'>
+                          <Star score={rev.NUM_STARS} name='img' />
+                        </div>
+                      </div>
+                      <div className='user__p'>
+                        <p>{rev.DES_OPINION}</p>
+                      </div>
+                    </div>
+                  </article>
+                </section>
+              </section>
+            ))}
           </div>
         </section>
       </section>

@@ -5,109 +5,109 @@ import { useServer } from '../Contex/Server';
 import Upload from '../Upload';
 import '../../sass/formsEditNana.scss';
 
-  var specialties0 = '';
-  var specialties1 = '';
-  var specialties2 = '';
-  var specialties3 = '';
-  var specialties4 = '';
-  var specialties5 = '';
-  var abilities0 = '';
-  var abilities1 = '';
-  var abilities2 = '';
-  var abilities3 = '';
-  var abilities4 = '';
-  var abilities5 = '';
+var specialties0 = '';
+var specialties1 = '';
+var specialties2 = '';
+var specialties3 = '';
+var specialties4 = '';
+var specialties5 = '';
+var abilities0 = '';
+var abilities1 = '';
+var abilities2 = '';
+var abilities3 = '';
+var abilities4 = '';
+var abilities5 = '';
 
-  var studies = {
-    'TITULO': '',
-    'INSTITUCIÓN': '',
-    'AÑO': 0
-  }
-  var studies1 = {
-    'TITULO': '',
-    'INSTITUCIÓN': '',
-    'AÑO': 0
-  }
-  var studies2 = {
-    'TITULO': '',
-    'INSTITUCIÓN': '',
-    'AÑO': 0
-  }
-  var studies3 = {
-    'TITULO': '',
-    'INSTITUCIÓN': '',
-    'AÑO': 0
-  }
-  var studies4 = {
-    'TITULO': '',
-    'INSTITUCIÓN': '',
-    'AÑO': 0
-  }
-  var studies5 = {
-    'TITULO': '',
-    'INSTITUCIÓN': '',
-    'AÑO': 0
-  }
-  var experience = {
-    'INICIO': '',
-    'TAREAS': '',
-    'EMPRESA': ''
-  }
-  var experience1 = {
-    'INICIO': '',
-    'TAREAS': '',
-    'EMPRESA': ''
-  }
-  var experience2 = {
-    'INICIO': '',
-    'TAREAS': '',
-    'EMPRESA': ''
-  }
-  var experience3 = {
-    'INICIO': '',
-    'TAREAS': '',
-    'EMPRESA': ''
-  }
-  var experience4 = {
-    'INICIO': '',
-    'TAREAS': '',
-    'EMPRESA': ''
-  }
-  var experience5= {
-    'INICIO': '',
-    'TAREAS': '',
-    'EMPRESA': ''
-  }
-  
-  const editNana = {
-    'ID_META': 0,
-    'ID_USER': 0,
-    'DES_DATA_STUDIES': [],
-    'DES_DATA_SPECIALTIES': [],
-    'DES_DATA_ABILITIES': [],
-    'DES_DATA_EXPERIECE': [],
-    'DES_DATA_SERVICE_TIME': null,
-    'NUM_HOURLY_RATE': 0,
-    'ID_AVAILABILITY': 0,
-    'ID': 0,
-    'ID_ROL': 0,
-    'DES_FULLNAME': '',
-    'DATE_BIRTH': '',
-    'DES_URL_IMAGE': '',
-    'DES_USER': '',
-    'DES_PASSWORD': '',
-    'DES_ADDRESS': '',
-    'DES_ADDRESS_LAT': '',
-    'DES_ADDRESS_LONG': '',
-    'NUM_PHONE': '',
-    'DES_EMAIL': '',
-    'DES_COUNTRY': '',
-    'DES_STATE': '',
-    'DES_CITY': '',
-    'NUM_STATUS': 0,
-    'DES_NAME': '',
-    'NUM_VALUE': 0
-  }
+var studies = {
+  TITULO: '',
+  INSTITUCIÓN: '',
+  AÑO: 0,
+};
+var studies1 = {
+  TITULO: '',
+  INSTITUCIÓN: '',
+  AÑO: 0,
+};
+var studies2 = {
+  TITULO: '',
+  INSTITUCIÓN: '',
+  AÑO: 0,
+};
+var studies3 = {
+  TITULO: '',
+  INSTITUCIÓN: '',
+  AÑO: 0,
+};
+var studies4 = {
+  TITULO: '',
+  INSTITUCIÓN: '',
+  AÑO: 0,
+};
+var studies5 = {
+  TITULO: '',
+  INSTITUCIÓN: '',
+  AÑO: 0,
+};
+var experience = {
+  INICIO: '',
+  TAREAS: '',
+  EMPRESA: '',
+};
+var experience1 = {
+  INICIO: '',
+  TAREAS: '',
+  EMPRESA: '',
+};
+var experience2 = {
+  INICIO: '',
+  TAREAS: '',
+  EMPRESA: '',
+};
+var experience3 = {
+  INICIO: '',
+  TAREAS: '',
+  EMPRESA: '',
+};
+var experience4 = {
+  INICIO: '',
+  TAREAS: '',
+  EMPRESA: '',
+};
+var experience5 = {
+  INICIO: '',
+  TAREAS: '',
+  EMPRESA: '',
+};
+
+const editNana = {
+  ID_META: 0,
+  ID_USER: 0,
+  DES_DATA_STUDIES: [],
+  DES_DATA_SPECIALTIES: [],
+  DES_DATA_ABILITIES: [],
+  DES_DATA_EXPERIECE: [],
+  DES_DATA_SERVICE_TIME: null,
+  NUM_HOURLY_RATE: 0,
+  ID_AVAILABILITY: 0,
+  ID: 0,
+  ID_ROL: 0,
+  DES_FULLNAME: '',
+  DATE_BIRTH: '',
+  DES_URL_IMAGE: '',
+  DES_USER: '',
+  DES_PASSWORD: '',
+  DES_ADDRESS: '',
+  DES_ADDRESS_LAT: '',
+  DES_ADDRESS_LONG: '',
+  NUM_PHONE: '',
+  DES_EMAIL: '',
+  DES_COUNTRY: '',
+  DES_STATE: '',
+  DES_CITY: '',
+  NUM_STATUS: 0,
+  DES_NAME: '',
+  NUM_VALUE: 0,
+};
 
 const FormsEditNana = () => {
   var {
@@ -116,62 +116,62 @@ const FormsEditNana = () => {
     longitude,
     edit,
     postNana,
-    url
+    url,
   } = useServer();
 
   const [control, setControl] = useState();
 
   const startValues = () => {
     setControl();
-  }
+  };
 
-  if(control) {
+  if (control) {
     startValues();
   }
-  
+
   if (longitude === 0) {
     coordinate();
   }
 
   const addStudy = () => {
-    edit[0].DES_DATA_STUDIES.push(studies)
-  }
+    edit[0].DES_DATA_STUDIES.push(studies);
+  };
 
   const removeStudy = () => {
-    if(edit[0].DES_DATA_STUDIES.length > 1) {
-      edit[0].DES_DATA_STUDIES.pop()
+    if (edit[0].DES_DATA_STUDIES.length > 1) {
+      edit[0].DES_DATA_STUDIES.pop();
     }
-  }
+  };
 
   const addSpecialties = () => {
-    edit[0].DES_DATA_SPECIALTIES.push('')
-  }
+    edit[0].DES_DATA_SPECIALTIES.push('');
+  };
 
   const removeSpecialties = () => {
-    if(edit[0].DES_DATA_SPECIALTIES.length > 1) {
-      edit[0].DES_DATA_SPECIALTIES.pop()
+    if (edit[0].DES_DATA_SPECIALTIES.length > 1) {
+      edit[0].DES_DATA_SPECIALTIES.pop();
     }
-  }
+  };
 
   const addAbilities = () => {
-    edit[0].DES_DATA_ABILITIES.push('')
-  }
+    edit[0].DES_DATA_ABILITIES.push('');
+  };
 
   const removeAbilities = () => {
-    if(edit[0].DES_DATA_ABILITIES.length > 1) {
-      edit[0].DES_DATA_ABILITIES.pop()
+    if (edit[0].DES_DATA_ABILITIES.length > 1) {
+      edit[0].DES_DATA_ABILITIES.pop();
     }
-  }
+  };
 
   const addExperience = () => {
-    edit[0].DES_DATA_EXPERIECE.push(experience)
-  }
+    edit[0].DES_DATA_EXPERIECE.push(experience);
+  };
 
   const removeExperience = () => {
-    if(edit[0].DES_DATA_EXPERIECE.length > 1) {
-      edit[0].DES_DATA_EXPERIECE.pop()
+    if (edit[0].DES_DATA_EXPERIECE.length > 1) {
+      edit[0].DES_DATA_EXPERIECE.pop();
     }
-  }
+  };
 
   const valueAll = () => {
     var name = document.getElementById('name').value;
@@ -524,7 +524,7 @@ const FormsEditNana = () => {
       studies.TITULO === '' ||
       studies.INSTITUCIÓN === '' ||
       studies.AÑO === '' ||
-      specialties0 === '' || 
+      specialties0 === '' ||
       abilities0 === '' ||
       experience.INICIO === '' ||
       experience.TAREAS === '' ||
@@ -539,8 +539,11 @@ const FormsEditNana = () => {
 
   return (
     <Form className='edit__form' id='myForm'>
-      <p className='edit__form--title'>Por favor complete todos los campos del formulario para editar el contenido</p>
-      <Link to='/nana/perfil/11'>
+      <p className='edit__form--title'>
+        Por favor complete todos los campos del formulario para editar el
+        contenido
+      </p>
+      <Link to='/'>
         <button className='edit__button'>Regresar</button>
       </Link>
       <div className='edit'>
@@ -574,7 +577,7 @@ const FormsEditNana = () => {
           </ErrorMessage>
         </div>
       </div>
-      
+
       <div className='edit'>
         <p>Cumpleaños:</p>
         <div className='edit__div'>
@@ -638,7 +641,7 @@ const FormsEditNana = () => {
           </ErrorMessage>
         </div>
       </div>
-      
+
       <div className='edit'>
         <p>Estado:</p>
         <div className='edit__div'>
@@ -652,7 +655,7 @@ const FormsEditNana = () => {
           <ErrorMessage name='state'>
             {(message) => <div className='error'>{message}</div>}
           </ErrorMessage>
-          </div>
+        </div>
       </div>
 
       <div className='edit'>
@@ -672,53 +675,54 @@ const FormsEditNana = () => {
       </div>
 
       <div className='edit__study'>
-      <p className='edit__study--p'>Estudios</p>
+        <p className='edit__study--p'>Estudios</p>
         <div className='edit__study__div'>
           {edit[0].DES_DATA_STUDIES.map((study, index) => (
-          <div key={index}>
-            <div className='study__online'>
-              <p>Titulo</p>
-              <Field
-                name={`title${index}`}
-                id={`title${index}`}
-                type='text'
-                placeholder={study.TITULO}
-                value={control}
-                className='input__study'
-              />
-              <ErrorMessage name='study'>
-                {(message) => <div className='error'>{message}</div>}
-              </ErrorMessage>
+            <div key={index}>
+              <div className='study__online'>
+                <p>Titulo</p>
+                <Field
+                  name={`title${index}`}
+                  id={`title${index}`}
+                  type='text'
+                  placeholder={study.TITULO}
+                  value={control}
+                  className='input__study'
+                />
+                <ErrorMessage name='study'>
+                  {(message) => <div className='error'>{message}</div>}
+                </ErrorMessage>
+              </div>
+              <div className='study__online'>
+                <p>Institución</p>
+                <Field
+                  name={`institution${index}`}
+                  id={`institution${index}`}
+                  type='text'
+                  placeholder={study.INSTITUCIÓN}
+                  value={control}
+                  className='input__study'
+                />
+                <ErrorMessage name='study'>
+                  {(message) => <div className='error'>{message}</div>}
+                </ErrorMessage>
+              </div>
+              <div className='study__online'>
+                <p>Año</p>
+                <Field
+                  name={`year${index}`}
+                  id={`year${index}`}
+                  type='number'
+                  placeholder={study.AÑO}
+                  value={control}
+                  className='input__study'
+                />
+                <ErrorMessage name='study'>
+                  {(message) => <div className='error'>{message}</div>}
+                </ErrorMessage>
+              </div>
             </div>
-            <div className='study__online'>
-              <p>Institución</p>
-              <Field
-                name={`institution${index}`}
-                id={`institution${index}`}
-                type='text'
-                placeholder={study.INSTITUCIÓN}
-                value={control}
-                className='input__study'
-              />
-              <ErrorMessage name='study'>
-                {(message) => <div className='error'>{message}</div>}
-              </ErrorMessage>
-            </div>
-            <div className='study__online'>
-              <p>Año</p>
-              <Field
-                name={`year${index}`}
-                id={`year${index}`}
-                type='number'
-                placeholder={study.AÑO}
-                value={control}
-                className='input__study'
-              />
-              <ErrorMessage name='study'>
-                {(message) => <div className='error'>{message}</div>}
-              </ErrorMessage>
-            </div>
-          </div> ))}
+          ))}
           <div className='button__child'>
             <button
               type='submit'
@@ -742,19 +746,20 @@ const FormsEditNana = () => {
         <p className='edit__specialties--p'>Especialidad</p>
         <div className='edit__specialties__div'>
           {edit[0].DES_DATA_SPECIALTIES.map((specialty, index) => (
-          <div key={index}>
-          <Field
-            name={`specialties${index}`}
-            id={`specialties${index}`}
-            type='text'
-            placeholder={specialty}
-            className='input__specialties'
-            value={control}
-          />
-          <ErrorMessage name={`specialties${index}`}>
-            {(message) => <div className='error'>{message}</div>}
-          </ErrorMessage>
-          </div> ))}
+            <div key={index}>
+              <Field
+                name={`specialties${index}`}
+                id={`specialties${index}`}
+                type='text'
+                placeholder={specialty}
+                className='input__specialties'
+                value={control}
+              />
+              <ErrorMessage name={`specialties${index}`}>
+                {(message) => <div className='error'>{message}</div>}
+              </ErrorMessage>
+            </div>
+          ))}
           <div className='button__child'>
             <button
               type='submit'
@@ -778,19 +783,20 @@ const FormsEditNana = () => {
         <p className='edit__abilities--p'>Habilidad</p>
         <div className='edit__abilities__div'>
           {edit[0].DES_DATA_ABILITIES.map((ability, index) => (
-          <div key={index}>
-          <Field
-            name={`abilities${index}`}
-            id={`abilities${index}`}
-            type='text'
-            placeholder={ability}
-            value={control}
-            className='input__abilities'
-          />
-          <ErrorMessage name='abilities'>
-            {(message) => <div className='error'>{message}</div>}
-          </ErrorMessage>
-          </div> ))}
+            <div key={index}>
+              <Field
+                name={`abilities${index}`}
+                id={`abilities${index}`}
+                type='text'
+                placeholder={ability}
+                value={control}
+                className='input__abilities'
+              />
+              <ErrorMessage name='abilities'>
+                {(message) => <div className='error'>{message}</div>}
+              </ErrorMessage>
+            </div>
+          ))}
           <div className='button__child'>
             <button
               type='submit'
@@ -814,50 +820,51 @@ const FormsEditNana = () => {
         <p className='edit__experience--p'>Experiencia</p>
         <div className='edit__experience__div'>
           {edit[0].DES_DATA_EXPERIECE.map((expe, index) => (
-          <div key={index}>
-            <div className='start__only'>
-              <p>Inicio</p>
-              <Field
-                name={`start${index}`}
-                id={`start${index}`}
-                type='date'
-                placeholder={expe.INICIO}
-                value={control}
-                className='input__experience'
-              />
-              <ErrorMessage name='experience'>
-                {(message) => <div className='error'>{message}</div>}
-              </ErrorMessage>
+            <div key={index}>
+              <div className='start__only'>
+                <p>Inicio</p>
+                <Field
+                  name={`start${index}`}
+                  id={`start${index}`}
+                  type='date'
+                  placeholder={expe.INICIO}
+                  value={control}
+                  className='input__experience'
+                />
+                <ErrorMessage name='experience'>
+                  {(message) => <div className='error'>{message}</div>}
+                </ErrorMessage>
+              </div>
+              <div className='start__only'>
+                <p>Tarea</p>
+                <Field
+                  name={`task${index}`}
+                  id={`task${index}`}
+                  type='text'
+                  placeholder={expe.TAREAS}
+                  value={control}
+                  className='input__experience'
+                />
+                <ErrorMessage name='experience'>
+                  {(message) => <div className='error'>{message}</div>}
+                </ErrorMessage>
+              </div>
+              <div className='start__only'>
+                <p>Empresa</p>
+                <Field
+                  name={`company${index}`}
+                  id={`company${index}`}
+                  type='text'
+                  placeholder={expe.EMPRESA}
+                  value={control}
+                  className='input__experience'
+                />
+                <ErrorMessage name='experience'>
+                  {(message) => <div className='error'>{message}</div>}
+                </ErrorMessage>
+              </div>
             </div>
-            <div className='start__only'>
-              <p>Tarea</p>
-              <Field
-                name={`task${index}`}
-                id={`task${index}`}
-                type='text'
-                placeholder={expe.TAREAS}
-                value={control}
-                className='input__experience'
-              />
-              <ErrorMessage name='experience'>
-                {(message) => <div className='error'>{message}</div>}
-              </ErrorMessage>
-            </div>
-            <div className='start__only'>
-              <p>Empresa</p>
-              <Field
-                name={`company${index}`}
-                id={`company${index}`}
-                type='text'
-                placeholder={expe.EMPRESA}
-                value={control}
-                className='input__experience'
-              />
-              <ErrorMessage name='experience'>
-                {(message) => <div className='error'>{message}</div>}
-              </ErrorMessage>
-            </div>
-          </div> ))}
+          ))}
           <div className='button__child'>
             <button
               type='submit'
@@ -877,15 +884,15 @@ const FormsEditNana = () => {
         </div>
       </div>
 
-      <Upload/>
+      <Upload />
 
-      <div className='rowEdit button--edit'>      
+      <div className='rowEdit button--edit'>
         <button type='submit' onClick={valueAll}>
           Guardar los datos del formulario
         </button>
       </div>
       <div className='row__back'>
-        <Link to='/nana/perfil/11'>
+        <Link to='/'>
           <button>Regresar</button>
         </Link>
       </div>
@@ -904,7 +911,6 @@ export default withFormik({
       country: '',
       state: '',
       city: '',
-
     };
   },
 
@@ -926,7 +932,7 @@ export default withFormik({
     } else if (values.address.length < 6) {
       errors.address = 'La dirección debe contener más información';
     } else if (values.phone.length < 7) {
-      errors.phone = 'El teléfono debe contener más dígitos'; 
+      errors.phone = 'El teléfono debe contener más dígitos';
     } else if (!values.phone) {
       errors.phone = 'El teléfono es requerido';
     } else if (isNaN(values.phone)) {
@@ -934,45 +940,44 @@ export default withFormik({
     } else if (values.name.country < 3) {
       errors.country = 'El direccion es demasiado corta';
     } else if (!values.country) {
-      errors.country = 'El País es requerido'; 
+      errors.country = 'El País es requerido';
     } else if (values.name.state < 3) {
       errors.state = 'El estado es demasiado corto';
     } else if (!values.state) {
-      errors.state = 'El estado es requerido'; 
+      errors.state = 'El estado es requerido';
     } else if (values.name.city < 3) {
       errors.city = 'La ciudad es demasiado corta';
     } else if (!values.city) {
-      errors.city = 'La ciudad es requerida'; 
+      errors.city = 'La ciudad es requerida';
     } else if (!values.title0) {
-      errors.title0 = 'El titulo es requerido'
+      errors.title0 = 'El titulo es requerido';
     } else if (values.name.title0 < 3) {
       errors.title0 = 'el titulo es demasiado corto';
     } else if (!values.institution0) {
-      errors.title0 = 'El instituto es requerido'
+      errors.title0 = 'El instituto es requerido';
     } else if (values.name.institution0 < 3) {
       errors.institution0 = 'el instituto es demasiado corto';
     } else if (!values.institution0) {
-      errors.institution0 = 'El instituto es requerido'
+      errors.institution0 = 'El instituto es requerido';
     } else if (values.name.year0 < 3) {
       errors.year0 = 'el año es demasiado corto';
     } else if (!values.year0) {
-      errors.year0 = 'El año es requerido'
+      errors.year0 = 'El año es requerido';
     } else if (values.name.especialties0 < 3) {
-      errors.especialities0 = 'La especialidad es demasiado corta'
+      errors.especialities0 = 'La especialidad es demasiado corta';
     } else if (values.especialties0) {
-      errors.especialties0 = 'La especialidad es requerida'
+      errors.especialties0 = 'La especialidad es requerida';
     } else if (!values.start0) {
-      errors.start0 = 'La fecha de inicio es requerida'
+      errors.start0 = 'La fecha de inicio es requerida';
     } else if (values.name.task0 < 3) {
-      errors.task0 = 'La tarea es demasiado corta'
+      errors.task0 = 'La tarea es demasiado corta';
     } else if (!values.task0) {
-      errors.task0 = 'La tarea es obligatoria'
+      errors.task0 = 'La tarea es obligatoria';
     } else if (values.name.company0 < 3) {
-      errors.company0 = 'El nombre de la empresa es demasiado corto'
+      errors.company0 = 'El nombre de la empresa es demasiado corto';
     } else if (!values.company0) {
-      errors.company0 = 'El nombre de la empresa es obligatorio'
+      errors.company0 = 'El nombre de la empresa es obligatorio';
     }
-
 
     return errors;
   },

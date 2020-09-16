@@ -22,7 +22,7 @@
       padding: 10px;
       box-sizing: border-box;
       display: flex;
-      justify-content: ceen;
+      justify-content: center;
       justify-content: flex-end;
       .hours__close {
         border: none;
@@ -54,33 +54,28 @@
         }
       }
     }
-    .form {
+    .picker {
       display: flex;
       justify-content: center;
     }
-    h1 {
-      margin-bottom: 5%;
-      @include font(large, Roboto-Regular, center);
-    }
-    .modalD-card--hours {
-      display: flex;
-      justify-content: space-evenly;
-      margin-top: 6%;
-      .time--hours {
+    .formH {
+      margin-top: 3%;
+      &__cant {
         text-align: center;
-        h4 {
-          font-size: small;
-        }
-        button {
-          @extend %buttonNext;
-        }
-        button:focus {
-          background-color: $hover-button;
-        }
-        button:hover {
-          background-color: $hover-button;
+        &--label {
+          font-family: Amaranth-Bold;
+          font-size: medium;
+          color: #2c2b3c;
+          select {
+            margin-left: 3%;
+          }
         }
       }
+    }
+    .card__h1 {
+      font-size: medium;
+      display: flex;
+      justify-content: center;
     }
     .modalHours-card__bnt {
       display: flex;
@@ -96,39 +91,5 @@
         background-color: $hover-button;
       }
     }
-    .date__nanaTwo {
-      .date__nana {
-        .nana__time {
-          display: grid;
-          grid-gap: 20px;
-          grid-template-columns: 1fr 1fr;
-          margin: 5%;
-          .nana__date {
-            text-align: center;
-            p{
-              font-family: Roboto-Regular;
-              font-size: medium;
-              color: #2c2b3c;
-              text-align: center;
-            }
-            button {
-              @extend %buttonNext;
-              &:focus {
-                background-color: $hover-button;
-              }
-              &:hover {
-                background-color: $hover-button;
-              }
-            }
-          }
-          .nana__star {
-            font-family: Roboto-Regular;
-            font-size: medium;
-            color: #2c2b3c;
-            text-align: center;
-          }
-        }
-      }
-    }   
   }
 }

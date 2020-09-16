@@ -6,7 +6,7 @@
   margin: 0 10%;
   height: calc(100vh - 145px);
   @include media(xs) {
-    flex-direction: column;;
+    flex-direction: column;
   }
   &__text {
     text-align: center;
@@ -20,7 +20,6 @@
       animation: rotatepao 7s 1s cubic-bezier(0.1, 0.49, 0.41, 0.97) infinite;
     }
   }
-
 }
 
 .bounce-in-top {
@@ -78,4 +77,3 @@
     opacity: 1;
   }
 }
-

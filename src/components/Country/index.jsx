@@ -11,13 +11,12 @@ const Country = () => {
       <form className='country__form'>
         <select className='id' id='countryId' onChange={valueCountry}>
           <option value='DEFAULT'>Seleccione</option>
-          {countryAll.length !== 0
-            && 
+          {countryAll.length !== 0 &&
             countryAll.map((country, index) => (
-                <React.Fragment key={index}>
-                  <option value={country}>{country}</option>
-                </React.Fragment>
-              ))}
+              <React.Fragment key={index}>
+                <option value={country}>{country}</option>
+              </React.Fragment>
+            ))}
         </select>
       </form>
     </div>

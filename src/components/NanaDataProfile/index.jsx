@@ -21,7 +21,7 @@ const NanaDataProfile = (props) => {
     DES_COUNTRY,
     DES_STATE,
     DES_CITY,
-    DES_NAME
+    DES_NAME,
   } = props;
 
   var { pageEdit, pageService } = useServer();
@@ -39,17 +39,18 @@ const NanaDataProfile = (props) => {
   return (
     <div className='profileN'>
       <article className='profileN__photo'>
-        <img
-          src={DES_URL_IMAGE}
-          alt={DES_FULLNAME}
-        />
+        <img src={DES_URL_IMAGE} alt={DES_FULLNAME} />
         <div className='button__profileN'>
-            <Link to={`/nana/editar/${ID}`}>
-              <button id={ID} value={ID} onClick={toEdit}>{nameButton}</button>
-            </Link>
+          <Link to={`/editar`}>
+            <button id={ID} value={ID} onClick={toEdit}>
+              {nameButton}
+            </button>
+          </Link>
           <div>
-            <Link to={`/nana/servicios/${ID}`}>
-              <button id={ID} value={ID} onClick={toService}>{nameButton2}</button>
+            <Link to={`/servicios`}>
+              <button id={ID} value={ID} onClick={toService}>
+                {nameButton2}
+              </button>
             </Link>
           </div>
         </div>
@@ -68,13 +69,13 @@ const NanaDataProfile = (props) => {
             <h2>Disponibilidad:</h2>
             <div className='text__information--profileN'>
               <Tags DES_DATA_SERVICE_TIME={DES_NAME} />
-            </div> 
+            </div>
             <h2>País:</h2>
-            <p className='text__information--p'>{DES_COUNTRY}</p> 
+            <p className='text__information--p'>{DES_COUNTRY}</p>
             <h2>Estado:</h2>
             <p className='text__information--p'>{DES_STATE}</p>
             <h2>Ciudad</h2>
-            <p className='text__information--p'>{DES_CITY}</p>  
+            <p className='text__information--p'>{DES_CITY}</p>
           </div>
           <p className='name__profileN'>{description}</p>
         </article>
@@ -98,22 +99,24 @@ const NanaDataProfile = (props) => {
           </article>
         </section>
         <article className='nana__experience__profileN'>
-            <ul className='info__experience__profileN'>
-              <h2 className='info__experience__profileN--profileN'>Experiencia</h2>
-              {DES_DATA_EXPERIECE.map((experience, index) => (
-                <span key={index}>
-                  <div className='info__profi'>
-                    <h2>Inicio</h2>
-                    <li>{DES_DATA_EXPERIECE[index].INICIO}</li>
-                    <h2>Tareas</h2>
-                    <li>{DES_DATA_EXPERIECE[index].TAREAS}</li>
-                    <h2>Empresa</h2>
-                    <li>{DES_DATA_EXPERIECE[index].EMPRESA}</li>
-                  </div>
-                </span>
-              ))}
-            </ul>
-          </article>
+          <ul className='info__experience__profileN'>
+            <h2 className='info__experience__profileN--profileN'>
+              Experiencia
+            </h2>
+            {DES_DATA_EXPERIECE.map((experience, index) => (
+              <span key={index}>
+                <div className='info__profi'>
+                  <h2>Inicio</h2>
+                  <li>{DES_DATA_EXPERIECE[index].INICIO}</li>
+                  <h2>Tareas</h2>
+                  <li>{DES_DATA_EXPERIECE[index].TAREAS}</li>
+                  <h2>Empresa</h2>
+                  <li>{DES_DATA_EXPERIECE[index].EMPRESA}</li>
+                </div>
+              </span>
+            ))}
+          </ul>
+        </article>
         <section className='skill__profileN'>
           <h2 className='skill__profileN--profileN'>Habilidades</h2>
           <ul>

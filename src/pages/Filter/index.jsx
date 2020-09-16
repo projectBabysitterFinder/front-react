@@ -13,20 +13,20 @@ const Filter = () => {
   var { country, state, capital, nanas, reviews } = useServer();
 
   const check = (e) => {
-    reviewID=0;
-    cont=0;
-    for(let i=0; i<reviews.length; i++) {
-      if(reviews[i].ID_USER_BABYSITTER===e) {
+    reviewID = 0;
+    cont = 0;
+    for (let i = 0; i < reviews.length; i++) {
+      if (reviews[i].ID_USER_BABYSITTER === e) {
         reviewID = reviewID + reviews[i].NUM_STARS;
-        cont=cont+1;
+        cont = cont + 1;
       }
     }
-    if (reviewID>0){
-      return (reviewID/cont);
+    if (reviewID > 0) {
+      return reviewID / cont;
     } else {
-      return (0);
+      return 0;
     }
-  }
+  };
 
   return (
     <div className='filter'>
@@ -69,7 +69,9 @@ const Filter = () => {
             ))
         : capital.length === 0
         ? nanas
-            .filter((nana) => nana.DES_COUNTRY === country && nana.DES_STATE === state)
+            .filter(
+              (nana) => nana.DES_COUNTRY === country && nana.DES_STATE === state
+            )
             .map((nana, index) => (
               <React.Fragment key={index}>
                 <CardNana

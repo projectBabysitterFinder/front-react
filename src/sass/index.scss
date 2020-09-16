@@ -2,23 +2,23 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @font-face {
   font-family: Amaranth-Regular;
-  src: url("https://fonts.googleapis.com/css2?family=Amaranth&display=swap");
+  src: url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
 }
 @font-face {
   font-family: Amaranth-Bold;
-  src: url("https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap");
+  src: url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap');
 }
 @font-face {
   font-family: Roboto-Regular;
-  src: url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+  src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 }
 @font-face {
   font-family: Roboto-Medium;
-  src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 }
 @font-face {
   font-family: Roboto-Bold;
-  src: url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 }
 
 html {
@@ -29,7 +29,6 @@ body {
   background-color: $background-color;
   margin: 0px;
   box-sizing: border-box;
-
 }
 h1 {
   font-family: 'Amaranth-Bold', sans-serif;
