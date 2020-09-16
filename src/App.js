@@ -15,12 +15,14 @@ import ListUsers from './pages/ListUsers';
 import NewUser from './pages/NewUser';
 import EditUser from './pages/EditUser';
 import Loading from './components/Loading';
+import ListBabysitter from './pages/ListBabysitter';
+import NewBabysitter from './pages/NewBabysitter';
+import NewBabysitterMeta from './pages/NewBabysitterMeta';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ToastContainer } from 'react-toastify';
 // import PerfilNana from './pages/PerfilNana';
 // import PrivateRoute from './components/Login/PrivateRoute';
-
 
 function App() {
   let arrayUseAuth = [];
@@ -91,7 +93,14 @@ function App() {
           <Switch>
             <Route exact path='/listusers/:id/edit' component={EditUser} />
             <Route exact path='/listusers' component={ListUsers} />
+            <Route exact path='/listbabysitters' component={ListBabysitter} />
             <Route exact path='/newuser' component={NewUser} />
+            <Route exact path='/newbabysitter' component={NewBabysitter} />
+            <Route
+              exact
+              path='/newbabysittermeta/:email/meta'
+              component={NewBabysitterMeta}
+            />
             <Route exact path='/' component={HomeAdmin} />
             <Route component={NotFound} />
           </Switch>

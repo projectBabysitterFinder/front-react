@@ -24,12 +24,14 @@ const Index = () => {
         menu
       </span>
       <nav className={!openMenu ? 'navigation' : 'navigation navigation-open'}>
-        <div className='navigation__profile'>
-          <span className='material-icons navigation--icon'>
-            account_circle
-          </span>
-          <Link to='/'> Nombre de usuario </Link>
-        </div>
+        {isAuthenticated && (
+          <div className='navigation__profile'>
+            <span className='material-icons navigation--icon'>
+              account_circle
+            </span>
+            <Link to='/'> Nombre de usuario </Link>
+          </div>
+        )}
         <ul className='navigation__ul'>
           <li className='navigation__li'>
             {isAuthenticated ? <LogoutButton /> : <LoginButton />}
@@ -42,16 +44,6 @@ const Index = () => {
           <li className='navigation__li'>
             <Link className='navigation__link' to='/'>
               Contact
-            </Link>
-          </li>
-          <li className='navigation__li'>
-            <Link className='navigation__link' to='/'>
-              Item 1
-            </Link>
-          </li>
-          <li className='navigation__li'>
-            <Link className='navigation__link' to='/'>
-              Item 2
             </Link>
           </li>
         </ul>
