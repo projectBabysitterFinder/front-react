@@ -21,8 +21,7 @@ import NewBabysitterMeta from './pages/NewBabysitterMeta';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { ToastContainer } from 'react-toastify';
-// import PerfilNana from './pages/PerfilNana';
-// import PrivateRoute from './components/Login/PrivateRoute';
+// import PerfilNana from './pages/PerfilNana'; // Sin comentarios
 
 function App() {
   let arrayUseAuth = [];
@@ -31,24 +30,17 @@ function App() {
   let emailAuth = '';
   const objectUseAuth = useAuth0().user;
   const { isLoading } = useAuth0();
-
-  // get role of logged in user
   const getId = async (role, email) => {
-    const url = `https://babys-api.herokuapp.com/api/users/email/${email}`;
+    const url = `https://babys-api.herokuapp.com/api/users/email/${email}`; // Esto puede estar en variables de entorno
     try {
       const result = await axios.get(url);
-      /* console.log('result', result); */
       dataUserAuth = result.data.body;
       const idRecovered = dataUserAuth[0].ID;
-      /* console.log('dataUserAuth', dataUserAuth);
-      console.log('id', idRecovered); */
-
-      localStorage.setItem('role', role);
+      localStorage.setItem('role', role); // Es necesario tener esto en localstorage?
       localStorage.setItem('emailUser', email);
       localStorage.setItem('id', idRecovered);
     } catch (error) {
       const idRecovered = '';
-      /* console.log('entra en el catch', error); */
       localStorage.setItem('role', role);
       localStorage.setItem('emailUser', email);
       localStorage.setItem('id', idRecovered);
@@ -60,13 +52,9 @@ function App() {
     roleAuth = arrayUseAuth[0][0];
     emailAuth = arrayUseAuth[2];
 
-    /* console.log('arrayUseAuth', arrayUseAuth);
-    console.log('roleAuth', roleAuth);
-    console.log('emailAuth', emailAuth); */
-
     switch (roleAuth) {
       case undefined:
-        if (emailAuth) {
+        if (emailAuth) { // No deben de tener un if dentro de un Switch
           roleAuth = 'client';
           getId(roleAuth, emailAuth);
         }
@@ -84,7 +72,7 @@ function App() {
     return <Loading />;
   }
 
-  // routes depending on the user's profile
+  // Separar esta logica y validar desde props las rutas
   if (roleAuth === 'admin') {
     return (
       <div className='App'>

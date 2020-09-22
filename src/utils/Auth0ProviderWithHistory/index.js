@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable react/prop-types */ // No bloquear reglas de eslint en archivos
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';

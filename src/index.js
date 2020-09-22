@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import ListUsersContext from './components/Contex/ListUsersContext';
 import ListBabysitterContext from './components/Contex/ListBabysitterContext';
 import UserContext from './components/Contex/UserContext';
-/* import * as serviceWorker from './serviceWorker'; */
+/* import * as serviceWorker from './serviceWorker'; */ // Sin comentarios
 
 ReactDOM.render(
   <Router>
@@ -26,6 +26,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+// Eliminar
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

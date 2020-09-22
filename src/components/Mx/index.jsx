@@ -1,5 +1,5 @@
 import React from 'react';
-import MxImg from '../../assets/images/Flags/mx.png';
+import MxImg from '../../assets/images/Flags/mx.png'; // Solo componentes inician en mayuscula
 import '../../sass/mx.scss';
 
 const Mx = () => {

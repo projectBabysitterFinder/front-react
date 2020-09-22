@@ -4,7 +4,7 @@ import Star from '../Star';
 import { Link } from 'react-router-dom';
 import '../../sass/nanaDataService.scss';
 
-var services = [1, 2];
+var services = [1, 2]; // No usar var
 
 const NanaDataService = (props) => {
   const { service } = props;

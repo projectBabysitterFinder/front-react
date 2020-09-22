@@ -11,6 +11,7 @@ const ListBabysitter = () => {
   const { babysitter } = useContext(ListBabysitterContext);
   status = babysitter.status;
 
+  // Logica repetida, se puede pensar nuevamente
   switch (status) {
     case undefined:
       return <Loading />;

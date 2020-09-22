@@ -1,9 +1,3 @@
-/*
-catch error data:
-error.response.data
-error.response.status
-error.response.headers
-*/
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';

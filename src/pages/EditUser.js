@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-/* import { UserContext } from '../components/Contex/UserContext'; */
 import MessageError from '../components/MessageError';
 import Loading from '../components/Loading';
 import EditUserForm from '../components/Admin/EditUserForm';
@@ -14,9 +12,7 @@ const EditUser = (props) => {
   useEffect(() => {
     const getUser = async () => {
       if (!idUser) return;
-
-      const url = `https://babys-api.herokuapp.com/api/users/user/${idUser}`;
-
+      const url = `https://babys-api.herokuapp.com/api/users/user/${idUser}`; // Variables de entorno
       try {
         const result = await axios.get(url);
         saveUser(result.data);
@@ -28,7 +24,7 @@ const EditUser = (props) => {
   }, [idUser]);
 
   const status = userInfo.status;
-
+  // Logica repetida, se puede pensar nuevamente
   switch (status) {
     case undefined:
       return <Loading />;

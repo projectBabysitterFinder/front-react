@@ -13,6 +13,7 @@ var reviewID = 0;
 var cont = 0;
 
 const NanaProfile = () => {
+ // No usar var
   var {
     Idd,
     open,
@@ -44,9 +45,6 @@ const NanaProfile = () => {
     <div className='nanaData'>
       <ModalDate open={open} />
       <ModalAddInfo openAdd={openAdd} />
-      {/* {users.length !== 0 &&
-        <ModalCheck openCheck={openCheck} time={Idd[0].time} />
-      } */}
       <ModalCheck openCheck={openCheck} time={Idd[0].DES_NAME} />
       <ModalHalfTime openHalfTime={openHalfTime} />
       <ModalNight openNight={openNight} />

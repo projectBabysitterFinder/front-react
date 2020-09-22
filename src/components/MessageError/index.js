@@ -1,3 +1,4 @@
+// Este archivo jsx debe de usar la extencion jsx
 import React from 'react';
 
 const index = ({ error }) => {

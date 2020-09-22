@@ -1,4 +1,5 @@
 import React from 'react';
+// Usar CDN para estaticos
 import math from '../assets/images/home/math.png';
 import airplane from '../assets/images/home/airplane.png';
 import calendar from '../assets/images/home/calendar.png';

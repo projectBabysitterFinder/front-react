@@ -11,6 +11,7 @@ const ListUsers = () => {
   const { users } = useContext(ListUsersContext);
   status = users.status;
 
+  // Logica repetida, se puede pensar nuevamente
   switch (status) {
     case undefined:
       return <Loading />;

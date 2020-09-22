@@ -33,7 +33,7 @@ const Forms = () => {
 
   const valueAll = () => {
     data = [];
-    var name = document.getElementById('name').value;
+    var name = document.getElementById('name').value; // No usamos getElementbyId
     var email = document.getElementById('email').value;
     var phone = document.getElementById('phone').value;
     var address = document.getElementById('address').value;
@@ -44,8 +44,6 @@ const Forms = () => {
     data.push(address);
     data.push(recommendations);
     setForm(data);
-    // postData(email, phone, address, recommendations, Idd, longitude, latitude);
-
     if (recommendations === '' || child.length === 0) {
       alert('Por favor ingrese los niños y/o la recomendación');
     } else {
