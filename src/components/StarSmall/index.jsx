@@ -10,7 +10,7 @@ const StarSmall = (props) => {
         <>
           <img
             className='unit'
-            src={require('../../assets/images/Star/estrella.png')}
+            src={require('../../assets/images/Star/estrella.png')} // CDN
             alt={name}
           />
           <img

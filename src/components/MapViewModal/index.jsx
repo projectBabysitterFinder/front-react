@@ -4,11 +4,6 @@ import MarkersModal from '../MarkersModal';
 import 'leaflet/dist/leaflet.css';
 
 const MapViewModal = (props) => {
-  // const [state, setState] = useState({
-  //   currentLocation: { lat: '40.528845', lng: '-0.302728' },
-  //   zoom: 2,
-  // });
-
   return (
     <Map
       center={{ lat: props.DES_ADDRESS_LAT, lng: props.DES_ADDRESS_LAT }}

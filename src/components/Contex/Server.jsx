@@ -48,7 +48,6 @@ export function ServerProvider(props) {
   const [country, setCountry] = useState([]);
   const [state, setState] = useState([]);
   const [capital, setCapital] = useState([]);
-  // const [onlyCountry, setOnlyCountry] = useState([]);
   const [Idd, setIdd] = useState([]);
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState(new Date());
@@ -85,9 +84,6 @@ export function ServerProvider(props) {
   const [latitude, setLatitude] = useState(0);
   const [url, setUrl] = useState('');
   const [valueHours, setValueHorus] = useState(0);
-
-  // const prueba = localStorage.getItem('role')
-  // console.log(prueba, 'prueba')
 
   const coordinate = useCallback(() => {
     navigator.geolocation.getCurrentPosition(
@@ -164,7 +160,8 @@ export function ServerProvider(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data1 = await fetch('https://babys-api.herokuapp.com/api/users');
+      // Utilizar una mejor nomenclatura de los llamados segun lo que hace cada peticion
+      const data1 = await fetch('https://babys-api.herokuapp.com/api/users'); // Variables de entorno
       const info = await data1.json();
       const data2 = await fetch('https://babys-api.herokuapp.com/api/users/2');
       const info2 = await data2.json();
@@ -525,12 +522,12 @@ export function ServerProvider(props) {
         if (flagV === 'Colombia') {
           return Math.round(
             (valueCop / 3) * 2 +
-              (parseInt(child.length) - 1) * (valueCop / 3 + valueCop / 12)
+            (parseInt(child.length) - 1) * (valueCop / 3 + valueCop / 12)
           );
         } else {
           return Math.round(
             (valueMx / 3) * 2 +
-              (parseInt(child.length) - 1) * (valueMx / 3 + valueMx / 12)
+            (parseInt(child.length) - 1) * (valueMx / 3 + valueMx / 12)
           );
         }
       }

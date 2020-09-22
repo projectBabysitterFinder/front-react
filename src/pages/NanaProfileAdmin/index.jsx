@@ -38,7 +38,7 @@ const NanaProfileAdmin = () => {
                 ID={nana.ID}
                 DES_URL_IMAGE={
                   nana.DES_URL_IMAGE === null
-                    ? 'http://dummyimage.com/239x191.jpg/5fa2dd/ffffff'
+                    ? 'http://dummyimage.com/239x191.jpg/5fa2dd/ffffff' // CDN
                     : nana.DES_URL_IMAGE
                 }
                 DES_FULLNAME={nana.DES_FULLNAME}

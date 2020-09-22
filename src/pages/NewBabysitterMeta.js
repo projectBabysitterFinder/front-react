@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import BabysitterFormMeta from '../components/Admin/BabysitterFormMeta';
 import MessageError from '../components/MessageError';
@@ -13,22 +12,17 @@ const NewBabysitterMeta = (props) => {
   useEffect(() => {
     const getUser = async () => {
       if (!emailUser) return;
-
-      const url = `https://babys-api.herokuapp.com/api/users/email/${emailUser}`;
-
+      const url = `https://babys-api.herokuapp.com/api/users/email/${emailUser}`; // Usar variables de entorno
       try {
         const result = await axios.get(url);
-        console.log('result', result.data);
+        console.log('result', result.data); // No console log
         saveUser(result.data);
       } catch (error) {
         saveUser(error.response);
-        console.log('error', error);
       }
     };
     getUser();
   }, [emailUser]);
-
-  console.log('emailUser', emailUser);
 
   const status = userInfo.status;
 

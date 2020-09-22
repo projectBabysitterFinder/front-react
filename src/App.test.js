@@ -7,3 +7,4 @@ test('renders learn react link', () => {
   const linkElement = getByText(/learn react/i)
   expect(linkElement).toBeInTheDocument()
 }) */
+// Si no se utilizara no es necesario enviarlo al repositorio

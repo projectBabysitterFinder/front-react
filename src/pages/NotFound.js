@@ -1,5 +1,5 @@
 import React from 'react';
-import ImgNotFound from '../assets/images/notfound/not-found.png';
+import ImgNotFound from '../assets/images/notfound/not-found.png'; // Utilizar assets en CDN
 import '../sass/notfound.scss';
 
 const NotFound = () => (

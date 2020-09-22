@@ -1,14 +1,11 @@
 import React from 'react';
-// import NanaDataService from '../../components/NanaDataService';
 import Star from '../../components/Star';
 import { Link } from 'react-router-dom';
 import MapView from '../../components/MapView';
+// Usar Webpack Resolve para evitar ../../../
 import ModalService from '../../components/ModalService';
 import { useServer } from '../../components/Contex/Server';
 import '../../sass/nanaService.scss';
-
-// var reviewID = 0;
-// var cont = 0;
 
 const NanaService = () => {
   var {
@@ -19,31 +16,15 @@ const NanaService = () => {
     openService,
     openService2,
   } = useServer();
-
-  // const check = (e) => {
-  //   reviewID=0;
-  //   cont=0;
-  //   for(let i=0; i<reviews.length; i++) {
-  //     if(reviews[i].ID_USER_BABYSITTER===e) {
-  //       reviewID = reviewID + reviews[i].NUM_STARS;
-  //       cont=cont+1;
-  //     }
-  //   }
-  //   if (reviewID>0){
-  //     return (reviewID/cont);
-  //   } else {
-  //     return (0);
-  //   }
-  // }
-
   const toOpen = (e) => {
     var openContratar = document.getElementById(e).value;
-    openService(parseInt(openContratar));
+    openService(parseInt(openContratar)); // Todo debe de ser en ingles
   };
 
+  // Este componente es muy largo y cada iteracion puede ser un componente aislado.
   return (
     <div className='servicee'>
-      <ModalService openService2={openService2} />
+      <ModalService openService2={openService2} /> // Que hace service2?
       <article className='servicee__photo'>
         <img src={onlyUser[0].DES_URL_IMAGE} alt='Img' />
         <div className='button__service'>
@@ -55,6 +36,7 @@ const NanaService = () => {
       <section className='service__all'>
         <h3>Servicios</h3>
         <div className='service__card'>
+          {/* No es recomendable usar index como valor de key */}
           {service.map((servi, index) => (
             <section key={index} className='service__data'>
               <section className='review__service'>
@@ -76,9 +58,6 @@ const NanaService = () => {
                         .map((servi, index) => (
                           <h2 key={index}>{servi.DES_FULLNAME}</h2>
                         ))}
-                      {/* <div className='star__small'>
-                      <StarSmall score={3} name='img' />
-                    </div> */}
                     </div>
                   </div>
                   <div className='service__button'>

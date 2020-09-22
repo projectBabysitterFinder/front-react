@@ -27,6 +27,7 @@ const Tags = (props) => {
       {DES_DATA_ABILITIES !== undefined &&
       DES_DATA_ABILITIES !== null &&
       DES_DATA_ABILITIES.length !== 0
+      // No usar index como ell valore de key
         ? DES_DATA_ABILITIES.map((specialty, index) => (
             <div key={index} className='TagsSpecialties'>
               <p>{specialty}</p>
